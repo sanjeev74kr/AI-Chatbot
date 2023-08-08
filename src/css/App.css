@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .App{
-  background-color: black;
+  background-color:rgb(20 23 24);
   min-height:100vh;
   display: flex;
   flex-direction: column;
