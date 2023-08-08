@@ -30,16 +30,17 @@ function Chats() {
     }
 
     return (
-        <div className="Chats-UI">
-            <div className="Chats-section">
+        <main className="Chats-UI">
+            <section className="Chats-left-section">
                 <div className="Chats-heading">
                     <div className="Chats-heading1">
                         <h1 >Unlock the Power of AI</h1>
                     </div>
                     <div className="Chats-heading2">
-                        <h5>Chat with the smartest AI - Experience the power of AI with us</h5>
+                        <h4>Chat with the smartest AI - Experience the power of AI with us</h4>
                     </div>
                 </div>
+                
                 <div className="Chats-conversation">
                     <div className="message bot">Hi! I am Documnets Intelligence 😄</div>
                     <div className="message bot">Tell me, How can I help You</div>
@@ -50,10 +51,9 @@ function Chats() {
                         </div>
                     ))};
                 </div>
-
-            </div>
+            
             <div className="Chats-input-box">
-                <input type="text" className="input-box" placeholder="Ask Documnets Intelligence anything..."
+                <input type="text" className="input-box" placeholder="Ask Documents Intelligence anything..."
                     value={inputValue}
                     onChange={handleInputChange} />
 
@@ -62,19 +62,26 @@ function Chats() {
                 </button>
 
             </div>
+            </section>
         
-             {/* <div className="Chats-history-section">
+             <section className="Chats-right-section">
                 <div className="Chat-history-top">
-                    <span className="Notifcation"></span>
-                    <span className="Profile"></span>
-                    <span className="Share"></span>
+                    <span className="Notifcation"><img src='./notification.svg' alt="notification"/></span>
+                    <span className="Profile"><img src='./profile.svg' alt="profile-pic"/></span>
+                    <span className="Share-button"><p>Share</p></span>
                 </div>
-                <div className="Chat-history"><h3>Search History</h3></div>
+                <div className="Horizontal-line"></div>
+                
+                <div className="Chat-history"><p>Search History</p>
+                <div className="Horizontal-line"></div>
+                </div>
+                <div className="Horizontal-line"></div>
+
                 <div className="New-chat">
-                    <button className="New-chat-button">New Chat</button>
+                    <button className="New-chat-button"> + New Chat </button>
                 </div>
-            </div> */}
-        </div >
+            </section>
+        </main >
     )
 }
 

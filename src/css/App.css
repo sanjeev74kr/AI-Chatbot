@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 .App{
+  display: flex;
   background-color:rgb(20 23 24);
   min-height:100vh;
-  display: flex;
   flex-direction: column;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -30,13 +30,14 @@
 
 .DI-text{
   color:white;
-  margin-left: 10px;
+  margin-left: 1%;
 }
 
 .Menu {
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 .Menu-item{
@@ -49,7 +50,7 @@
 }
 
 .selected{
-  background-color:#333;
+  background-color:#242629;
   border: 1px solid grey;
   border-radius: 8px;
   padding: 10px;
@@ -71,12 +72,12 @@
   color: whitesmoke;
 }
 
-/*.Horizontal-line{
+.Horizontal-line{
   position: relative;
-  width: 15%; /* Adjust the width as needed */
-  /*height: 0;
-  border-top: 1px solid whitesmoke; /* Adjust color and style as needed */
-/*}*/
+  width: 100%; /* Adjust the width as needed */
+  height: 0;
+  border-top: 1px solid #eceaea; /* Adjust color and style as needed */
+}
 
 .Chat-component{
   position: absolute;
@@ -85,6 +86,8 @@
   z-index: 10;
   margin-left: 10%;
 }
+
+
 
 
 

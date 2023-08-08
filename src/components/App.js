@@ -1,5 +1,5 @@
-import './css/App.css';
-import Chats from './components/Chats'
+import '../css/App.css';
+import Chats from './Chats'
 import { useState } from 'react';
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
             <span className="text">Settings</span>
           </div>
         </div>
-      //<div className='Horizontal-line'></div>
+      {/* <div className='Horizontal-line'></div> */}
       </div>
 
       <div className="Chat-component">

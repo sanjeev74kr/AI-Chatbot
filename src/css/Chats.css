@@ -1,117 +1,187 @@
-
-.Chats-UI{
-    display: flex;
-    min-height: 92vh;
-    min-width: 80vw;
-    background-color:white;
-    border-radius: 10px;
-    padding: 5%;
-    flex-direction: row;
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  
 }
 
-.Chats-heading{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    margin-bottom:5%;
-    
-}
-.Chats-heading1{
-    display: flex;
-    flex-wrap: nowrap;
-}
-.Chats-heading2{
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    color:grey;
-}
-
-.Chats-section{
-    flex: 0 0 85% ;
+/* Chats Main container */
+.Chats-UI {
+  display: flex;
+  min-height: 92vh;
+  min-width: 80vw;
+  background-color: white;
+  border-radius: 3%;
+  flex-direction: row;
 }
 
 
-.Chat-conversation{
-    max-height: 100%;
-    height: 440px;
-    width: 350px;
-    padding: 10px;
-    background-color:#ccc;
-    border: 1px solid #ccc;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    scroll-behavior: auto;
-  }
+/* Chats left section container */
+.Chats-left-section {
+  flex: 0 0 75%;
+  padding: 5%;
+}
 
-.user,.bot{
-  padding: 10px;
-  margin-bottom: 10px;
-  max-width: 50%; /* Limiting the maximum width of messages */
-  word-wrap: break-word; /* Wrapping long words */
-  overflow-wrap: break-word; /* Fallback for older browsers */
-  word-break: break-word; /* Additional support for word breaking */
+
+/* heading container */
+.Chats-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%;
+  justify-content: space-evenly;
+}
+
+
+/*heading-1 */
+.Chats-heading1 {
+  margin-bottom: 2%;
+}
+
+
+/*heading-2 */
+.Chats-heading2 {
+  color: grey;
+}
+
+
+/* conversation-display */
+.Chats-conversation{
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  scroll-behavior: auto;
+  height: 78%;
+  padding: 4%;
+  border-radius: 3%;
+}
+
+
+/*customization of user and bot */
+.user,
+.bot {
+  padding: 2%;
+  margin-bottom: 2%;
+  max-width: 50%;
+  /* Limiting the maximum width of messages */
+  word-wrap: break-word;
+  /* Wrapping long words */
+  overflow-wrap: break-word;
+  /* Fallback for older browsers */
+  word-break: break-word;
+  /* Additional support for word breaking */
   font-size: 16px;
   border-radius: 8px;
 }
 
 
+/*user chat customization */
 .user {
   background-color: #e2f7fd;
   align-self: flex-end;
   border: 1px solid #ccc;
 }
 
+/*bot chat customization */
 .bot {
   background-color: #f0f0f0;
-  align-self:flex-start;
+  align-self: flex-start;
   border: 1px solid plum;
 }
 
-.Chats-history-section{
-    flex:0 0 20% ;
-    position: absolute;
-    left: 80%;
-    background-color: whitesmoke;
-    min-height: 95%;
-
-   
+/*input box container*/
+.Chats-input-box {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 2%;
 }
 
-.Chats-input-box {
-    display: flex;
-    align-items:center;
-    width: 50vw;
-    padding: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    bottom: 2%;
-  }
-  .input-box {
-    flex-grow: 1;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-  }
+/*input box */
+.input-box {
+  flex-grow: 1;
+  padding: 2%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
 
-  .send-button { 
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 5px;
-  }
+/*send button */
+.send-button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+}
+
+/*send button image */
+.send-button img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/*chats-right-section-container */
+.Chats-right-section{
+  display: flex;
+  flex-direction: column;
+  background-color:whitesmoke;
+  flex: 0 0 25%;
+  margin: 0%;
+  padding: 1%;
+  border-radius: 16px;
+}
+
+/*Chat history top section*/
+.Chat-history-top{
+  display: flex;
+  align-items: center;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  justify-content: space-evenly;
+}
+
+
+
+.Share-button{
+  display: flex;
+  justify-content: center;
+ background-color: black;
+ color: white;
+ font-size: 16px;
+ padding: 2%;
+ width: 30%;
+ border-radius: 8px;
+}
+
+.Chat-history{
+  margin-top: 20%;
+  height: 100%;
+  padding: 1%;
+  font-size: 1 em;
   
-  .send-button img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  }
+}
+
+.New-chat{
+  display: flex;
+  margin-top: 20%;
+  justify-content: center;
+}
+
+.New-chat-button{
+  background-color:rgb(0 132 255);
+  color:white;
+  border-radius: 8px;
+  font-size: 1 em;
+  font-weight: 600;
+  padding: 4%;
+  width: 100%;
+}
