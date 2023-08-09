@@ -30,7 +30,6 @@
 
 .DI-text{
   color:white;
-  margin-left: 1%;
 }
 
 .Menu {
@@ -57,9 +56,7 @@
   color: white;
   border-radius: 8px;
   min-width: fit-content;
-  max-width:15vw;
-  
-  
+  max-width:15vw;    
 }
 
 .icon {
@@ -72,6 +69,34 @@
   color: whitesmoke;
 }
 
+/* beautify sample data */
+.Sample-data-loading-section{ 
+  display: flex;
+  flex-direction: column;
+  max-height:70%;
+  width:20%;
+  overflow: auto;
+  scroll-behavior: auto;
+  margin-bottom: 2%;
+  background-color: #181818;
+}
+
+.Sample-data{
+display: flex;
+color:white;
+padding: 2%;
+margin: 1%;
+margin-top: 2%;
+line-height: .8em;
+font-size: 1em;
+
+border: 1px solid grey;
+border-radius: 4%;
+
+}
+
+
+/* Draw horizontal line */
 .Horizontal-line{
   position: relative;
   width: 100%; /* Adjust the width as needed */
@@ -79,6 +104,8 @@
   border-top: 1px solid #eceaea; /* Adjust color and style as needed */
 }
 
+
+/* Load chat component */
 .Chat-component{
   position: absolute;
   top: 4%;

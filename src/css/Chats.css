@@ -94,7 +94,7 @@
 .Chats-input-box {
   display: flex;
   align-items: center;
-  width: 50rem;
+  width: 50em;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: .8em;

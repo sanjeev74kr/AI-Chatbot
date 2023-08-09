@@ -1,16 +1,26 @@
 import '../css/App.css';
 import Chats from './Chats'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import sampleData from '../utils/sampleData'
 
 function App() {
   const [showChats, setShowChats] = useState(true);
-  const [showSearch, setShowSearch] = useState(false);
-  const [showSubscription, setShowSubscription] = useState(false);
-  const [showFaq, setShowFaq] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
+  const [data,setData]=useState(sampleData);
+  // const [showSearch, setShowSearch] = useState(false);
+  // const [showSubscription, setShowSubscription] = useState(false);
+  // const [showFaq, setShowFaq] = useState(false);
+  // const [showSettings, setShowSettings] = useState(false);
 
   const handleChatClick = () => {
     setShowChats(true);
+  }
+  
+  useEffect(()=>{
+    handleSampleData();
+  },[]);
+
+  const handleSampleData=async()=>{
+     setData(sampleData);
   }
 
   return (
@@ -23,14 +33,28 @@ function App() {
           <h1> RON </h1>
         </span>
       </div>
-    //  <div className='Vertical-line'></div>
+      {/* <div className='Vertical-line'></div> */}
       <div className='Main-page-side-section'>
         <div className='Menu'>
           <div className={`Menu-item ${showChats ? 'selected' : ''}`} id="Menu-chats" onClick={handleChatClick}>
             <span className="icon"><img src='./chat.svg' alt='brain-wave-icon' /></span>
             <span className="text">Chats</span>
           </div>
-          <div className={`Menu-item ${showSearch ? 'selected' : ''}`} id="Menu-search">
+
+
+      {/* sample data section  */}
+       <div className='Sample-data-loading-section'>
+          {data.map((curr,index) => (
+          <div className='Sample-data'>
+          <p key={index}>{index+1}.</p>
+          <p>{curr}</p>
+          </div>
+
+          ))}
+       </div>
+       <div className='Horizontal-line'></div>
+
+          {/* <div className={`Menu-item ${showSearch ? 'selected' : ''}`} id="Menu-search">
             <span className="icon"><img src='./search.svg' alt='brain-wave-icon' /></span>
             <span className="text">Search</span>
           </div>
@@ -45,16 +69,14 @@ function App() {
           <div className={`Menu-item ${showSettings ? 'selected' : ''}`} id="Menu-setting">
             <span className="icon"><img src='./settings.svg' alt='brain-wave-icon' /></span>
             <span className="text">Settings</span>
-          </div>
+          </div> */}
         </div>
-      {/* <div className='Horizontal-line'></div> */}
+        {/* <div className='Horizontal-line'></div> */}
       </div>
 
       <div className="Chat-component">
-    {showChats && <Chats />}
-  </div>
-    
-
+        {showChats && <Chats />}
+      </div>
     </div>
   );
 }
