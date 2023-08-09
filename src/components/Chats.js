@@ -42,18 +42,18 @@ function Chats() {
                 </div>
                 
                 <div className="Chats-conversation">
-                    <div className="message bot">Hi! I am Documnets Intelligence 😄</div>
+                    <div className="message bot">Hi! I am Ron  😄</div>
                     <div className="message bot">Tell me, How can I help You</div>
 
                     {messages.map((message, index) => (
                         <div key={index} className={`message ${message.isUser ? 'user' : 'bot'}`}>
                             {message.text}
                         </div>
-                    ))};
+                    ))}
                 </div>
             
             <div className="Chats-input-box">
-                <input type="text" className="input-box" placeholder="Ask Documents Intelligence anything..."
+                <input type="text" className="input-box" placeholder="Ask Ron anything..."
                     value={inputValue}
                     onChange={handleInputChange} />
 
