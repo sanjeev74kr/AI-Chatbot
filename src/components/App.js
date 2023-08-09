@@ -52,7 +52,7 @@ function App() {
 
           ))}
        </div>
-       <div className='Horizontal-line'></div>
+       
 
           {/* <div className={`Menu-item ${showSearch ? 'selected' : ''}`} id="Menu-search">
             <span className="icon"><img src='./search.svg' alt='brain-wave-icon' /></span>
@@ -72,6 +72,7 @@ function App() {
           </div> */}
         </div>
         {/* <div className='Horizontal-line'></div> */}
+        
       </div>
 
       <div className="Chat-component">
