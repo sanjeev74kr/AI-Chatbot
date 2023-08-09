@@ -37,8 +37,8 @@ function App() {
       <div className='Main-page-side-section'>
         <div className='Menu'>
           <div className={`Menu-item ${showChats ? 'selected' : ''}`} id="Menu-chats" onClick={handleChatClick}>
-            <span className="icon"><img src='./chat.svg' alt='brain-wave-icon' /></span>
-            <span className="text">Chats</span>
+            <span className="icon"><img src='./search.svg' alt='brain-wave-icon' /></span>
+            <span className="text">search here..</span>
           </div>
 
 
