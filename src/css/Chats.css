@@ -148,7 +148,8 @@
   padding: 1%;
   border-radius: 16px;
   border-bottom-left-radius: 0%;
-  border-top-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-left: 1px solid #373636;
 }
 
 /*Chat history top section*/
