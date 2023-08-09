@@ -1,8 +1,8 @@
-*{
+* {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-  
+
 }
 
 /* Chats Main container */
@@ -46,7 +46,7 @@
 
 
 /* conversation-display */
-.Chats-conversation{
+.Chats-conversation {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -130,10 +130,10 @@
 }
 
 /*chats-right-section-container */
-.Chats-right-section{
+.Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   flex: 0 0 25%;
   margin: 0%;
   padding: 1%;
@@ -141,7 +141,7 @@
 }
 
 /*Chat history top section*/
-.Chat-history-top{
+.Chat-history-top {
   display: flex;
   align-items: center;
   margin-top: 0%;
@@ -151,37 +151,48 @@
 
 
 
-.Share-button{
+.Share-button {
   display: flex;
   justify-content: center;
- background-color: black;
- color: white;
- font-size: 16px;
- padding: 2%;
- width: 30%;
- border-radius: 8px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  padding: 2%;
+  width: 30%;
+  border-radius: 8px;
 }
 
-.Chat-history{
+.Chat-history {
   margin-top: 20%;
   height: 100%;
   padding: 1%;
   font-size: 1 em;
-  
+
 }
 
-.New-chat{
+.New-chat-button {
   display: flex;
   margin-top: 20%;
   justify-content: center;
+  align-items: center;
+  background-color: rgb(0 132 255);
+  border-radius: 0.75rem;
+  border-width: 2px;
+  padding-left: 1.375rem;
+  padding-right: 1.375rem;
+  height: 3rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: linear;
+  transition-duration: .2s;
+  cursor: pointer;
 }
 
-.New-chat-button{
-  background-color:rgb(0 132 255);
-  color:white;
-  border-radius: 8px;
-  font-size: 1 em;
+.New-chat-text {
+  color: white;
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: -.00em;
   font-weight: 600;
-  padding: 4%;
-  width: 100%;
+  padding: .9rem;
 }

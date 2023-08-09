@@ -77,8 +77,9 @@ function Chats() {
                 </div>
                 <div className="Horizontal-line"></div>
 
-                <div className="New-chat">
-                    <button className="New-chat-button"> + New Chat </button>
+                <div className="New-chat-button">
+                  <span> <img className="Plus-img" src='plus-sign.svg' alt="plus-sign"/></span> 
+                    <p className="New-chat-text"> New Chat </p>
                 </div>
             </section>
         </main >
