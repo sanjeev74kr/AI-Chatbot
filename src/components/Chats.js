@@ -56,11 +56,11 @@ function Chats() {
                
                {/* Input box */}
                 <div className="Chats-input-box">
-                    <img src="./add-circle-button.svg" />
+                    <img className="AddFileButton" src="./add-circle-button.svg" />
                     <input type="text" className="input-box" placeholder="Ask Ron anything..."
                         value={inputValue}
                         onChange={handleInputChange} />
-                    <img src="./voice-icon.svg"></img>
+                    <img className="VoiceButton" src="./voice-icon.svg"></img>
                     {/* <button className="send-button" onClick={handleSendMessage}>
                         <img src="send.svg" alt="Send Icon" />
                     </button> */}

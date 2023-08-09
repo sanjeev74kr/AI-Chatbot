@@ -121,6 +121,14 @@
   color: white;
 }
 
+.AddFileButton{
+  margin-left: 2%;
+}
+
+.VoiceButton{
+  margin-right: 2%;
+}
+
 /*send button */
 .send-button {
   border: none;
