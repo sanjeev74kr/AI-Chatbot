@@ -20,7 +20,7 @@ function App() {
           <img src='./brain.svg' alt='DI-icon' />
         </span>
         <span className='DI-text'>
-          <h1> D I</h1>
+          <h1> RON </h1>
         </span>
       </div>
     //  <div className='Vertical-line'></div>
