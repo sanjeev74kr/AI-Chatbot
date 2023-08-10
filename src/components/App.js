@@ -29,7 +29,7 @@ function App() {
       <div className='heading-part'>
         <header>
           <span className='brand-identity'>
-            <img className='brand-icon' src='./brain.svg' alt='DI-icon' />
+            <img className='brand-icon' src='./brand-icon.svg' alt='DI-icon' />
             <p className='brand-text'> RON </p>
           </span>
           <div className='heading-button'>

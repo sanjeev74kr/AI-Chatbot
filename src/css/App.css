@@ -79,6 +79,13 @@
 .main-page-left-section {
   display: flex;
   flex-direction: column;
+  min-width:10vw;
+  max-width: 15vw;
+  height: 100vh;
+  border-left: 1px solid black;
+  border-right:1px solid black;
+  padding: 1%;
+ 
 }
 
 
@@ -101,13 +108,12 @@
   flex-direction: column;
   min-height: 70vh;
   max-height:70vh;
-  min-width:10vw;
-  max-width: 15vw;
   margin-bottom:2%;
   margin-top: 2%;
   overflow: auto;
   scroll-behavior:auto;
-  background-color: white;
+  background-color:#f7f7f7;
+  
 }
 
 .Sample-data{
@@ -118,17 +124,17 @@ margin: 2%;
 justify-content: space-between;
 }
 
-/* .page-icon {
-  
+.page-icon {
+  padding: 1%; 
 }
 
 .data {
-  
+  padding: 1%;
 }
 
 .expand-button {
-  
-} */
+  padding: 1%;
+} 
 
 
 /* Draw horizontal line */
