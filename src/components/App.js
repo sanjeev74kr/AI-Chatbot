@@ -33,7 +33,7 @@ function App() {
           </span>
           <div className='heading-button'>
             <button className='dashboard-component-button'>Dashboard</button>
-            <button className='chat-component-button'>Chat</button>
+            <button className='chat-component-button'>AI Chatbot</button>
           </div>
           <img className="profile-button" src="./profile.svg" alt="profile-icon" />
         </header>

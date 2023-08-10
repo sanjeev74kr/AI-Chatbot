@@ -9,7 +9,7 @@
 .Chats-UI {
   display: flex;
   height: 90vh;
-  min-width: 80vw;
+  min-width: 60vw;
   background-color:white;
   border-radius: 3%;
   flex-direction: row;
@@ -20,7 +20,7 @@
 .Chats-main-section {
   display: flex;
   flex-direction: column;
-  flex: 0 0 75%;
+  flex: 0 0 40%;
   padding: 5%;
   background-color: white;
   border: 1px solid #ccc;

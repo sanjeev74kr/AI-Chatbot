@@ -39,7 +39,7 @@ function Chats() {
                         value={inputValue}
                         onChange={handleInputChange} />
                     <img className="send-button" src="./send.svg" alt="send-button" />
-                    <img className="AddFileButton" src="./add-circle-button.svg" />
+                    <img className="uploadFileButton" src="./upload-file.svg" />
 
                     {/* <button className="send-button" onClick={handleSendMessage}>
                         <img src="send.svg" alt="Send Icon" />
