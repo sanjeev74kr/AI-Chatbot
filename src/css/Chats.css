@@ -9,7 +9,7 @@
 .Chats-UI {
   display: flex;
   height: 90vh;
-  min-width: 60vw;
+  min-width: 80vw;
   background-color:white;
   border-radius: 3%;
   flex-direction: row;
@@ -21,8 +21,8 @@
 .Chats-main-section {
   display: flex;
   flex-direction: column;
-  flex: 0 0 40%;
   padding: 5%;
+  width: 60vw;
   background-color: white;
   border: 1px solid #ccc;
 }
@@ -33,7 +33,7 @@
 .search-box {
   display: flex;
   align-items: center;
-  width: 60vw;
+  width: 50vw;
   background-color:white;
   border: 1px solid #ccc;
   border-radius: .8em;
@@ -132,10 +132,10 @@
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;
-  flex: 0 0 25%;
   margin-right: 2%;
   padding: 1%;
-  border: 1px solid #f8f2f2;
+  width:20vw;
+  border: 1px solid #dcd7d7;
 }
 
 /*Chat history top section*/
@@ -144,7 +144,7 @@
   align-items: center;
   margin-top: 0%;
   margin-bottom: 5%;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 /* .Chat-history {
