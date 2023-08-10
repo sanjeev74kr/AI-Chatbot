@@ -99,13 +99,13 @@
   padding: 1%;
   overflow: auto;
   scroll-behavior:auto;
-  background-color:#f7f7f7;
+  background-color:#101010;
   
 }
 
 .Sample-data{
 display: flex;
-color:black;
+color:white;
 padding:2%;
 margin: 2%;
 justify-content: space-between;
@@ -142,30 +142,6 @@ justify-content: space-between;
   margin-left: 10%;
 }
 
-
-
-/*customize scroll bar */
-div {
-  scrollbar-width: thin; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer/Edge */
-  overflow: -moz-scrollbars-none; /* Older Firefox */
-}
-
-
-
-/* Apply custom styles to the scrollbar (for webkit-based browsers like Chrome, Safari) */
-div::-webkit-scrollbar {
-  width: none;
-}
-
-div::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  border-radius: 1px;
-}
-
-div::-webkit-scrollbar-track {
-  background-color: lightgrey;
-}
 
 
 
