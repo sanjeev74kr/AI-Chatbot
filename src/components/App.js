@@ -1,4 +1,5 @@
 import '../css/App.css';
+import '../themes/lightTheme';
 import Chats from './Chats'
 import { useEffect, useState } from 'react';
 import sampleData from '../utils/sampleData'
@@ -6,10 +7,7 @@ import sampleData from '../utils/sampleData'
 function App() {
   const [showChats, setShowChats] = useState(true);
   const [data,setData]=useState(sampleData);
-  // const [showSearch, setShowSearch] = useState(false);
-  // const [showSubscription, setShowSubscription] = useState(false);
-  // const [showFaq, setShowFaq] = useState(false);
-  // const [showSettings, setShowSettings] = useState(false);
+
 
   const handleChatClick = () => {
     setShowChats(true);
@@ -24,16 +22,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className='Heading-part'>
-        <span className='DI-icon'>
-          <img src='./brain.svg' alt='DI-icon' />
+    <div className="app">
+      <div className='heading-part'>
+      <header>
+        <span className='brand-identity'>
+          <img className='brand-icon' src='./brain.svg' alt='DI-icon'/>
+          <p className='brand-text'> RON </p>
         </span>
-        <span className='DI-text'>
-          <h1> RON </h1>
-        </span>
+        <div className='heading-button'>
+        <button className='dashboard-component-button'>Dashboard</button>
+        <button className='chat-component-button'>Chat</button>
+        </div>
+        <img className="profile-button" src="./profile.svg" alt="profile-icon" /> 
+        </header>
       </div>
-      {/* <div className='Vertical-line'></div> */}
+     
       <div className='Main-page-side-section'>
         <div className='Menu'>
           <div className={`Menu-item ${showChats ? 'selected' : ''}`} id="Menu-chats" onClick={handleChatClick}>

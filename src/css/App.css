@@ -1,35 +1,78 @@
+
+
+/* universal */
 *{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
-.App{
+
+/* main app theme */
+.app{
   display: flex;
-  background-color:rgb(20 23 24);
+  background-color:white;
   min-height:100vh;
   flex-direction: column;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 
-/*.Vertical-line{
-  position: relative;
-  width: 0;
-  height: 100%; /* Adjust the height as needed */
- /* border-left: 1px solid whitesmoke; /* Adjust color and style as needed */
- /*}*/
-
-
-.Heading-part{
+/* header container */
+.heading-part header{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  margin-top: 10px;
+  border: 1px solid #f4ebeb;
 }
 
-.DI-text{
-  color:white;
+.brand-identity{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start ;
+  margin-left: 1%;
+}
+
+.brand-text{
+  color:black;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.heading-button{
+  display: flex;
+  
+  
+}
+
+.dashboard-component-button{
+  margin-right: 2%; 
+  padding: 4%;
+  min-width: fit-content;
+  width:1ovw;
+  background-color: transparent;
+  font-weight:600;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+}
+
+.chat-component-button{
+  margin-left: 2%;
+  padding: 4%;
+  min-width: fit-content;
+  width:8vw;
+  background-color: transparent;
+  font-weight:600;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.profile-button{
+ margin-right: 2%;
 }
 
 .Menu {
@@ -106,7 +149,7 @@ font-size: 1em;
 /* Load chat component */
 .Chat-component{
   position: absolute;
-  top: 4%;
+  top: 10%;
   left:7%;  /* Adjust the value to position it where you want */
   z-index: 10;
   margin-left: 10%;
