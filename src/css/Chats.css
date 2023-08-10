@@ -8,43 +8,76 @@
 /* Chats Main container */
 .Chats-UI {
   display: flex;
-  min-height: 92vh;
+  height: 90vh;
   min-width: 80vw;
-  background-color:rgb(29, 33, 33);
+  background-color:white;
   border-radius: 3%;
   flex-direction: row;
 }
 
 
-/* Chats left section container */
-.Chats-left-section {
-  flex: 0 0 75%;
-  padding: 5%;
-}
-
-
-/* heading container */
-.Chats-heading {
+/* Chats mian section container */
+.Chats-main-section {
   display: flex;
   flex-direction: column;
+  flex: 0 0 75%;
+  padding: 5%;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+
+
+/*input box container*/
+.search-box {
+  display: flex;
   align-items: center;
-  margin-bottom: 5%;
-  justify-content: space-evenly;
+  width: 60vw;
+  background-color:white;
+  border: 1px solid #ccc;
+  border-radius: .8em;
+  padding: .4em;
 }
 
-
-/*heading-1 */
-.Chats-heading1 {
-  color:white;
-  margin-bottom: 2%;
-  
+/*input box */
+.input-box {
+  margin-left: 1%;
+  margin-right: 1%;
+  background-color:white;
+  flex-grow: 1;
+  border: none;
+  outline:none;
+  caret-color: #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  color: black;
 }
 
-
-/*heading-2 */
-.Chats-heading2 {
-  color: grey;
+.AddFileButton{
+  margin-left: 2%;
 }
+
+.VoiceButton{
+  margin-right: 2%;
+}
+
+/*send button */
+.send-button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+}
+
+/*send button image */
+.send-button img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
 
 
 /* conversation-display */
@@ -54,9 +87,9 @@
   flex-direction: column;
   overflow: auto;
   scroll-behavior: auto;
-  height: 78%;
+  height: 90%;
   padding: 4%;
-  border-radius: 3%;
+  background-color: white;
 }
 
 
@@ -92,72 +125,16 @@
   border: 1px solid plum;
 }
 
-/*input box container*/
-.Chats-input-box {
-  display: flex;
-  align-items: center;
-  width: 50em;
-  background-color:rgb(29, 33, 33);
-  border: 1px solid #ccc;
-  border-radius: .8em;
-  padding: .4em;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  bottom: 2%;
-}
-
-/*input box */
-.input-box {
-  margin-left: 1em;
-  margin-right: 1em;
-  background-color:rgb(29, 33, 33);
-  flex-grow: 1;
-  padding: .875em;
-  border: none;
-  outline:none;
-  caret-color: #ccc;
-  border-radius: 8px;
-  font-size: 1em;
-  color: white;
-}
-
-.AddFileButton{
-  margin-left: 2%;
-}
-
-.VoiceButton{
-  margin-right: 2%;
-}
-
-/*send button */
-.send-button {
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-left: 5px;
-}
-
-/*send button image */
-.send-button img {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-}
 
 /*chats-right-section-container */
 .Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color: rgb(33, 33, 33);
+  background-color: whitesmoke;
   flex: 0 0 25%;
-  margin: 0%;
+  margin-right: 2%;
   padding: 1%;
-  border-radius: 16px;
-  border-bottom-left-radius: 0%;
-  border-top-left-radius: 0%;
-  border-left: 1px solid #373636;
+  border: 1px solid #f8f2f2;
 }
 
 /*Chat history top section*/
@@ -169,26 +146,12 @@
   justify-content: space-evenly;
 }
 
-
-
-.Share-button {
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  color: black;
-  font-size: 16px;
-  padding: 2%;
-  width: 30%;
-  border-radius: 8px;
-}
-
 .Chat-history {
   margin-top: 20%;
   height: 100%;
   padding: 1%;
   font-size: 1 em;
   color: #ccc;
-
 }
 
 .New-chat-button {

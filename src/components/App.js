@@ -1,5 +1,4 @@
 import '../css/App.css';
-import '../themes/lightTheme';
 import Chats from './Chats'
 import { useEffect, useState } from 'react';
 import sampleData from '../utils/sampleData'
@@ -40,8 +39,7 @@ function App() {
         </header>
       </div>
 
-      {/* main page left section - display list of industries */}
-      <div className='main-page-left-section'>
+
         {/* sample data section  */}
         <div className='Sample-data-loading-section'>
           {data.map((curr, index) => (
@@ -54,7 +52,6 @@ function App() {
           
         </div>
 
-      </div>
 
       <div className="Chat-component">
         {showChats && <Chats />}

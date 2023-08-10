@@ -7,10 +7,22 @@
       "Transportation",
       "Education",
       "Hi-Tech",
-      "Power & Utility",
+      "Retail/FMCG",
+      "Transportation",
       "Real-state",
       "Retail/FMCG",
-      "Transportation"        
+      "Transportation",
+      "Education",
+      "Hi-Tech",
+      "Retail/FMCG",
+      "Transportation"  ,
+      "Real-state",
+      "Retail/FMCG",
+      "Transportation",
+      "Education",
+      "Hi-Tech",
+      "Retail/FMCG",
+      "Transportation"          
 ];
 
 export default sampleData;

@@ -74,22 +74,6 @@
 /*end of header section */
 
 
-
-/*starting of main page-left-section */
-.main-page-left-section {
-  display: flex;
-  flex-direction: column;
-  min-width:10vw;
-  max-width: 15vw;
-  height: 100vh;
-  border-left: 1px solid black;
-  border-right:1px solid black;
-  padding: 1%;
- 
-}
-
-
-
 /* .selected{
   background-color:#242629;
   border: 1px solid grey;
@@ -102,14 +86,17 @@
   margin-left: 0px;    
 } */
 
+
+/*starting of main page-left-section */
 /* beautify sample data */
 .Sample-data-loading-section{ 
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
-  max-height:70vh;
-  margin-bottom:2%;
-  margin-top: 2%;
+  min-width:10vw;
+  max-width: 15vw;
+  height: 90vh;
+  border-right:2px solid black;
+  padding: 1%;
   overflow: auto;
   scroll-behavior:auto;
   background-color:#f7f7f7;
