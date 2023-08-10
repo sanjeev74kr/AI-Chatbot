@@ -74,9 +74,8 @@
 }
 /*end of header section */
 
-
-/* .selected{
-  background-color:#242629;
+ .selected{
+ background-color: rgb(0 132 255);
   border: 1px solid grey;
   border-radius: 8px;
   padding: 10px;
@@ -85,7 +84,7 @@
   min-width: fit-content;
   max-width:15vw;
   margin-left: 0px;    
-} */
+}
 
 
 /*starting of main page-left-section */
