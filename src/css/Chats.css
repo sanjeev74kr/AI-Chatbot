@@ -13,6 +13,7 @@
   background-color:white;
   border-radius: 3%;
   flex-direction: row;
+
 }
 
 
@@ -143,20 +144,20 @@
   align-items: center;
   margin-top: 0%;
   margin-bottom: 5%;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
-.Chat-history {
-  margin-top: 20%;
+/* .Chat-history {
+  margin-top: 10%;
+  margin-bottom: 10%;
   height: 100%;
   padding: 1%;
   font-size: 1 em;
   color: #ccc;
-}
+} */
 
 .New-chat-button {
   display: flex;
-  margin-top: 20%;
   justify-content: center;
   align-items: center;
   background-color: rgb(0 132 255);
@@ -179,4 +180,23 @@
   letter-spacing: -.00em;
   font-weight: 600;
   padding: .9rem;
+}
+
+.chat-history-data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+  font-size: 16px;
+  color: black;
+  margin-top: 20%;
+}
+
+.day{
+  font-weight: bold;
+}
+.history{
+  padding: 2%;
+  font-size: 16px;
+  margin: 2%;
 }

@@ -65,20 +65,29 @@ function Chats() {
             {/* chat-component right section */}
             <section className="Chats-right-section">
                 <div className="Chat-history-top">
+                <span className="toggle-button"><img src='./hamburger-icon.svg' alt="notification" /></span>
                     <div className="New-chat-button">
                         <img src='plus-sign.svg' alt="plus-sign" />
                         <p className="New-chat-text"> New Chat </p>
-                    </div>
-                    <span className="Notifcation"><img src='./notification.svg' alt="notification" /></span>
+                    </div>   
                 </div>
-                <div className="Horizontal-line"></div>
 
-                <div className="Chat-history"><p>Search History</p>
-                    <div className="Horizontal-line"></div>
+                <div className="Chat-history">
+                    
+                    <div className="chat-history-data">
+                    <p className="day">Today</p>
+                    <p className="history">smart-tracking</p>
+                    <p className="history">smart-tracking</p>
+                    <p className="history">smart-tracking</p>
+               <p className="day">Yesterday</p>
+               <p className="history">quantum-computing</p>
+               <p className="history">smart</p>
+               <p className="history">Maths</p>
                 </div>
-                <div className="Horizontal-line"></div>
+                </div>
+        
 
-
+                
             </section>
         </main >
     )
