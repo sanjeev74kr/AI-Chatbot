@@ -138,7 +138,7 @@ justify-content: flex-start;
 .bot {
   padding: 2%;
   margin-bottom: 2%;
-  max-width: 50%;
+  max-width: 100%;
   /* Limiting the maximum width of messages */
   word-wrap: break-word;
   /* Wrapping long words */
@@ -146,12 +146,35 @@ justify-content: flex-start;
   /* Fallback for older browsers */
   word-break: break-word;
   /* Additional support for word breaking */
-  font-size: 16px;
+  font-size: 1 rem;
   border-radius: 8px;
 }
 
 
-/*user chat customization */
+.user{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.question{
+  width: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.bot{
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+}
+
+.answer{
+  width: 90%;
+  margin-left: 2%;
+  margin-right: 2%; 
+  line-height: 2;
+}
+/* user chat customization
 .user {
   background-color: #e2f7fd;
   align-self: flex-end;
@@ -159,11 +182,11 @@ justify-content: flex-start;
 }
 
 /*bot chat customization */
-.bot {
+/*.bot {
   background-color: #f0f0f0;
   align-self: flex-start;
   border: 1px solid plum;
-}
+} */
 /*end of main-section styles*/
 
 
