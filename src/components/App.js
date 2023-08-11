@@ -1,13 +1,19 @@
 import '../css/App.css';
-import Chats from './Chats'
+import Chats from './Chats';
+import ProfileButtonAction from './ProfileButtonAction';
 import { useState } from 'react';
 
 
 function App() {
   const [showChats, setShowChats] = useState(true);
+  const [isProfileOptionsVisible, setIsProfileOptionsVisible] = useState(false);
 
   const handleChatClick = () => {
     setShowChats(true);
+  }
+
+  const toggleProfileOptions = () => {
+    setIsProfileOptionsVisible(!isProfileOptionsVisible);
   }
 
   return (
@@ -25,15 +31,23 @@ function App() {
             <button className='dashboard-component-button'>Dashboard</button>
             <button className='selected' onClick={handleChatClick} >AI Chatbot</button>
           </div>
-          <img className="profile-button" src="./profile.svg" alt="profile-icon" />
+          <img className="profile-button" src="./profile.svg" alt="profile-icon" onClick={toggleProfileOptions} />
         </header>
+      </div>
+
+      {/*load profile option component*/}
+      <div className="profile-component">
+      {isProfileOptionsVisible && <ProfileButtonAction />}
       </div>
 
       {/* load chat-component */}
       <div className="Chat-component">
         {showChats && <Chats />}
       </div>
+
+      
     </div>
+
   );
 }
 

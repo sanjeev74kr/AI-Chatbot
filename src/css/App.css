@@ -69,6 +69,7 @@
 
 .profile-button {
   margin-right: 2%;
+  cursor: pointer;
 }
 
 /*end of header section */
@@ -107,6 +108,13 @@
   /* Adjust the value to position it where you want */
 }
 
+.profile-component{
+  position: absolute;
+  top: 8%;
+  right: 4%;
+  z-index: 10
+
+}
 
 
 * {

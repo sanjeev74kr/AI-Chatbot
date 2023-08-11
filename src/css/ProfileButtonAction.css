@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .profilebuttonclickOptions{
+    display: flex;
+    flex-direction: column;
+    width:10vw;
+    height:10vh;
+    background-color:white;
+    color:black;
+    border: 1px solid ;
+    align-items: center;
+    justify-content: center;
+  }
+  .option{
+    font-size: 1rem;
+    padding: 2%;
+  }
