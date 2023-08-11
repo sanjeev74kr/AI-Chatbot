@@ -1,39 +1,81 @@
 * {
-  box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-
 }
 
-/* Chats Main container */
+/* Chats Component container */
 .Chats-UI {
   display: flex;
   height: 88vh;
-  min-width: 80vw;
+  width: 95vw;
   background-color:white;
   border-radius: 3%;
   flex-direction: row;
-
 }
 
 
-/* Chats mian section container */
+/*starting of chat-component-left-section */
+.chat-component-left-section{ 
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 90vh;
+  border-right:2px solid white;  
+  overflow: auto;
+  scroll-behavior:auto;
+  background-color:white;
+}
+
+/* beautify sample data */
+.Sample-data{
+display: flex;
+color:color;
+padding:2%;
+margin-right: 1%;
+margin-top: 2%;
+justify-content: flex-start;
+}
+
+.page-icon {
+  padding: 1%; 
+}
+
+.data {
+  padding: 1%;
+  margin-left: 1%;
+  margin-right: 2%;
+  width:60%; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-y:hidden;
+}
+
+.expand-button {
+  padding: 1%;
+  margin-left: auto;
+} 
+
+
+
+/* start of Chats main section container style*/
 .Chats-main-section {
   display: flex;
   flex-direction: column;
   padding: 5%;
-  width: 60vw;
-  background-color: white;
+  margin-left: 2%;
+  width: 60%;
+  background-color:white;
   border: 1px solid #ccc;
 }
 
 
 
-/*input box container*/
+/* start of search box customization*/
 .search-box {
   display: flex;
   align-items: center;
-  width: 51vw;
+  width: 100%;
   background-color:white;
   border: 1px solid #ccc;
   padding: .4em;
@@ -41,34 +83,26 @@
 
 /*input box */
 .input-box {
+  width: 80%;
   margin-left: 1%;
   margin-right: 1%;
   background-color:white;
-  flex-grow: 1;
   border: none;
   outline:none;
-  caret-color: #ccc;
+  caret-color: black;
   border-radius: 8px;
-  font-size: 1em;
+  font-size: 1.2em;
   color: black;
 }
 
-.AddFileButton{
-  margin-left: 2%;
-}
-
-.VoiceButton{
-  margin-right: 2%;
-}
 
 /*send button */
 .send-button {
   border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
+  padding: 1%;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 5px;
+  margin-left:1%;
 }
 
 /*send button image */
@@ -79,21 +113,27 @@
 }
 
 
+.uploadFileButton{
+  padding: auto;
+  margin: auto;
+}
+/*end of search-box cutomization*/
+
 
 /* conversation-display */
-.Chats-conversation {
-  
+.Chats-conversation {  
   display: flex;
   flex-direction: column;
   overflow: auto;
   scroll-behavior: auto;
-  height: 90%;
+  height: 100%;
+  width: 100%;
   padding: 4%;
-  background-color: white;
+  background-color:white;
 }
 
 
-/*customization of user and bot */
+/*customization of user and bot-msg box */
 .user,
 .bot {
   padding: 2%;
@@ -124,16 +164,17 @@
   align-self: flex-start;
   border: 1px solid plum;
 }
+/*end of main-section styles*/
 
 
 /*chats-right-section-container */
 .Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  margin-right: 2%;
+  background-color:white;
   padding: 1%;
-  width:20vw;
+  margin-right:1%;
+  width:20%;
   border: 1px solid #dcd7d7;
 }
 
@@ -141,25 +182,23 @@
 .Chat-history-top {
   display: flex;
   align-items: center;
-  margin-top: 0%;
   margin-bottom: 5%;
-  justify-content: space-around;
+  width: 100%;
 }
 
 
+/*new-chat-button*/
 .New-chat-button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(0 132 255);
   border-radius: 0.75rem;
-  border-width: 2px;
   padding-left: 1.375rem;
   padding-right: 1.375rem;
+  margin-left: 5%;
   height: 3rem;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: linear;
-  transition-duration: .2s;
+  width: fit-content;
   cursor: pointer;
 }
 
@@ -172,9 +211,10 @@
   font-weight: 600;
   padding: .9rem;
 }
+/*end of style of new-chat-button*/
 
 
-
+/*start styling of chat-history-section*/
 .chat-history-data-section{
   display: flex;
   flex-direction: column;
@@ -183,6 +223,7 @@
   font-size: 1rem;
   color: black;
   margin-top: 10%;
+  width: 100%;
 }
 
 .date{
@@ -198,10 +239,14 @@
 }
 
 .history{
-  width: 65%;
+  max-width:55%;
   padding: 2%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-y: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -1,27 +1,17 @@
 import '../css/App.css';
 import Chats from './Chats'
-import { useEffect, useState } from 'react';
-import sampleData from '../utils/industryData'
+import { useState } from 'react';
+
 
 function App() {
   const [showChats, setShowChats] = useState(true);
-  const [data, setData] = useState(sampleData);
-
 
   const handleChatClick = () => {
     setShowChats(true);
   }
 
-  useEffect(() => {
-    handleSampleData();
-  }, []);
-
-  const handleSampleData = async () => {
-    setData(sampleData);
-  }
-
   return (
-   // main app entry 
+    // main app entry 
     <div className="app">
 
       {/* heading part */}
@@ -39,20 +29,7 @@ function App() {
         </header>
       </div>
 
-
-        {/* sample data section  */}
-        <div className='Sample-data-loading-section'>
-          {data.map((curr, index) => (
-            <div className='Sample-data'>
-              <img className="page-icon" src="./page.svg" alt="page-icon"/>
-              <p className='data'>{curr}</p>
-              <img className="expand-button" src="./add-circle-button.svg" alt="expand-button"/>
-            </div>
-          ))}
-          
-        </div>
-
-
+      {/* load chat-component */}
       <div className="Chat-component">
         {showChats && <Chats />}
       </div>

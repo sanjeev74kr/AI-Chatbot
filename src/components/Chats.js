@@ -1,11 +1,22 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import '../css/Chats.css'
-import { useState } from "react";
 import chatHistory from "../utils/chatHistory";
+import sampleData from '../utils/industryData'
 
 function Chats() {
     const [inputValue, setInputValue] = useState('');
     const [messages, setMessages] = useState([]);
+    const [data, setData] = useState(sampleData);
+
+
+    useEffect(() => {
+        handleSampleData();
+    }, []);
+
+    const handleSampleData = async () => {
+        setData(sampleData);
+    }
 
 
     const handleInputChange = (e) => {
@@ -33,6 +44,19 @@ function Chats() {
 
     return (
         <main className="Chats-UI">
+
+            {/* sample data section  */}
+            <section className='chat-component-left-section'>
+                {data.map((curr, index) => (
+                    <div className='Sample-data'>
+                        <img className="page-icon" src="./page.svg" alt="page-icon" />
+                        <p className='data'>{curr}</p>
+                        <img className="expand-button" src="./add-circle-button.svg" alt="expand-button" />
+                    </div>
+                ))}
+
+            </section>
+
             <section className="Chats-main-section">
                 {/* Input box */}
                 <div className="search-box">
@@ -48,8 +72,6 @@ function Chats() {
                     </button> */}
                 </div>
                 <div className="Chats-conversation">
-
-
                     <div className="message bot">Hi! I am Ron  😄</div>
                     <div className="message bot">Tell me, How can I help You</div>
 
@@ -60,14 +82,13 @@ function Chats() {
                     ))}
                 </div>
 
-
             </section>
 
 
             {/* chat-component right section */}
             <section className="Chats-right-section">
                 <div className="Chat-history-top">
-                    <span className="toggle-button"><img src='./hamburger-icon.svg' alt="notification" /></span>
+                    <img className="toggle-button" src='./hamburger-icon.svg' alt="notification" />
                     <div className="New-chat-button">
                         <img src='plus-sign.svg' alt="plus-sign" />
                         <p className="New-chat-text"> New Chat </p>
@@ -75,18 +96,18 @@ function Chats() {
                 </div>
 
 
-                   {/* chat-history-section                */}
-                    {Object.keys(chatHistory).map(date => (
-                        <div className="chat-history-data-section" key={date}>
-                            <p className="date">{date}</p>
-                            {chatHistory[date].map((topic, index) => (
-                                <div className="bookmark-plus-history-container">
-                                    <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon"/>
-                                    <p className="history" key={index}>{topic}</p>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
+                {/* chat-history-section                */}
+                {Object.keys(chatHistory).map(date => (
+                    <div className="chat-history-data-section" key={date}>
+                        <p className="date">{date}</p>
+                        {chatHistory[date].map((topic, index) => (
+                            <div className="bookmark-plus-history-container">
+                                <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon" />
+                                <p className="history" key={index}>{topic}</p>
+                            </div>
+                        ))}
+                    </div>
+                ))}
 
 
             </section>
