@@ -1,10 +1,12 @@
 import React from "react";
 import '../css/Chats.css'
 import { useState } from "react";
+import chatHistory from "../utils/chatHistory";
 
 function Chats() {
     const [inputValue, setInputValue] = useState('');
     const [messages, setMessages] = useState([]);
+
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -65,29 +67,28 @@ function Chats() {
             {/* chat-component right section */}
             <section className="Chats-right-section">
                 <div className="Chat-history-top">
-                <span className="toggle-button"><img src='./hamburger-icon.svg' alt="notification" /></span>
+                    <span className="toggle-button"><img src='./hamburger-icon.svg' alt="notification" /></span>
                     <div className="New-chat-button">
                         <img src='plus-sign.svg' alt="plus-sign" />
                         <p className="New-chat-text"> New Chat </p>
-                    </div>   
+                    </div>
                 </div>
 
-                <div className="Chat-history">
-                    
-                    <div className="chat-history-data">
-                    <p className="day">Today</p>
-                    <p className="history">smart-tracking</p>
-                    <p className="history">smart-tracking</p>
-                    <p className="history">smart-tracking</p>
-               <p className="day">Yesterday</p>
-               <p className="history">quantum-computing</p>
-               <p className="history">smart</p>
-               <p className="history">Maths</p>
-                </div>
-                </div>
-        
 
-                
+                   {/* chat-history-section                */}
+                    {Object.keys(chatHistory).map(date => (
+                        <div className="chat-history-data-section" key={date}>
+                            <p className="date">{date}</p>
+                            {chatHistory[date].map((topic, index) => (
+                                <div className="bookmark-plus-history-container">
+                                    <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon"/>
+                                    <p className="history" key={index}>{topic}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+
+
             </section>
         </main >
     )

@@ -1,7 +1,7 @@
 import '../css/App.css';
 import Chats from './Chats'
 import { useEffect, useState } from 'react';
-import sampleData from '../utils/sampleData'
+import sampleData from '../utils/industryData'
 
 function App() {
   const [showChats, setShowChats] = useState(true);

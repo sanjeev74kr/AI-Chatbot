@@ -1,4 +1,4 @@
- const sampleData=[
+ const industryData=[
     "Education",
       "Hi-Tech",
       "Power & UtilityPower & Utility",
@@ -25,4 +25,4 @@
       "Transportation"          
 ];
 
-export default sampleData;
+export default industryData;
