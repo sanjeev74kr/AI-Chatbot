@@ -130,7 +130,7 @@
 .Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color: whitesmoke;
+  background-color: white;
   margin-right: 2%;
   padding: 1%;
   width:20vw;
