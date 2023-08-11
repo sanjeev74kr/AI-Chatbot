@@ -1,7 +1,7 @@
  const sampleData=[
     "Education",
       "Hi-Tech",
-      "Power & Utility",
+      "Power & UtilityPower & Utility",
       "Real-state",
       "Retail/FMCG",
       "Transportation",
