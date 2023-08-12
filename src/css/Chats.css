@@ -62,11 +62,20 @@ justify-content: flex-start;
 .Chats-main-section {
   display: flex;
   flex-direction: column;
-  padding: 5%;
   margin-left: 2%;
   width: 60%;
   background-color:white;
   border: 1px solid #ccc;
+}
+
+.chats-conversation-container{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 100%;
+  margin-right: 2%;
+  padding: 2%;
+  background-color: white;
 }
 
 
@@ -75,7 +84,6 @@ justify-content: flex-start;
 .search-box {
   display: flex;
   align-items: center;
-  width: 100%;
   background-color:white;
   border: 1px solid #ccc;
   padding: .4em;
@@ -105,14 +113,6 @@ justify-content: flex-start;
   margin-left:1%;
 }
 
-/*send button image */
-.send-button img {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-}
-
-
 .uploadFileButton{
   padding: auto;
   margin: auto;
@@ -127,8 +127,6 @@ justify-content: flex-start;
   overflow: auto;
   scroll-behavior: auto;
   height: 100%;
-  width: 100%;
-  padding: 4%;
   background-color:white;
 }
 
@@ -186,6 +184,21 @@ align-items: flex-start;
   align-self: flex-start;
   border: 1px solid plum;
 } */
+
+.open-chat-history-button{
+  position: relative;
+  bottom:50%;
+  right: 0%;
+  margin-right: 0%;
+  align-self: flex-end;
+  width: fit-content;
+  padding: 1%;
+  transform: rotate(-90deg);
+  font-size: 1rem;
+  font-weight:600;
+  background-color:transparent;
+}
+
 /*end of main-section styles*/
 
 
@@ -194,7 +207,7 @@ align-items: flex-start;
   display: flex;
   flex-direction: column;
   background-color:white;
-  padding: 1%;
+  padding: 2%;
   margin-right:1%;
   width:20%;
   border: 1px solid #dcd7d7;
@@ -268,6 +281,27 @@ align-items: flex-start;
   text-overflow: ellipsis;
   overflow-y: hidden;
 }
+
+.Chats-right-section,
+.Chats-main-section {
+  transition: width 0.1s ease;
+}
+
+
+/* Add a class to shrink the right section */
+.Chats-right-section.shrink-right-section {
+  width: 0;
+  padding: 0;
+}
+
+/* Expand the main section when the right section is shrunk */
+.Chats-main-section.shrink-right-section {
+  width: 100%;
+}
+
+
+
+
 
 * {
   box-sizing: border-box;
