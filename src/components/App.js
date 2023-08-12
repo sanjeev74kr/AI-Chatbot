@@ -25,7 +25,7 @@ function App() {
         <header>
           <span className='brand-identity'>
             <img className='brand-icon' src='./brand-icon.svg' alt='DI-icon' />
-            <p className='brand-text'> RON </p>
+            <p className='brand-text'> RON! </p>
           </span>
           <div className='heading-button'>
             <button className='dashboard-component-button'>Dashboard</button>

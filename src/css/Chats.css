@@ -89,7 +89,12 @@ justify-content: flex-start;
   padding: .4em;
 }
 
+
 /*input box */
+.input-box::before {
+  color: black; /* Set the caret color */
+}
+
 .input-box {
   width: 80%;
   margin-left: 1%;
@@ -98,9 +103,13 @@ justify-content: flex-start;
   border: none;
   outline:none;
   caret-color: black;
-  border-radius: 8px;
   font-size: 1.2em;
   color: black;
+}
+
+/* Change the color of the placeholder text */
+.input-box::placeholder {
+  color: rgb(211, 204, 204); 
 }
 
 
@@ -282,13 +291,15 @@ align-items: flex-start;
   overflow-y: hidden;
 }
 
+
+/* style toggle-behavior of right section*/
 .Chats-right-section,
 .Chats-main-section {
   transition: width 0.1s ease;
 }
 
 
-/* Add a class to shrink the right section */
+/*  shrink the right section */
 .Chats-right-section.shrink-right-section {
   width: 0;
   padding: 0;
@@ -298,8 +309,6 @@ align-items: flex-start;
 .Chats-main-section.shrink-right-section {
   width: 100%;
 }
-
-
 
 
 
