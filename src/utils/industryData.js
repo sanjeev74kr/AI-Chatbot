@@ -1,7 +1,7 @@
 const industryData = {
-  "Education": [1, 2, 3],
+  "Education": ["Embracing Intranet","Religious Learning"],
   "Hi-Tech": [],
-  "Power & Utility": [4,5,6],
+  "Power & Utility": ["Power resources","Project details"],
   "Real-state": [],
   "Retail/FMCG": [],
   "Transportation": [],

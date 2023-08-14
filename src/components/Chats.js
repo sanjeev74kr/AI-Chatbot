@@ -50,6 +50,17 @@ function Chats() {
 
     }
 
+    //Query should be sent on Enter press
+    // const handleKeyPress=()=>{
+
+    // }
+    // const textInput = document.querySelector('.input-box');
+    // textInput.addEventListener('keydown', (event) => {
+    //     if (event.key === 'Enter') {
+    //         handleSendQueryButton();
+    //     }
+    // });
+
 
     return (
         <main className="Chats-UI">
@@ -84,7 +95,8 @@ function Chats() {
                         <img className="search-icon" src="./search.svg" alt="search-icon"></img>
                         <input type="text" className="input-box" placeholder="search"
                             value={inputValue}
-                            onChange={handleInputChange} />
+                            onChange={handleInputChange} 
+                            />
 
                         <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
                         <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
@@ -94,36 +106,36 @@ function Chats() {
                        </button> */}
                     </div>
 
-                    
-                        {/* static data */}
-                        <div className="Chats-conversation">
+
+                    {/* static data */}
+                    <div className="Chats-conversation">
                         {query.map((message, index) => (
-                       <div className="queries-reply">
-                       <div className="user" key={index}>
-                                <img src="./user-icon.svg" alt="user-icon" />
-                                <p className="question">{message.text}</p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./edit-icon.svg" alt="edit-icon" />
+                            <div className="queries-reply">
+                                <div className="user" key={index}>
+                                    <img src="./user-icon.svg" alt="user-icon" />
+                                    <p className="question">{message.text}</p>
+                                    <img src="./copy-icon.svg" alt="copy-icon" />
+                                    <img src="./edit-icon.svg" alt="edit-icon" />
+                                </div>
+
+                                <div className="bot">
+                                    <img src="./bot-icon.svg" alt="bot-icon" />
+                                    <p className="answer">The client is an Indian institution of management, one of twenty such
+                                        institutions. Currently located within the VNIT Nagpur campus, they will
+                                        eventually move to their own 135-acre campus at MIHAN, Nagpur. The
+                                        institute's curriculum, designed by management education experts,
+                                        emphasizes entrepreneurial exploration and ofers support to students in
+                                        pursuing their ambitions.
+                                        The objective is to create a new, user-friendly website and an integrated
+                                        intranet portal for improved collaboration and communication among
+                                        stakeholders. </p>
+                                    <img src="./copy-icon.svg" alt="copy-icon" />
+                                    <img src="./download-icon.svg" alt="download-icon" />
+                                </div>
+
                             </div>
-                       
-                        <div className="bot">
-                            <img src="./bot-icon.svg" alt="bot-icon" />
-                            <p className="answer">The client is an Indian institution of management, one of twenty such
-                                institutions. Currently located within the VNIT Nagpur campus, they will
-                                eventually move to their own 135-acre campus at MIHAN, Nagpur. The
-                                institute's curriculum, designed by management education experts,
-                                emphasizes entrepreneurial exploration and ofers support to students in
-                                pursuing their ambitions.
-                                The objective is to create a new, user-friendly website and an integrated
-                                intranet portal for improved collaboration and communication among
-                                stakeholders. </p>
-                            <img src="./copy-icon.svg" alt="copy-icon" />
-                            <img src="./download-icon.svg" alt="download-icon" />
-                        </div>
-                        
+                        ))}
                     </div>
-                     ))}
-                     </div>
 
                     {/* <div className="message bot">Hi! I am Ron  😄</div>
                     <div className="message bot">Tell me, How can I help You</div>

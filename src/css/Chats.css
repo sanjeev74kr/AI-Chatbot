@@ -67,9 +67,18 @@ justify-content: flex-start;
 
 .industry-nested-data{
     height: auto;
-    align-self: center;
-    margin: 10%;
+    align-self: flex-start;
+    padding: 2%;
+    margin-left: 10%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
   
+}
+
+.industry-details{
+  margin-bottom: 4%;
 }
 
 /* start of Chats main section container style*/
