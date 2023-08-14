@@ -105,6 +105,8 @@
   background-color: white;
   position: absolute;
   top: 8.868%;
+  right:0%;
+  left: 0%;
 }
 
 /* Load profile-options component */

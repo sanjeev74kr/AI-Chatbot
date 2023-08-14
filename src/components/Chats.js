@@ -7,17 +7,17 @@ import industryData from '../utils/industryData'
 function Chats() {
     const [isExpanded, setIsExpanded] = useState({});
     const [inputValue, setInputValue] = useState('');
-    //const [messages, setMessages] = useState([]); 
-     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
+    const [messages, setMessages] = useState([]); 
+    const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
 
 
-     //Handle industry-data if it has nested items
+    //Handle industry-data if it has nested items
     const handleExpandButton = (industryName) => {
-        if (industryData[industryName].length>0) 
-            setIsExpanded((prevState)=>({
-            ...prevState,
-            [industryName]:!prevState[industryName] 
-        }));       
+        if (industryData[industryName].length > 0)
+            setIsExpanded((prevState) => ({
+                ...prevState,
+                [industryName]: !prevState[industryName]
+            }));
     };
 
 
@@ -54,18 +54,18 @@ function Chats() {
     return (
         <main className="Chats-UI">
             {/* Industry data section  */}
-            <section className='chat-component-left-section'>  
+            <section className='chat-component-left-section'>
                 {Object.keys(industryData).map((industryName) => (
-                    <div className={`industry-data ${isExpanded[industryName]? 'expanded' :''}`}>
-                    <div className='industry-name' key={industryName}>
-                        <img className="page-icon" src="./page.svg" alt="page-icon" />
-                        <p className='data'>{industryName}</p>
+                    <div className={`industry-data ${isExpanded[industryName] ? 'expanded' : ''}`}>
+                        <div className='industry-name' key={industryName}>
+                            <img className="page-icon" src="./page.svg" alt="page-icon" />
+                            <p className='data'>{industryName}</p>
 
-                        <img className="expand-button" src={isExpanded[industryName]? "./minus-icon.svg" : "./add-circle-button.svg"} 
-                         alt="expand-button"
-                         onClick={() => handleExpandButton(industryName)} />
+                            <img className="expand-button" src={isExpanded[industryName] ? "./minus-icon.svg" : "./add-circle-button.svg"}
+                                alt="expand-button"
+                                onClick={() => handleExpandButton(industryName)} />
                         </div>
-                        {isExpanded[industryName] &&  (
+                        {isExpanded[industryName] && (
                             <div className="industry-nested-data">
                                 {industryData[industryName].map((item, index) => (
                                     <p key={index} className="industry-details">{item}</p>
