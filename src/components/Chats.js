@@ -1,29 +1,32 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import '../css/Chats.css'
 import chatHistory from "../utils/chatHistory";
-import sampleData from '../utils/industryData'
+import industryData from '../utils/industryData'
 
 function Chats() {
+    const [isExpanded, setIsExpanded] = useState({});
     const [inputValue, setInputValue] = useState('');
-    //const [messages, setMessages] = useState([]);
-    const [data, setData] = useState(sampleData);
-    const [isToggle, setIsToggle] = useState(false);
+    //const [messages, setMessages] = useState([]); 
+     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
 
 
-    const handleToggleButton = () => {
-        setIsToggle(!isToggle);
+     //Handle industry-data if it has nested items
+    const handleExpandButton = (industryName) => {
+        if (industryData[industryName].length>0) 
+            setIsExpanded((prevState)=>({
+            ...prevState,
+            [industryName]:!prevState[industryName] 
+        }));       
+    };
+
+
+    // open-close chatHistory function
+    const handleToggleChatHistoryButton = () => {
+        setIsChatHistoryToggle(!isChatHistoryToggle);
     }
 
-    useEffect(() => {
-        handleSampleData();
-    }, []);
-
-    const handleSampleData = async () => {
-        setData(sampleData);
-    }
-
-
+    //Handle chat conversation
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     }
@@ -50,23 +53,31 @@ function Chats() {
 
     return (
         <main className="Chats-UI">
-
-            {/* sample data section  */}
-            <section className='chat-component-left-section'>
-                {data.map((curr, index) => (
-                    <div className='Sample-data'>
+            {/* Industry data section  */}
+            <section className='chat-component-left-section'>  
+                {Object.keys(industryData).map((industryName) => (
+                    <div className={`industry-data ${isExpanded[industryName]? 'expanded' :''}`}>
+                    <div className='industry-name' key={industryName}>
                         <img className="page-icon" src="./page.svg" alt="page-icon" />
-                        <p className='data'>{curr}</p>
-                        <img className="expand-button" src="./add-circle-button.svg" alt="expand-button" />
+                        <p className='data'>{industryName}</p>
 
+                        <img className="expand-button" src={isExpanded[industryName]? "./minus-icon.svg" : "./add-circle-button.svg"} 
+                         alt="expand-button"
+                         onClick={() => handleExpandButton(industryName)} />
+                        </div>
+                        {isExpanded[industryName] &&  (
+                            <div className="industry-nested-data">
+                                {industryData[industryName].map((item, index) => (
+                                    <p key={index} className="industry-details">{item}</p>
+                                ))}
+                            </div>
+                        )
+                        }
                     </div>
-                    //yha pe
                 ))}
-
             </section>
 
-            <section className={`Chats-main-section ${isToggle ? 'shrink-right-section' : ''}`}>
-
+            <section className={`Chats-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                 <div className="chats-conversation-container">
                     {/* Input box */}
                     <div className="search-box">
@@ -74,6 +85,7 @@ function Chats() {
                         <input type="text" className="input-box" placeholder="search"
                             value={inputValue}
                             onChange={handleInputChange} />
+
                         <img className="send-button" src="./send.svg" alt="send-button" />
                         <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
 
@@ -81,6 +93,7 @@ function Chats() {
                         <img src="send.svg" alt="Send Icon" />
                        </button> */}
                     </div>
+
                     <div className="Chats-conversation">
                         {/* static data */}
                         <div className="user">
@@ -103,9 +116,9 @@ function Chats() {
                             <img src="./copy-icon.svg" alt="copy-icon" />
                             <img src="./download-icon.svg" alt="download-icon" />
                         </div>
-                  </div>   
+                    </div>
 
-                        {/* <div className="message bot">Hi! I am Ron  😄</div>
+                    {/* <div className="message bot">Hi! I am Ron  😄</div>
                     <div className="message bot">Tell me, How can I help You</div>
 
                     {messages.map((message, index) => (
@@ -114,23 +127,23 @@ function Chats() {
                            <p> {message.text}</p>
                         </div>
                     ))} */}
-                    
+
                 </div>
-                {isToggle &&
-                <button className="open-chat-history-button" onClick={handleToggleButton}>Chat History</button>
-               }
+
+                {isChatHistoryToggle &&
+                    <button className="open-chat-history-button" onClick={handleToggleChatHistoryButton}>Chat History</button>
+                }
             </section>
 
-          
-           {/* chat-component right section */}
-           {!isToggle &&
-            <section className={`Chats-right-section ${isToggle ? 'shrink-right-section' : ''}`}>
 
+            {/* chat-component right section */}
+            {!isChatHistoryToggle &&
+                <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="Chat-history-top">
-                        <img className="close-chat-history-button" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleButton} />
+                        <img className="close-chat-history-button" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleChatHistoryButton} />
                         <div className="New-chat-button">
                             <img src='plus-sign.svg' alt="plus-sign" />
-                            <p className="New-chat-text"> New Chat </p>
+                            <p className="New-chat-text"> NewChat </p>
                         </div>
                     </div>
 
@@ -150,7 +163,7 @@ function Chats() {
 
 
                 </section>
-                }
+            }
         </main >
     )
 }

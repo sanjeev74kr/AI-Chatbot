@@ -36,10 +36,10 @@
 .brand-text {
   color: black;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 2rem;
 }
 
-.heading-button {
+.heading-buttons {
   display: flex;
 }
 
@@ -50,41 +50,43 @@
   width: 10vw;
   background-color: transparent;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 0.8rem;
+  cursor: pointer;
 }
 
 .chat-component-button {
   margin-left: 2%;
   padding: 4%;
   min-width: fit-content;
-  width: 8vw;
+  width: 10vw;
   background-color: transparent;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 0.8rem;
+  cursor: pointer;
 }
 
 .profile-button {
   margin-right: 2%;
   cursor: pointer;
 }
-
 /*end of header section */
+
 
 .selected {
   background-color: rgb(0 132 255);
   border: 1px solid grey;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 0.8rem;
+  padding: 4%;
   color: white;
   font-weight: bold;
-  border-radius: 8px;
   min-width: fit-content;
-  max-width: 15vw;
-  margin-left: 0px;
+  max-width: 10vw;
+  margin-left: 2%;
+  cursor: pointer;
 }
 
 
@@ -93,10 +95,8 @@
 .Horizontal-line {
   position: relative;
   width: 100%;
-  /* Adjust the width as needed */
   height: 0;
   border-top: 1px solid #393939;
-  /* Adjust color and style as needed */
 }
 
 
@@ -104,19 +104,14 @@
 .Chat-component {
   background-color: white;
   position: absolute;
-  top: 10%;
-  /* Adjust the value to position it where you want */
+  top: 8.868%;
 }
 
+/* Load profile-options component */
 .profile-component{
   position: absolute;
   top: 8%;
   right: 4%;
   z-index: 10
-
 }
 
-
-* {
-  box-sizing: border-box;
-}

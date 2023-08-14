@@ -5,16 +5,18 @@ import { useState } from 'react';
 
 
 function App() {
-  const [showChats, setShowChats] = useState(true);
+  const [showChatComponent, setShowChatComponent] = useState(true);
   const [isProfileOptionsVisible, setIsProfileOptionsVisible] = useState(false);
 
-  const handleChatClick = () => {
-    setShowChats(true);
+
+  const handleChatComponentButtonClick = () => {
+    setShowChatComponent(true);
   }
 
   const toggleProfileOptions = () => {
     setIsProfileOptionsVisible(!isProfileOptionsVisible);
   }
+
 
   return (
     // main app entry 
@@ -27,25 +29,25 @@ function App() {
             <img className='brand-icon' src='./brand-icon.svg' alt='DI-icon' />
             <p className='brand-text'> RON! </p>
           </span>
-          <div className='heading-button'>
+          <div className='heading-buttons'>
             <button className='dashboard-component-button'>Dashboard</button>
-            <button className='selected' onClick={handleChatClick} >AI Chatbot</button>
+            <button className='selected' onClick={handleChatComponentButtonClick} >AI Chatbot</button>
           </div>
           <img className="profile-button" src="./profile.svg" alt="profile-icon" onClick={toggleProfileOptions} />
         </header>
       </div>
+       
 
-      {/*load profile option component*/}
+      {/*load profile options component*/}
       <div className="profile-component">
-      {isProfileOptionsVisible && <ProfileButtonAction />}
+        {isProfileOptionsVisible && <ProfileButtonAction />}
       </div>
 
       {/* load chat-component */}
       <div className="Chat-component">
-        {showChats && <Chats />}
+        {showChatComponent && <Chats />}
       </div>
 
-      
     </div>
 
   );

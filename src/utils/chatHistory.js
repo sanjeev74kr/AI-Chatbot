@@ -4,4 +4,4 @@ const chatHistory = {
     PreviousWeek:["quantum-computing and its functionality","smart computer vs dumb computer","smart-tracking and its fundamentals","smart-tracking and its details of inner function","smart-tracking and its fundamentals"]
 };
 
-export default chatHistory
+export default chatHistory;
