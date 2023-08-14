@@ -92,7 +92,7 @@ justify-content: flex-start;
   height: 100%; 
   background-color:#f3f6fc;
   border-radius: 0.8rem;
-  border-top-right-radius: 0;
+  border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 0;
 }
 
@@ -313,7 +313,8 @@ align-items: flex-start;
 
 /* Expand the main section when the right section is shrunk */
 .Chats-main-section.shrink-right-section {
-  width: 100%;
+  width: 100% ;
+  border-radius: 0.8rem;
 }
 
 

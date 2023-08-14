@@ -7,7 +7,7 @@ import industryData from '../utils/industryData'
 function Chats() {
     const [isExpanded, setIsExpanded] = useState({});
     const [inputValue, setInputValue] = useState('');
-    const [messages, setMessages] = useState([]); 
+    const [query, setquery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
 
 
@@ -31,24 +31,24 @@ function Chats() {
         setInputValue(e.target.value);
     }
 
-    // const handleSendMessage = () => {
-    //     if (inputValue.trim() === '') return;
+    const handleSendQueryButton = () => {
+        if (inputValue.trim() === '') return;
 
-    //     const newMessage = {
-    //         text: inputValue,
-    //         isUser: true,
-    //     };
+        const newQuery = {
+            text: inputValue,
+            isUser: true,
+        };
 
-    //     setMessages([...messages, newMessage]);
-    //     setInputValue('');
+        setquery([...query, newQuery]);
+        setInputValue('');
 
 
-    //     setTimeout(() => {
-    //         const conversationContainer = document.querySelector(".chatbot-conversation");
-    //         conversationContainer.scrollTop = conversationContainer.scrollHeight;
-    //     }, 10);
+        setTimeout(() => {
+            const conversationContainer = document.querySelector(".Chats-conversation");
+            conversationContainer.scrollTop = conversationContainer.scrollHeight;
+        }, 10);
 
-    // }
+    }
 
 
     return (
@@ -86,7 +86,7 @@ function Chats() {
                             value={inputValue}
                             onChange={handleInputChange} />
 
-                        <img className="send-button" src="./send.svg" alt="send-button" />
+                        <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
                         <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
 
                         {/* <button className="send-button" onClick={handleSendMessage}>
@@ -94,14 +94,18 @@ function Chats() {
                        </button> */}
                     </div>
 
-                    <div className="Chats-conversation">
+                    
                         {/* static data */}
-                        <div className="user">
-                            <img src="./user-icon.svg" alt="user-icon" />
-                            <p className="question">Summarize embracing over cloud for IIM Nagpur</p>
-                            <img src="./copy-icon.svg" alt="copy-icon" />
-                            <img src="./edit-icon.svg" alt="edit-icon" />
-                        </div>
+                        <div className="Chats-conversation">
+                        {query.map((message, index) => (
+                       <div className="queries-reply">
+                       <div className="user" key={index}>
+                                <img src="./user-icon.svg" alt="user-icon" />
+                                <p className="question">{message.text}</p>
+                                <img src="./copy-icon.svg" alt="copy-icon" />
+                                <img src="./edit-icon.svg" alt="edit-icon" />
+                            </div>
+                       
                         <div className="bot">
                             <img src="./bot-icon.svg" alt="bot-icon" />
                             <p className="answer">The client is an Indian institution of management, one of twenty such
@@ -116,12 +120,15 @@ function Chats() {
                             <img src="./copy-icon.svg" alt="copy-icon" />
                             <img src="./download-icon.svg" alt="download-icon" />
                         </div>
+                        
                     </div>
+                     ))}
+                     </div>
 
                     {/* <div className="message bot">Hi! I am Ron  😄</div>
                     <div className="message bot">Tell me, How can I help You</div>
 
-                    {messages.map((message, index) => (
+                    {query.map((message, index) => (
                         <div key={index} className={`message ${message.isUser ? 'user' : 'bot'}`}>
                            <img src="" alt="user-icon"/> 
                            <p> {message.text}</p>
