@@ -31,7 +31,7 @@
 .industry-data{
  display: flex;
  flex-direction: column; 
- margin-top: 3%;
+ margin-top: 4%;
 }
 
 .expanded{
@@ -214,7 +214,7 @@ align-items: flex-start;
 
 .open-chat-history-button{
   position: relative;
-  bottom:40%;
+  bottom:50%;
   right: 0%;
   align-self: flex-end;
   width: fit-content;

@@ -50,16 +50,12 @@ function Chats() {
 
     }
 
-    //Query should be sent on Enter press
-    // const handleKeyPress=()=>{
-
-    // }
-    // const textInput = document.querySelector('.input-box');
-    // textInput.addEventListener('keydown', (event) => {
-    //     if (event.key === 'Enter') {
+    // //Query should be sent on Enter press
+    // const handleKeyDown=(event)=>{
+    //     if ( event === 'Enter') {
     //         handleSendQueryButton();
     //     }
-    // });
+    // };
 
 
     return (
@@ -96,6 +92,7 @@ function Chats() {
                         <input type="text" className="input-box" placeholder="search"
                             value={inputValue}
                             onChange={handleInputChange}
+                          
                         />
 
                         <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
