@@ -95,20 +95,95 @@ function Chats() {
                         <img className="search-icon" src="./search.svg" alt="search-icon"></img>
                         <input type="text" className="input-box" placeholder="search"
                             value={inputValue}
-                            onChange={handleInputChange} 
-                            />
+                            onChange={handleInputChange}
+                        />
 
                         <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
                         <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
-
-                        {/* <button className="send-button" onClick={handleSendMessage}>
-                        <img src="send.svg" alt="Send Icon" />
-                       </button> */}
                     </div>
 
 
                     {/* static data */}
                     <div className="Chats-conversation">
+                        <div className="user">
+                            <img src="./user-icon.svg" alt="user-icon" />
+                            <p className="question">Summarize Transforming healthcare project for me.</p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./edit-icon.svg" alt="edit-icon" />
+                        </div>
+                        <div className="bot">
+                            <img src="./bot-icon.svg" alt="bot-icon" />
+                            <p className="answer">The transforming healthcare project is a mobile application that helps users access detailed information about the specialists and their availability at a hospital, as well as digitally book appointments, find information about healthcare facilities provided by the hospital, and more. It was developed using .Net, iOS, and Android technologies for the USA health and fitness sector.
+                            </p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./download-icon.svg" alt="download-icon" />
+                        </div>
+
+
+                        <div className="user">
+                            <img src="./user-icon.svg" alt="user-icon" />
+                            <p className="question">What are the business benefits realized in Smart pregnancy app</p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./edit-icon.svg" alt="edit-icon" />
+                        </div>
+                        <div className="bot">
+                            <img src="./bot-icon.svg" alt="bot-icon" />
+                            <p className="answer">The app helps in
+                                1) Improved Patient Engagement & Education
+                                2) Better Health Outcomes for Mom and Baby
+                                3) Enhanced Physician-Patient Communication
+                                4) Reduction of Health Disparities
+                                5) Increased Patient Satisfaction and Loyalty </p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./download-icon.svg" alt="download-icon" />
+                        </div>
+
+
+                        <div className="user">
+                            <img src="./user-icon.svg" alt="user-icon" />
+                            <p className="question">What was the overall sentiment of the project execution – customer perspective and team perspective in Tech transformation project?</p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./edit-icon.svg" alt="edit-icon" />
+                        </div>
+                        <div className="bot">
+                            <img src="./bot-icon.svg" alt="bot-icon" />
+                            <p className="answer">Please note that I'm just an AI and do not have personal opinions or emotions, but based on the given context, I can provide a neutral analysis.
+
+
+                                The project was aimed at building a platform to bridge the gap between small-scale businesses and customers, but the client had limited resources to execute their ideas. The KCS team conducted extensive research and dedicated prolonged hours to understand the client's requirements. From both customer and team perspectives, the overall sentiment of the project execution was likely positive.
+                                The customer perspective:
+
+                                The client was facing operational complexity in the entire process, but with the help of KCS, they were able to eliminate that gap. The KCS team took the time to understand their requirements and provided fit-to-purpose solutions for a better experience and interactivity. This suggests that the customer was satisfied with the outcome of the project.
+
+
+                                The team perspective:
+
+                                The KCS team left no stones unturned in the quest to build a precise solution that met the client's needs. They dedicated prolonged hours to understand the requirements and conducted extensive research to deliver a comprehensive tech transformation project. This suggests that the team was
+                            </p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./download-icon.svg" alt="download-icon" />
+                        </div>
+
+
+                        <div className="user">
+                            <img src="./user-icon.svg" alt="user-icon" />
+                            <p className="question">What technologies are utilized in Smart vehicle tracking system?</p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./edit-icon.svg" alt="edit-icon" />
+                        </div>
+                        <div className="bot">
+                            <img src="./bot-icon.svg" alt="bot-icon" />
+                            <p className="answer">Based on the given context, the following technologies are utilized in the Smart vehicle tracking system:
+                                1. Asp.Net MVC
+                                2. Web API
+                                3. MS SQL
+                                4. AWS Cloud </p>
+                            <img src="./copy-icon.svg" alt="copy-icon" />
+                            <img src="./download-icon.svg" alt="download-icon" />
+                        </div>
+
+
+                        {/* dynamic data */}
                         {query.map((message, index) => (
                             <div className="queries-reply">
                                 <div className="user" key={index}>
@@ -136,16 +211,6 @@ function Chats() {
                             </div>
                         ))}
                     </div>
-
-                    {/* <div className="message bot">Hi! I am Ron  😄</div>
-                    <div className="message bot">Tell me, How can I help You</div>
-
-                    {query.map((message, index) => (
-                        <div key={index} className={`message ${message.isUser ? 'user' : 'bot'}`}>
-                           <img src="" alt="user-icon"/> 
-                           <p> {message.text}</p>
-                        </div>
-                    ))} */}
 
                 </div>
 
