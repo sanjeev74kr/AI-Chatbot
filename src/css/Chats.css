@@ -8,45 +8,52 @@
 .Chats-UI {
   display: flex;
   height: 88vh;
-  width: 93vw;
-  background-color:white;
+  width: 93%;
+  background-color: white;
   flex-direction: row;
 }
 
 
 /*starting of chat-component-left-section */
-.chat-component-left-section{ 
+.chat-component-left-section {
   display: flex;
   flex-direction: column;
   width: 20%;
-  height: 91vh;
-  overflow: auto;
-  scroll-behavior:auto;
-  background-color:white;
+  height: 100%;
+  background-color: white;
   border-right: .09rem solid #e2dbdb;
 }
 
+.left-section-title-container {
+  border-bottom: 0.09rem solid #e2dbdb;
+  padding: 2%;
+}
+
+.left-section-title {
+  margin-left: 10%;
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 /* beautify industry data */
-.industry-data{
- display: flex;
- flex-direction: column; 
- margin-top: 4%;
+.industry-data-container {
+  padding: 1%;
+  overflow: auto;
+  scroll-behavior: auto;
+  overflow-x: hidden;
 }
 
-.expanded{
- display: flex;
- flex-direction: column; 
- height: auto;
+.industry-data {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
 }
 
-.industry-name{
-display: flex;
-color:color;
-padding:2%;
-margin-right: 1%;
-margin-top: 2%;
-justify-content: flex-start;
+
+.industry-name-container {
+  display: flex;
+  margin-right: 1%;
+  justify-content: flex-start;
 }
 
 
@@ -54,32 +61,33 @@ justify-content: flex-start;
   padding: 1%;
   margin-left: 1%;
   margin-right: 1%;
-  width:60%; 
+  width: 60%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .expand-button {
-  padding: 1%;
   margin-left: auto;
-} 
-
-.industry-nested-data{
-    height: auto;
-    align-self: flex-start;
-    padding: 2%;
-    margin-left: 10%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-  
 }
 
-.industry-details{
-  margin-bottom: 4%;
+.industry-nested-data {
+  height: auto;
+  align-self: flex-start;
+  padding: 2%;
+  margin-left: 8%;
+  margin-bottom: 2%;
 }
+
+.industry-details {
+  padding: 2%;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*end of chat-component left-section-container*/
 
 /* start of Chats main section container style*/
 .Chats-main-section {
@@ -94,12 +102,12 @@ justify-content: flex-start;
   border-bottom-right-radius: 0;
 }
 
-.chats-conversation-container{
+.chats-conversation-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%; 
-  background-color:#f3f6fc;
+  height: 100%;
+  background-color: #f3f6fc;
   border-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 0;
@@ -110,7 +118,7 @@ justify-content: flex-start;
 .search-box {
   display: flex;
   align-items: center;
-  background-color:white;
+  background-color: white;
   border: 1px solid #ccc;
   padding: 0.5%;
   margin: 1%;
@@ -120,16 +128,17 @@ justify-content: flex-start;
 
 /*input box */
 .input-box::before {
-  color: black; /* Set the caret color */
+  color: black;
+  /* Set the caret color */
 }
 
 .input-box {
   width: 80%;
   margin-left: 1%;
   margin-right: 1%;
-  background-color:white;
+  background-color: white;
   border: none;
-  outline:none;
+  outline: none;
   caret-color: black;
   font-size: 1.2em;
   color: black;
@@ -137,7 +146,7 @@ justify-content: flex-start;
 
 /* Change the color of the placeholder text */
 .input-box::placeholder {
-  color: rgb(211, 204, 204); 
+  color: rgb(211, 204, 204);
 }
 
 
@@ -146,25 +155,26 @@ justify-content: flex-start;
   border: none;
   padding: 1%;
   cursor: pointer;
-  margin-left:1%;
+  margin-left: 1%;
 }
 
-.uploadFileButton{
+.uploadFileButton {
   padding: auto;
   margin: auto;
   cursor: pointer;
 }
+
 /*end of search-box cutomization*/
 
 
 /* conversation-display */
-.Chats-conversation {  
+.Chats-conversation {
   display: flex;
   flex-direction: column;
   overflow: auto;
   scroll-behavior: auto;
   height: 100%;
-  background-color:white;
+  background-color: white;
   border-bottom-left-radius: 0.8rem;
 
 }
@@ -187,42 +197,42 @@ justify-content: flex-start;
 }
 
 
-.user{
+.user {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.question{
+.question {
   width: 90%;
   margin-left: 2%;
   margin-right: 2%;
 }
 
-.bot{
-display: flex;
-justify-content: flex-start;
-align-items: flex-start;
+.bot {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.answer{
+.answer {
   width: 90%;
   margin-left: 2%;
-  margin-right: 2%; 
+  margin-right: 2%;
   line-height: 2;
 }
 
-.open-chat-history-button{
+.open-chat-history-button {
   position: relative;
-  bottom:50%;
+  bottom: 50%;
   right: 0%;
   align-self: flex-end;
   width: fit-content;
   padding: 1%;
   transform: rotate(-90deg);
   font-size: 1rem;
-  font-weight:600;
-  background-color:transparent;
+  font-weight: 600;
+  background-color: transparent;
 }
 
 /*end of main-section styles*/
@@ -232,10 +242,10 @@ align-items: flex-start;
 .Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color:#f3f6fc;
+  background-color: #f3f6fc;
   padding: 2%;
   margin-top: 2%;
-  width:20%;
+  width: 20%;
   border: 1px solid #dcd7d7;
   border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
@@ -272,11 +282,12 @@ align-items: flex-start;
   font-weight: 600;
   margin-left: 1%;
 }
+
 /*end of style of new-chat-button*/
 
 
 /*start styling of chat-history-section*/
-.chat-history-data-section{
+.chat-history-data-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -284,22 +295,22 @@ align-items: flex-start;
   color: black;
   margin-top: 10%;
   width: 100%;
+
 }
 
-.date{
+.date {
   font-weight: bold;
   margin: auto;
 }
 
-.bookmark-plus-history-container
-{
-  display:flex;
+.bookmark-plus-history-container {
+  display: flex;
   margin: 2%;
-  align-items:center;
+  align-items: center;
 }
 
-.history{
-  max-width:60%;
+.history {
+  max-width: 60%;
   padding: 2%;
   overflow: hidden;
   white-space: nowrap;
@@ -322,8 +333,6 @@ align-items: flex-start;
 
 /* Expand the main section when the right section is shrunk */
 .Chats-main-section.shrink-right-section {
-  width: 100% ;
+  width: 100%;
   border-radius: 0.8rem;
 }
-
-

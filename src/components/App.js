@@ -3,7 +3,6 @@ import Chats from './Chats';
 import ProfileButtonAction from './ProfileButtonAction';
 import { useState } from 'react';
 
-
 function App() {
   const [showChatComponent, setShowChatComponent] = useState(true);
   const [isProfileOptionsVisible, setIsProfileOptionsVisible] = useState(false);
@@ -36,7 +35,7 @@ function App() {
           <img className="profile-button" src="./profile.svg" alt="profile-icon" onClick={toggleProfileOptions} />
         </header>
       </div>
-       
+
 
       {/*load profile options component*/}
       <div className="profile-component">

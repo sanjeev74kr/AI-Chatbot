@@ -13,7 +13,7 @@ function Chats() {
 
     //Handle industry-data if it has nested items
     const handleExpandButton = (industryName) => {
-        if (industryData[industryName].length > 0)
+        if (industryData[industryName])
             setIsExpanded((prevState) => ({
                 ...prevState,
                 [industryName]: !prevState[industryName]
@@ -50,21 +50,18 @@ function Chats() {
 
     }
 
-    // //Query should be sent on Enter press
-    // const handleKeyDown=(event)=>{
-    //     if ( event === 'Enter') {
-    //         handleSendQueryButton();
-    //     }
-    // };
-
 
     return (
         <main className="Chats-UI">
             {/* Industry data section  */}
             <section className='chat-component-left-section'>
+                <div className="left-section-title-container">
+                <p className="left-section-title">Categories</p>
+                </div>
+                <div className="industry-data-container">
                 {Object.keys(industryData).map((industryName) => (
-                    <div className={`industry-data ${isExpanded[industryName] ? 'expanded' : ''}`}>
-                        <div className='industry-name' key={industryName}>
+                    <div className="industry-data">
+                        <div className='industry-name-container' key={industryName}>
                             <img className="page-icon" src="./page.svg" alt="page-icon" />
                             <p className='data'>{industryName}</p>
 
@@ -74,14 +71,21 @@ function Chats() {
                         </div>
                         {isExpanded[industryName] && (
                             <div className="industry-nested-data">
-                                {industryData[industryName].map((item, index) => (
-                                    <p key={index} className="industry-details">{item}</p>
-                                ))}
+                                {industryData[industryName].length > 0 ?
+
+                                    industryData[industryName].map((item, index) => (
+                                        <p key={index} className="industry-details">{item}</p>
+                                    ))
+
+                                    :
+                                    <p>No details</p>
+                                }
                             </div>
                         )
                         }
                     </div>
                 ))}
+                </div>
             </section>
 
             <section className={`Chats-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
@@ -92,7 +96,7 @@ function Chats() {
                         <input type="text" className="input-box" placeholder="search"
                             value={inputValue}
                             onChange={handleInputChange}
-                          
+
                         />
 
                         <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
