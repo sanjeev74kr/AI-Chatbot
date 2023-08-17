@@ -132,7 +132,7 @@ function Chats() {
                                 <img src="./profile.svg" alt="profile"  className="user-icon"/>
                                 <p className="question">Summarize Transforming healthcare project for me</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./edit-icon.svg" alt="edit-icon" />
+                                <img src="./download-icon.svg" alt="download-icon" />
                             </div>
                             <div className="bot">
                                 <img src="./bot-icon.svg" alt="bot-icon" />
@@ -142,7 +142,7 @@ function Chats() {
                                     and Android technologies for the USA health and fitness sector.
                                 </p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
+                                
                             </div>
 
                             {/* default question-2 */}
@@ -150,7 +150,7 @@ function Chats() {
                                 <img src="./profile.svg" alt="profile" className="user-icon"/>
                                 <p className="question">What are the business benefits realized in Smart pregnancy app</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./edit-icon.svg" alt="edit-icon" />
+                                <img src="./download-icon.svg" alt="download-icon" />
                             </div>
                             <div className="bot">
                                 <img src="./bot-icon.svg" alt="bot-icon" />
@@ -161,7 +161,7 @@ function Chats() {
                                     4. Reduction of Health Disparities
                                     5. Increased Patient Satisfaction and Loyalty </p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
+                                
                             </div>
 
                             {/* default question-3 */}
@@ -170,7 +170,7 @@ function Chats() {
                                 <p className="question">What was the overall sentiment of the project execution – customer perspective and
                                     team perspective in Tech transformation project?</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./edit-icon.svg" alt="edit-icon" />
+                                <img src="./download-icon.svg" alt="download-icon" />
                             </div>
                             <div className="bot">
                                 <img src="./bot-icon.svg" alt="bot-icon" />
@@ -195,7 +195,7 @@ function Chats() {
                                     project. This suggests that the team was
                                 </p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
+                                
                             </div>
 
                             {/* default question-4 */}
@@ -203,7 +203,7 @@ function Chats() {
                                 <img src="./profile.svg" alt="profile" className="user-icon"/>
                                 <p className="question">What technologies are utilized in Smart vehicle tracking system?</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./edit-icon.svg" alt="edit-icon" />
+                                <img src="./download-icon.svg" alt="download-icon" />
                             </div>
                             <div className="bot">
                                 <img src="./bot-icon.svg" alt="bot-icon" />
@@ -213,7 +213,7 @@ function Chats() {
                                     3. MS SQL
                                     4. AWS Cloud </p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
+                                
                             </div>
 
 
@@ -224,7 +224,7 @@ function Chats() {
                                         <img src="./profile.svg" alt="profile" className="user-icon"/>
                                         <p className="question">{message.text}</p>
                                         <img src="./copy-icon.svg" alt="copy-icon" />
-                                        <img src="./edit-icon.svg" alt="edit-icon" />
+                                        <img src="./download-icon.svg" alt="download-icon" />
                                     </div>
 
                                     <div className="bot">
@@ -239,7 +239,7 @@ function Chats() {
                                             intranet portal for improved collaboration and communication among
                                             stakeholders. </p>
                                         <img src="./copy-icon.svg" alt="copy-icon" />
-                                        <img src="./download-icon.svg" alt="download-icon" />
+                                       
                                     </div>
 
                                 </div>
@@ -273,6 +273,8 @@ function Chats() {
                                     <div className="bookmark-plus-history-container">
                                         <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon" />
                                         <p className="history" key={index}>{topic}</p>
+                                        <img src="./edit-small-icon.svg" alt="edit-icon" className="small-edit-icon"></img>
+                                        <img src="./delete-icon.svg" alt="delete-icon" className="delete-icon"></img>
                                     </div>
                                 ))}
                             </div>
