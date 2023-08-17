@@ -283,6 +283,7 @@
   justify-self: unset;
   justify-content: unset;
   border-bottom: 0.01rem solid #e2dbdb;
+  border-color: #e2dbdb;
 }
 
 /*end of main-section styles*/
