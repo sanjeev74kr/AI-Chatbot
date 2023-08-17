@@ -54,7 +54,10 @@ function Chats() {
     const handleToggleChatHistoryButton = () => {
         setIsChatHistoryToggle(!isChatHistoryToggle);
     }
-
+    
+   const startNewConversation=()=>{
+    setquery([]);
+   }
 
     return (
         <main className="Chats-UI">
@@ -118,7 +121,6 @@ function Chats() {
                     {/* static data */}
                     <div className="chats-conversation-container">
                         <div className="Chats-conversation">
-
                             {/* default question-1 */}
                             <div className="user">
                                 <img src="./profile.svg" alt="profile"  className="user-icon"/>
@@ -252,7 +254,7 @@ function Chats() {
                 <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="Chat-history-top">
                         <img className="close-chat-history-button" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleChatHistoryButton} />
-                        <p className="New-chat-button">+ New Chat </p>
+                        <p className="New-chat-button" onClick={startNewConversation}>+ New Chat </p>
                     </div>
 
 
