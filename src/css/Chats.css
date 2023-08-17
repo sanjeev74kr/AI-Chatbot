@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   width: 16%;
-  height: 88.45vh;
+  height: 88vh;
   background-color: white;
   border-right: .09rem solid #e2dbdb;
 }
@@ -31,16 +31,18 @@
 
 .left-section-title {
   margin-left: 2%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 /* beautify industry data */
 .industry-data-container {
   padding: 1%;
-  overflow: auto;
-  scroll-behavior: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+.industry-data-container:hover{
+  overflow-y: auto;
 }
 
 .industry-data {
@@ -81,7 +83,7 @@
 
 .industry-details {
   padding: 2%;
-  width: 100%;
+  width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -181,20 +183,17 @@
 }
 
 
-
-
 /* conversation-display */
 .Chats-conversation {
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  scroll-behavior: auto;
   height: 100%;
   background-color: white;
+  overflow: hidden;
 }
 
-.Chats-conversation::-webkit-scrollbar {
-  display: none;
+.Chats-conversation:hover {
+  overflow-y: auto;
 }
 
 
@@ -293,16 +292,16 @@
 .New-chat-button {
   background-color: rgb(0 132 255);
   border-radius: 0.8rem;
-  margin-left: 5%;
-  min-width: fit-content;
+  margin-left: 3%;
+  min-width: 80%;
   padding: 5%;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 25%;
+  padding-right: 8%;
   cursor: pointer;
   color: white;
   font-size: 1rem;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: wrap;
 }
 
 /*end of style of new-chat-button*/
@@ -314,13 +313,11 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  overflow-x: hidden;
-  scroll-behavior: auto;
+  overflow: hidden;
 }
 
-.chat-history-data-section-container::-webkit-scrollbar {
-  display: none;
+.chat-history-data-section-container:hover{
+ overflow-y: auto;
 }
 
 .chat-history-data-section {
@@ -343,10 +340,8 @@
 
 .history {
   max-width: 100%;
-  overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
   margin-left: 2%;
+  white-space: wrap;
 }
 
 
