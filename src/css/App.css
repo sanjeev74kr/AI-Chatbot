@@ -124,3 +124,15 @@ img:hover{
   width: fit-content;
    border-radius: 0.8rem;
 }
+
+
+@media screen and (max-width:700px) {
+ .app{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ }
+ .Chat-component{
+  align-self: center;
+ }
+}

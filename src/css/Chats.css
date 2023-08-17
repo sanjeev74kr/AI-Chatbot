@@ -364,8 +364,14 @@
   border-radius: 0.8rem;
 }
 
-@media screen and (min-width:80%) {
-  .search-box-container {
-    border-top-right-radius: 0.8rem;
+@media screen and (max-width:700px) {
+  .Chats-right-section {
+    width: 0;
+    padding: 0;
   }
+  .chat-component-left-section,.Chats-right-section{
+    display: none;
+  }
+
 }
+
