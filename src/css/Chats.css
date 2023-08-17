@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   width: 16%;
-  height: 108%;
+  height: 88.45vh;
   background-color: white;
   border-right: .09rem solid #e2dbdb;
 }
@@ -106,9 +106,8 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color:white;
+  background-color: white;
   border-radius: 0.8rem;
-  border-top-right-radius:0.8rem;
 }
 
 /* start of search box customization*/
@@ -194,10 +193,15 @@
   background-color: white;
 }
 
-.Chats-conversation::-webkit-scrollbar{
+.Chats-conversation::-webkit-scrollbar {
   display: none;
 }
 
+
+.user-icon{
+  width:2rem;
+  height:2rem;
+}
 
 /*customization of user and bot-msg box */
 .user,
@@ -241,10 +245,12 @@
   line-height: 2;
 }
 
+
+
 .open-chat-history-button-container {
   position: absolute;
   bottom: 50%;
-  right:6.95%;
+  right: 1.8%;
 }
 
 .open-chat-history-button {
@@ -256,7 +262,7 @@
   padding: 10%;
   justify-self: unset;
   justify-content: unset;
-
+  border-bottom: 0.01rem solid #e2dbdb;
 }
 
 /*end of main-section styles*/
@@ -268,7 +274,7 @@
   flex-direction: column;
   background-color: #f3f6fc;
   padding: 2%;
-  margin-top: 2%; 
+  margin-top: 2%;
   width: 21.5%;
   border: 1px solid #dcd7d7;
   border-top-right-radius: 0.8rem;
@@ -287,7 +293,7 @@
 .New-chat-button {
   background-color: rgb(0 132 255);
   border-radius: 0.8rem;
-  margin-left:5%;
+  margin-left: 5%;
   min-width: fit-content;
   padding: 5%;
   padding-left: 20%;
@@ -298,11 +304,12 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
 /*end of style of new-chat-button*/
 
 
 /*start styling of chat-history-section*/
-.chat-history-data-section-container{
+.chat-history-data-section-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -312,20 +319,20 @@
   scroll-behavior: auto;
 }
 
-.chat-history-data-section-container::-webkit-scrollbar{
+.chat-history-data-section-container::-webkit-scrollbar {
   display: none;
 }
 
 .chat-history-data-section {
   font-size: 1rem;
   color: black;
-  width: 100%; 
+  width: 100%;
 }
 
 .date {
   font-weight: bold;
-   margin-left: 35%;
-   margin-top: 10%;
+  margin-left: 35%;
+  margin-top: 10%;
 }
 
 .bookmark-plus-history-container {
@@ -358,17 +365,12 @@
 
 /* Expand the main section when the right section is shrunk */
 .chat-component-main-section.shrink-right-section {
-  width: 75%;
+  width: 80%;
   border-radius: 0.8rem;
 }
 
-@media screen and (max-width:1500px) {
-  .chat-component-main-container{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .search-box-container{
-    border-top-right-radius: 0;
+@media screen and (min-width:80%) {
+  .search-box-container {
+    border-top-right-radius: 0.8rem;
   }
 }

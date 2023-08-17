@@ -121,8 +121,8 @@ function Chats() {
 
                             {/* default question-1 */}
                             <div className="user">
-                                <img src="./user-icon.svg" alt="user-icon" />
-                                <p className="question">Summarize Transforming healthcare project for me.</p>
+                                <img src="./profile.svg" alt="profile"  className="user-icon"/>
+                                <p className="question">Summarize Transforming healthcare project for me</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
                                 <img src="./edit-icon.svg" alt="edit-icon" />
                             </div>
@@ -139,7 +139,7 @@ function Chats() {
 
                             {/* default question-2 */}
                             <div className="user">
-                                <img src="./user-icon.svg" alt="user-icon" />
+                                <img src="./profile.svg" alt="profile" className="user-icon"/>
                                 <p className="question">What are the business benefits realized in Smart pregnancy app</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
                                 <img src="./edit-icon.svg" alt="edit-icon" />
@@ -158,7 +158,7 @@ function Chats() {
 
                             {/* default question-3 */}
                             <div className="user">
-                                <img src="./user-icon.svg" alt="user-icon" />
+                                <img src="./profile.svg" alt="profile" className="user-icon" />
                                 <p className="question">What was the overall sentiment of the project execution – customer perspective and
                                     team perspective in Tech transformation project?</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
@@ -192,7 +192,7 @@ function Chats() {
 
                             {/* default question-4 */}
                             <div className="user">
-                                <img src="./user-icon.svg" alt="user-icon" />
+                                <img src="./profile.svg" alt="profile" className="user-icon"/>
                                 <p className="question">What technologies are utilized in Smart vehicle tracking system?</p>
                                 <img src="./copy-icon.svg" alt="copy-icon" />
                                 <img src="./edit-icon.svg" alt="edit-icon" />
@@ -213,7 +213,7 @@ function Chats() {
                             {query.map((message, index) => (
                                 <div className="chats-conversation">
                                     <div className="user" key={index}>
-                                        <img src="./user-icon.svg" alt="user-icon" />
+                                        <img src="./profile.svg" alt="profile" className="user-icon"/>
                                         <p className="question">{message.text}</p>
                                         <img src="./copy-icon.svg" alt="copy-icon" />
                                         <img src="./edit-icon.svg" alt="edit-icon" />
