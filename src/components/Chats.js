@@ -85,7 +85,10 @@ function Chats() {
                                     {industryData[industryName].length > 0 ?
 
                                         industryData[industryName].map((item, index) => (
-                                            <p key={index} className="industry-details">{`${index+1}.${item}`}</p>
+                                            <div className="industry-details-conatiner">
+                                            <img src="./bullet-point.svg" alt="bullet-point" className="bullet-point"/>    
+                                            <p key={index} className="industry-details">{item}</p>
+                                            </div>
                                         ))
 
                                         :

@@ -81,6 +81,16 @@
   margin-bottom: 2%;
 }
 
+.industry-details-conatiner{
+ display: flex;
+ justify-content: flex-start;
+}
+.bullet-point{
+  align-self: flex-start;
+  width:2rem;
+  height:1.8rem;
+}
+
 .industry-details {
   padding: 2%;
   width: 80%;
