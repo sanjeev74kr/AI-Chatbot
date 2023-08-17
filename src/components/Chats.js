@@ -59,6 +59,8 @@ function Chats() {
     setquery([]);
    }
 
+
+
     return (
         <main className="Chats-UI">
 
@@ -116,6 +118,7 @@ function Chats() {
                             <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
                             <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
                         </div>
+                        <p className="mobile-new-chat-button" onClick={startNewConversation}>+</p>
                     </div>
 
                     {/* static data */}

@@ -23,17 +23,17 @@ function App() {
 
       {/* heading part */}
       <div className='heading-part'>
-        <header>
-          <span className='brand-identity'>
+          <div className='brand-identity'>
             <img className='brand-icon' src='./brand-icon.svg' alt='DI-icon' />
             <p className='brand-text'> RON! </p>
-          </span>
+          </div>
           <div className='heading-buttons'>
             <button className='dashboard-component-button'>Dashboard</button>
             <button className='selected' onClick={handleChatComponentButtonClick} >AI Chatbot</button>
           </div>
-          <img className="profile-button" src="./profile.svg" alt="profile-icon" onClick={toggleProfileOptions} />
-        </header>
+          <div className='profile-button-container'>
+          <img className="profile-button" src="./profile.svg" alt="profile-icon"  onClick={toggleProfileOptions} />
+          </div>
       </div>
 
 

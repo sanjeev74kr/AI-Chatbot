@@ -19,29 +19,36 @@
 
 
 /* header container */
-.heading-part header {
+.heading-part{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   padding: 1%;
   border: 0.1rem solid #f4ebeb;
+  width: 100%;
+  justify-content: space-between;
+  
 }
 
 .brand-identity {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  width:18%;
 }
 
 .brand-text {
   color: black;
   font-weight: bold;
   font-size: 2rem;
+  flex-shrink: 2;
 }
 
 .heading-buttons {
   display: flex;
+  width: 25%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .dashboard-component-button {
@@ -55,6 +62,7 @@
   border-radius: 0.8rem;
   cursor: pointer;
   margin-right: 1%;
+  flex-shrink: 2;
 }
 
 .chat-component-button {
@@ -67,11 +75,17 @@
   border: 1px solid #ccc;
   border-radius: 0.8rem;
   cursor: pointer;
+  flex-shrink: 2;
 }
 
+.profile-button-container{
+ margin-left: auto;
+ margin-right: 2%;
+}
 .profile-button {
-  cursor: pointer;
-  margin-right: 2%;
+  cursor: pointer;  
+  width:2.5rem;
+  height: 2.5rem;
 }
 
 /*end of header section */
@@ -132,6 +146,7 @@ img:hover{
   flex-direction: column;
   align-items: flex-start;
  }
+
  .Chat-component{
   align-self: center;
  }
