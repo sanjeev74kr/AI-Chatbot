@@ -79,6 +79,23 @@ const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
 }
 
+//Hanlde download button
+const handleDownload = (ques, ans) => {
+    const content = `Question: ${ques}\nAnswer: ${ans}`;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'RON-Reply.txt';
+    document.body.appendChild(a);
+
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+};
+
 
 
     return (
@@ -156,7 +173,7 @@ const handleCopy = (text) => {
                                             <img src="./profile.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
                                             <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ques)}/>
-                                            <img src="./download-icon.svg" alt="download-icon" />
+                                            <img src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.ques,message.ans)}/>
                                         </div>
                                         <div className="bot">
                                             <img src="./bot-icon.svg" alt="bot-icon" />
@@ -177,7 +194,7 @@ const handleCopy = (text) => {
                                         <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
                                         <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.text)}/>
-                                        <img src="./download-icon.svg" alt="download-icon" />
+                                        <img src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.text,defaultReply)}/>
                                     </div>
 
                                     <div className="bot">
@@ -210,14 +227,14 @@ const handleCopy = (text) => {
 
 
                     {/* chat-history-section  */}
-                    <div className="chat-history-data-section-container">
+                    <div className="chat-history-data-section-container" >
                         {Object.keys(chatHistory).map(date => (
                             <div className="chat-history-data-section" key={date}>
                                 <p className="date">{date}</p>
                                 {chatHistory[date].map((topic, index) => (
-                                    <div className="bookmark-plus-history-container">
+                                    <div className="bookmark-plus-history-container" key={index}>
                                         <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon" />
-                                        <p className="history" key={index}>{topic}</p>
+                                        <p className="history">{topic}</p>
                                         <img src="./edit-small-icon.svg" alt="edit-icon" className="small-edit-icon"></img>
                                         <img src="./delete-icon.svg" alt="delete-icon" className="delete-icon"></img>
                                     </div>
