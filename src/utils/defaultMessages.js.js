@@ -15,6 +15,8 @@ const defaultMessages=[{
     ques:"What technologies are utilized in Smart vehicle tracking system?",
     ans:"Based on the given context, the following technologies are utilized in the Smart vehicle tracking system:1. Asp.Net MVC 2. Web API3. MS SQL4. AWS Cloud"
   }
-]
+];
 
-export default defaultMessages;
+const defaultReply="The client is an Indian institution of management, one of twenty such institutions. Currently located within the VNIT Nagpur campus, they will eventually move to their own 135-acre campus at MIHAN, Nagpur. The institute's curriculum, designed by management education experts, emphasizes entrepreneurial exploration and ofers support to students in pursuing their ambitions. The objective is to create a new, user-friendly website and an integrated intranet portal for improved collaboration and communication among stakeholders."
+
+export { defaultMessages,defaultReply};

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../css/Chats.css'
 import industryData from '../utils/industryData';
-import defaultMessages from "../utils/defaultMessages.js";
+import {defaultMessages,defaultReply} from "../utils/defaultMessages.js";
 import chatHistory from "../utils/chatHistory";
 
 function Chats() {
@@ -74,16 +74,9 @@ function Chats() {
     }
 
 
-    //Handle copy button
-    // Corrected handle copy button function
+    //7.Handle copy button
 const handleCopy = (text) => {
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            console.log("Text copied successfully!");
-        })
-        .catch(error => {
-            console.error("Error copying text:", error);
-        });
+    navigator.clipboard.writeText(text);
 }
 
 
@@ -162,14 +155,14 @@ const handleCopy = (text) => {
                                         <div className="user">
                                             <img src="./profile.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.ques)}/>
+                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ques)}/>
                                             <img src="./download-icon.svg" alt="download-icon" />
                                         </div>
                                         <div className="bot">
                                             <img src="./bot-icon.svg" alt="bot-icon" />
                                             <p className="answer">{message.ans}
                                             </p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.ans)}/>
+                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ans)}/>
 
                                         </div>
                                     </div>
@@ -183,22 +176,14 @@ const handleCopy = (text) => {
                                     <div className="user" key={index}>
                                         <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
-                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.text)}/>
+                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.text)}/>
                                         <img src="./download-icon.svg" alt="download-icon" />
                                     </div>
 
                                     <div className="bot">
                                         <img src="./bot-icon.svg" alt="bot-icon" />
-                                        <p className="answer">The client is an Indian institution of management, one of twenty such
-                                            institutions. Currently located within the VNIT Nagpur campus, they will
-                                            eventually move to their own 135-acre campus at MIHAN, Nagpur. The
-                                            institute's curriculum, designed by management education experts,
-                                            emphasizes entrepreneurial exploration and ofers support to students in
-                                            pursuing their ambitions.
-                                            The objective is to create a new, user-friendly website and an integrated
-                                            intranet portal for improved collaboration and communication among
-                                            stakeholders. </p>
-                                        <img src="./copy-icon.svg" alt="copy-icon" />
+                                        <p className="answer">{defaultReply}</p>
+                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(defaultReply)}/>
 
                                     </div>
 
