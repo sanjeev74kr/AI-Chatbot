@@ -32,12 +32,7 @@ function Chats() {
     }
 
 
-    //3 set default messages in chat-conversation
-    // const handleDefaultMessages = () => {
-
-    // }
-
-    //4. Handle user userQuery of chat conversation
+    //3. Handle user userQuery of chat conversation
     const handleSendQueryButton = () => {
         if (inputValue.trim() === '') return;
 
@@ -47,10 +42,10 @@ function Chats() {
         };
 
         setIsDefaultMessages([]);
-        
+
         setUserQuery([...userQuery, newQuery]);
         setInputValue('');
-       
+
         setTimeout(() => {
             const conversationContainer = document.querySelector(".Chats-conversation");
             conversationContainer.scrollTop = conversationContainer.scrollHeight;
@@ -58,25 +53,38 @@ function Chats() {
     }
 
 
-    //5. Handle when user press enter button while writing in  input box 
+    //4. Handle when user press enter button while writing in  input box 
     const handleEnterPressed = (e) => {
         if (e.key === 'Enter')
             handleSendQueryButton();
-    
+
     }
 
 
-    //6.  open-close chatHistory section of right side
+    //5.  open-close chatHistory section of right side
     const handleToggleChatHistoryButton = () => {
         setIsChatHistoryToggle(!isChatHistoryToggle);
     }
 
 
-    //7. for new conversation on cllick of new chat button 
+    //6. for new conversation on cllick of new chat button 
     const startNewConversation = () => {
         setUserQuery([]);
         setIsDefaultMessages([]);
     }
+
+
+    //Handle copy button
+    // Corrected handle copy button function
+const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            console.log("Text copied successfully!");
+        })
+        .catch(error => {
+            console.error("Error copying text:", error);
+        });
+}
 
 
 
@@ -143,9 +151,10 @@ function Chats() {
                         <p className="mobile-new-chat-button" onClick={startNewConversation}>+</p>
                     </div>
 
-                    {/* static data */}
+                
                     <div className="chats-conversation-container">
                         <div className="Chats-conversation">
+
                             {/* default messages */}
                             {isDefaultMessages.map((message, index) => {
                                 return (
@@ -153,14 +162,14 @@ function Chats() {
                                         <div className="user">
                                             <img src="./profile.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" />
+                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.ques)}/>
                                             <img src="./download-icon.svg" alt="download-icon" />
                                         </div>
                                         <div className="bot">
                                             <img src="./bot-icon.svg" alt="bot-icon" />
                                             <p className="answer">{message.ans}
                                             </p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" />
+                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.ans)}/>
 
                                         </div>
                                     </div>
@@ -174,7 +183,7 @@ function Chats() {
                                     <div className="user" key={index}>
                                         <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
-                                        <img src="./copy-icon.svg" alt="copy-icon" />
+                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={(message)=>handleCopy(message.text)}/>
                                         <img src="./download-icon.svg" alt="download-icon" />
                                     </div>
 
