@@ -12,6 +12,7 @@ function Chats() {
     const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
+    const [updatedChatHistory,setUpdatedChatHistory]=useState(chatHistory);
 
 
     //  Functions : 
@@ -79,7 +80,7 @@ const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
 }
 
-//Hanlde download button
+//8.Hanlde download button
 const handleDownload = (ques, ans) => {
     const content = `Question: ${ques}\nAnswer: ${ans}`;
     const blob = new Blob([content], { type: 'text/plain' });
@@ -95,6 +96,14 @@ const handleDownload = (ques, ans) => {
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
 };
+
+
+//9. Handle delete button
+const handleDelete=(date,index)=>{
+const   updatedChatHistory={...chatHistory};
+updatedChatHistory[date].splice(index,1);
+setUpdatedChatHistory(updatedChatHistory);
+}
 
 
 
@@ -228,15 +237,16 @@ const handleDownload = (ques, ans) => {
 
                     {/* chat-history-section  */}
                     <div className="chat-history-data-section-container" >
-                        {Object.keys(chatHistory).map(date => (
+                        {Object.keys(updatedChatHistory).map(date => (
                             <div className="chat-history-data-section" key={date}>
-                                <p className="date">{date}</p>
-                                {chatHistory[date].map((topic, index) => (
+                              {updatedChatHistory[date].length>0 &&
+                                <p className="date">{date}</p>}
+                                { updatedChatHistory[date].map((topic, index) => (
                                     <div className="bookmark-plus-history-container" key={index}>
                                         <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon" />
                                         <p className="history">{topic}</p>
                                         <img src="./edit-small-icon.svg" alt="edit-icon" className="small-edit-icon"></img>
-                                        <img src="./delete-icon.svg" alt="delete-icon" className="delete-icon"></img>
+                                        <img src="./delete-icon.svg" alt="delete-icon" className="delete-icon" onClick={()=>handleDelete(date,index)}></img>
                                     </div>
                                 ))}
                             </div>
