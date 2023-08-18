@@ -41,7 +41,7 @@
   overflow: hidden;
 }
 
-.industry-data-container:hover{
+.industry-data-container:hover {
   overflow-y: auto;
 }
 
@@ -81,14 +81,15 @@
   margin-bottom: 2%;
 }
 
-.industry-details-conatiner{
- display: flex;
- justify-content: flex-start;
+.industry-details-conatiner {
+  display: flex;
+  justify-content: flex-start;
 }
-#bullet-point{
+
+#bullet-point {
   align-self: flex-start;
-  width:2rem;
-  height:1.8rem;
+  width: 2rem;
+  height: 1.8rem;
 }
 
 .industry-details {
@@ -132,7 +133,7 @@
   align-items: center;
 }
 
-#mobile-new-chat-button{
+#mobile-new-chat-button {
   font-size: 2rem;
   font-weight: bold;
   margin-left: auto;
@@ -140,7 +141,7 @@
   visibility: hidden;
   margin-bottom: 3%;
   align-self: center;
-  
+
 }
 
 .search-box {
@@ -185,8 +186,8 @@
   border: none;
   padding: 1%;
   margin-left: 1%;
-  width:2.5rem;
-  height:2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 #uploadFileButton {
@@ -219,10 +220,9 @@
   overflow-y: auto;
 }
 
-
-.user-icon{
-  width:2rem;
-  height:2rem;
+.user-icon {
+  width: 2rem;
+  height: 2rem;
 }
 
 /*customization of user and bot-msg box */
@@ -266,8 +266,6 @@
   margin-right: 2%;
   line-height: 2;
 }
-
-
 
 .open-chat-history-button-container {
   position: absolute;
@@ -340,8 +338,8 @@
   overflow: hidden;
 }
 
-.chat-history-data-section-container:hover{
- overflow-y: auto;
+.chat-history-data-section-container:hover {
+  overflow-y: auto;
 }
 
 .chat-history-data-section {
@@ -370,13 +368,17 @@
   white-space: wrap;
 }
 
-#small-edit-icon{
+#small-edit-icon {
   margin-left: 1%;
   padding: 1%;
 }
-#delete-icon{
-padding: 1%;
+
+#delete-icon {
+  padding: 1%;
 }
+
+/* End of styling of right section container */
+
 
 /* style toggle-behavior of right section*/
 .Chats-right-section,
@@ -384,11 +386,9 @@ padding: 1%;
   transition: width 0.1s ease;
 }
 
-
 /*  shrink the right section */
 .Chats-right-section.shrink-right-section {
-  width: 0;
-  padding: 0;
+  display: none;
 }
 
 /* Expand the main section when the right section is shrunk */
@@ -397,27 +397,29 @@ padding: 1%;
   border-radius: 0.8rem;
 }
 
-@media screen and (max-width:700px) {
 
-  .chat-component-main-section{
-    width:98%;
-    border-radius:0.8rem;
+/* Make responsive for small screen */
+@media screen and (max-width:700px) {
+  .chat-component-main-section {
+    width: 98%;
+    border-radius: 0.8rem;
   }
 
-  .chat-component-left-section,.Chats-right-section{
+  .chat-component-left-section,
+  .Chats-right-section {
     display: none;
   }
 
-  #mobile-new-chat-button{
+  #mobile-new-chat-button {
     visibility: visible;
   }
 
 }
 
 
-
-.clickable-icon{
+/* Style clickable-icon */
+.clickable-icon {
   cursor: pointer;
-  width:1.5rem;
+  width: 1.5rem;
   height: 1.5rem;
-  }
+}

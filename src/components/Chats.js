@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../css/Chats.css'
 import industryData from '../utils/industryData';
-import {defaultMessages,defaultReply} from "../utils/defaultMessages.js";
+import { defaultMessages, defaultReply } from "../utils/defaultMessages.js";
 import chatHistory from "../utils/chatHistory";
 
 function Chats() {
@@ -12,7 +12,7 @@ function Chats() {
     const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
-    const [updatedChatHistory,setUpdatedChatHistory]=useState(chatHistory);
+    const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
 
 
     //  Functions : 
@@ -76,34 +76,52 @@ function Chats() {
 
 
     //7.Handle copy button
-const handleCopy = (text) => {
-    navigator.clipboard.writeText(text);
-}
+    const handleCopy = (text) => {
+        navigator.clipboard.writeText(text);
+    }
 
-//8.Hanlde download button
-const handleDownload = (ques, ans) => {
-    const content = `Question: ${ques}\nAnswer: ${ans}`;
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
+    //8.Hanlde download button
+    const handleDownload = (ques, ans) => {
+        const content = `Question: ${ques}\nAnswer: ${ans}`;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'RON-Reply.txt';
-    document.body.appendChild(a);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'RON-Reply.txt';
+        document.body.appendChild(a);
 
-    a.click();
+        a.click();
 
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-};
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    };
 
 
-//9. Handle delete button
-const handleDelete=(date,index)=>{
-const   updatedChatHistory={...chatHistory};
-updatedChatHistory[date].splice(index,1);
-setUpdatedChatHistory(updatedChatHistory);
-}
+    //9. Handle delete button
+    const handleDelete = (date, index) => {
+        const updatedChatHistory = { ...chatHistory };
+        updatedChatHistory[date].splice(index, 1);
+        setUpdatedChatHistory(updatedChatHistory);
+    }
+
+
+    //10. Handle File Upload
+    const handleFileUpload = (e) => {
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile) {
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                const fileContent = event.target.result;
+                setInputValue(fileContent);
+            };
+
+            reader.readAsText(selectedFile, 'UTF-8');
+        }
+
+    }
 
 
 
@@ -119,7 +137,7 @@ setUpdatedChatHistory(updatedChatHistory);
                     {Object.keys(industryData).map((industryName) => (
                         <div className="industry-data">
                             <div className='industry-name-container' key={industryName}>
-                                <img id="page-icon"  src="./page.svg" alt="page-icon" />
+                                <img id="page-icon" src="./page.svg" alt="page-icon" />
                                 <p className='data'>{industryName}</p>
 
                                 <img id="expand-button" className="clickable-icon" src={isExpanded[industryName] ? "./minus-icon.svg" : "./add-circle-button.svg"}
@@ -165,12 +183,26 @@ setUpdatedChatHistory(updatedChatHistory);
 
                             />
                             <img id="send-button" className="clickable-icon" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
-                            <img id="uploadFileButton" className="clickable-icon" src="./upload-file.svg" alt="üpload-file-button" />
+                            <label htmlFor="uploadFileInput">
+                                <img
+                                    id="uploadFileButton"
+                                    className="clickable-icon"
+                                    src="./upload-file.svg"
+                                    alt="upload-file-button"
+                                />
+                            </label>
+                            <input
+                                type="file"
+                                id="uploadFileInput"
+                                accept=".doc, .docx, .txt"
+                                style={{ display: 'none' }}
+                                onChange={handleFileUpload}
+                            />
                         </div>
                         <p id="mobile-new-chat-button" className="clickable-icon" onClick={startNewConversation}>+</p>
                     </div>
 
-                
+
                     <div className="chats-conversation-container">
                         <div className="Chats-conversation">
 
@@ -181,14 +213,14 @@ setUpdatedChatHistory(updatedChatHistory);
                                         <div className="user">
                                             <img src="./profile.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
-                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ques)}/>
-                                            <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.ques,message.ans)}/>
+                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.ques)} />
+                                            <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={() => handleDownload(message.ques, message.ans)} />
                                         </div>
                                         <div className="bot">
                                             <img src="./bot-icon.svg" alt="bot-icon" />
                                             <p className="answer">{message.ans}
                                             </p>
-                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ans)}/>
+                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.ans)} />
 
                                         </div>
                                     </div>
@@ -202,14 +234,14 @@ setUpdatedChatHistory(updatedChatHistory);
                                     <div className="user" key={index}>
                                         <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
-                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.text)}/>
-                                        <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.text,defaultReply)}/>
+                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.text)} />
+                                        <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={() => handleDownload(message.text, defaultReply)} />
                                     </div>
 
                                     <div className="bot">
                                         <img src="./bot-icon.svg" alt="bot-icon" />
                                         <p className="answer">{defaultReply}</p>
-                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(defaultReply)}/>
+                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(defaultReply)} />
 
                                     </div>
 
@@ -219,7 +251,7 @@ setUpdatedChatHistory(updatedChatHistory);
                     </div>
                     <div className="open-chat-history-button-container">
                         {isChatHistoryToggle &&
-                            <button id="open-chat-history-button"  onClick={handleToggleChatHistoryButton}>Chat History</button>
+                            <button id="open-chat-history-button" onClick={handleToggleChatHistoryButton}>Chat History</button>
                         }
                     </div>
                 </div>
@@ -239,14 +271,14 @@ setUpdatedChatHistory(updatedChatHistory);
                     <div className="chat-history-data-section-container" >
                         {Object.keys(updatedChatHistory).map(date => (
                             <div className="chat-history-data-section" key={date}>
-                              {updatedChatHistory[date].length>0 &&
-                                <p className="date">{date}</p>}
-                                { updatedChatHistory[date].map((topic, index) => (
+                                {updatedChatHistory[date].length > 0 &&
+                                    <p className="date">{date}</p>}
+                                {updatedChatHistory[date].map((topic, index) => (
                                     <div className="bookmark-plus-history-container" key={index}>
                                         <img id="bookmark-button" className="clickable-icon" src="./bookmark-icon.svg" alt="bookmark-icon" />
                                         <p className="history">{topic}</p>
                                         <img src="./edit-small-icon.svg" alt="edit-icon" id="small-edit-icon" className="clickable-icon"></img>
-                                        <img src="./delete-icon.svg" alt="delete-icon" id="delete-icon" className="clickable-icon" onClick={()=>handleDelete(date,index)}></img>
+                                        <img src="./delete-icon.svg" alt="delete-icon" id="delete-icon" className="clickable-icon" onClick={() => handleDelete(date, index)}></img>
                                     </div>
                                 ))}
                             </div>
