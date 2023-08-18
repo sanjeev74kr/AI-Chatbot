@@ -69,7 +69,7 @@
   text-overflow: ellipsis;
 }
 
-.expand-button {
+#expand-button {
   margin-left: auto;
 }
 
@@ -85,7 +85,7 @@
  display: flex;
  justify-content: flex-start;
 }
-.bullet-point{
+#bullet-point{
   align-self: flex-start;
   width:2rem;
   height:1.8rem;
@@ -132,12 +132,14 @@
   align-items: center;
 }
 
-.mobile-new-chat-button{
+#mobile-new-chat-button{
   font-size: 2rem;
   font-weight: bold;
   margin-left: auto;
   margin-right: 2%;
   visibility: hidden;
+  margin-bottom: 3%;
+  align-self: center;
   
 }
 
@@ -179,17 +181,17 @@
 
 
 /*send button */
-.send-button {
+#send-button {
   border: none;
   padding: 1%;
-  cursor: pointer;
   margin-left: 1%;
+  width:2.5rem;
+  height:2.5rem;
 }
 
-.uploadFileButton {
+#uploadFileButton {
   padding: auto;
   margin: auto;
-  cursor: pointer;
 }
 
 /*end of search-box cutomization*/
@@ -273,7 +275,7 @@
   right: 1.8%;
 }
 
-.open-chat-history-button {
+#open-chat-history-button {
   transform: rotate(-90deg);
   font-size: 1rem;
   font-weight: 600;
@@ -368,11 +370,11 @@
   white-space: wrap;
 }
 
-.small-edit-icon{
+#small-edit-icon{
   margin-left: 1%;
   padding: 1%;
 }
-.delete-icon{
+#delete-icon{
 padding: 1%;
 }
 
@@ -406,9 +408,16 @@ padding: 1%;
     display: none;
   }
 
-  .mobile-new-chat-button{
+  #mobile-new-chat-button{
     visibility: visible;
   }
 
 }
 
+
+
+.clickable-icon{
+  cursor: pointer;
+  width:1.5rem;
+  height: 1.5rem;
+  }

@@ -119,10 +119,10 @@ setUpdatedChatHistory(updatedChatHistory);
                     {Object.keys(industryData).map((industryName) => (
                         <div className="industry-data">
                             <div className='industry-name-container' key={industryName}>
-                                <img className="page-icon" src="./page.svg" alt="page-icon" />
+                                <img id="page-icon"  src="./page.svg" alt="page-icon" />
                                 <p className='data'>{industryName}</p>
 
-                                <img className="expand-button" src={isExpanded[industryName] ? "./minus-icon.svg" : "./add-circle-button.svg"}
+                                <img id="expand-button" className="clickable-icon" src={isExpanded[industryName] ? "./minus-icon.svg" : "./add-circle-button.svg"}
                                     alt="expand-button"
                                     onClick={() => handleExpandButton(industryName)} />
                             </div>
@@ -132,7 +132,7 @@ setUpdatedChatHistory(updatedChatHistory);
 
                                         industryData[industryName].map((item, index) => (
                                             <div className="industry-details-conatiner">
-                                                <img src="./bullet-point.svg" alt="bullet-point" className="bullet-point" />
+                                                <img src="./bullet-point.svg" alt="bullet-point" id="bullet-point" />
                                                 <p key={index} className="industry-details">{item}</p>
                                             </div>
                                         ))
@@ -164,10 +164,10 @@ setUpdatedChatHistory(updatedChatHistory);
                                 onKeyDown={(e) => handleEnterPressed(e)}
 
                             />
-                            <img className="send-button" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
-                            <img className="uploadFileButton" src="./upload-file.svg" alt="üpload-file-button" />
+                            <img id="send-button" className="clickable-icon" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
+                            <img id="uploadFileButton" className="clickable-icon" src="./upload-file.svg" alt="üpload-file-button" />
                         </div>
-                        <p className="mobile-new-chat-button" onClick={startNewConversation}>+</p>
+                        <p id="mobile-new-chat-button" className="clickable-icon" onClick={startNewConversation}>+</p>
                     </div>
 
                 
@@ -181,14 +181,14 @@ setUpdatedChatHistory(updatedChatHistory);
                                         <div className="user">
                                             <img src="./profile.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ques)}/>
-                                            <img src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.ques,message.ans)}/>
+                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ques)}/>
+                                            <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.ques,message.ans)}/>
                                         </div>
                                         <div className="bot">
                                             <img src="./bot-icon.svg" alt="bot-icon" />
                                             <p className="answer">{message.ans}
                                             </p>
-                                            <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ans)}/>
+                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.ans)}/>
 
                                         </div>
                                     </div>
@@ -202,14 +202,14 @@ setUpdatedChatHistory(updatedChatHistory);
                                     <div className="user" key={index}>
                                         <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
-                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.text)}/>
-                                        <img src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.text,defaultReply)}/>
+                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(message.text)}/>
+                                        <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={()=>handleDownload(message.text,defaultReply)}/>
                                     </div>
 
                                     <div className="bot">
                                         <img src="./bot-icon.svg" alt="bot-icon" />
                                         <p className="answer">{defaultReply}</p>
-                                        <img src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(defaultReply)}/>
+                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={()=>handleCopy(defaultReply)}/>
 
                                     </div>
 
@@ -219,7 +219,7 @@ setUpdatedChatHistory(updatedChatHistory);
                     </div>
                     <div className="open-chat-history-button-container">
                         {isChatHistoryToggle &&
-                            <button className="open-chat-history-button" onClick={handleToggleChatHistoryButton}>Chat History</button>
+                            <button id="open-chat-history-button"  onClick={handleToggleChatHistoryButton}>Chat History</button>
                         }
                     </div>
                 </div>
@@ -230,7 +230,7 @@ setUpdatedChatHistory(updatedChatHistory);
             {!isChatHistoryToggle &&
                 <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="Chat-history-top">
-                        <img className="close-chat-history-button" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleChatHistoryButton} />
+                        <img id="close-chat-history-button" className="clickable-icon" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleChatHistoryButton} />
                         <p className="New-chat-button" onClick={startNewConversation}>+ New Chat </p>
                     </div>
 
@@ -243,10 +243,10 @@ setUpdatedChatHistory(updatedChatHistory);
                                 <p className="date">{date}</p>}
                                 { updatedChatHistory[date].map((topic, index) => (
                                     <div className="bookmark-plus-history-container" key={index}>
-                                        <img className="bookmark-button" src="./bookmark-icon.svg" alt="bookmark-icon" />
+                                        <img id="bookmark-button" className="clickable-icon" src="./bookmark-icon.svg" alt="bookmark-icon" />
                                         <p className="history">{topic}</p>
-                                        <img src="./edit-small-icon.svg" alt="edit-icon" className="small-edit-icon"></img>
-                                        <img src="./delete-icon.svg" alt="delete-icon" className="delete-icon" onClick={()=>handleDelete(date,index)}></img>
+                                        <img src="./edit-small-icon.svg" alt="edit-icon" id="small-edit-icon" className="clickable-icon"></img>
+                                        <img src="./delete-icon.svg" alt="delete-icon" id="delete-icon" className="clickable-icon" onClick={()=>handleDelete(date,index)}></img>
                                     </div>
                                 ))}
                             </div>
