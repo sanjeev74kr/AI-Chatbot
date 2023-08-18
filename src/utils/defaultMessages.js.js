@@ -1,4 +1,4 @@
-const queryCollection=[{
+const defaultMessages=[{
     ques:"Summarize Transforming healthcare project for me.",
     ans:"The transforming healthcare project is a mobile application that helps users access detailed information about the specialists and their availability at a hospital, as well as digitally book appointments, find information about healthcare facilities provided by the hospital, and more. It was developed using .Net, iOS, and Android technologies for the USA health and fitness sector."
     },
@@ -17,4 +17,4 @@ const queryCollection=[{
   }
 ]
 
-export default queryCollection;
+export default defaultMessages;

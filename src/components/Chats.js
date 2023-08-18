@@ -1,17 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import '../css/Chats.css'
-import chatHistory from "../utils/chatHistory";
 import industryData from '../utils/industryData';
+import defaultMessages from "../utils/defaultMessages.js";
+import chatHistory from "../utils/chatHistory";
 
 function Chats() {
-    const [isExpanded, setIsExpanded] = useState({});
+    //variables
+    const [isExpanded, setIsExpanded] = useState({}); // Plus button of left side
     const [inputValue, setInputValue] = useState('');
-    const [query, setquery] = useState([]);
+    const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
+    const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
 
 
-    //Handle industry-data if it has nested items
+    //  Functions : 
+
+    //1. Handle industry-data if it has nested items
     const handleExpandButton = (industryName) => {
         if (industryData[industryName])
             setIsExpanded((prevState) => ({
@@ -21,10 +26,18 @@ function Chats() {
     };
 
 
-    //Handle chat conversation
+    //2. Handle Search input box
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     }
+
+
+    //3 set default messages in chat-conversation
+    // const handleDefaultMessages = () => {
+
+    // }
+
+    //4. Handle user userQuery of chat conversation
     const handleSendQueryButton = () => {
         if (inputValue.trim() === '') return;
 
@@ -33,10 +46,11 @@ function Chats() {
             isUser: true,
         };
 
-        setquery([...query, newQuery]);
+        setIsDefaultMessages([]);
+        
+        setUserQuery([...userQuery, newQuery]);
         setInputValue('');
-
-
+       
         setTimeout(() => {
             const conversationContainer = document.querySelector(".Chats-conversation");
             conversationContainer.scrollTop = conversationContainer.scrollHeight;
@@ -44,20 +58,25 @@ function Chats() {
     }
 
 
-    //handle enter button press 
+    //5. Handle when user press enter button while writing in  input box 
     const handleEnterPressed = (e) => {
         if (e.key === 'Enter')
             handleSendQueryButton();
+    
     }
 
-    // open-close chatHistory function
+
+    //6.  open-close chatHistory section of right side
     const handleToggleChatHistoryButton = () => {
         setIsChatHistoryToggle(!isChatHistoryToggle);
     }
-    
-   const startNewConversation=()=>{
-    setquery([]);
-   }
+
+
+    //7. for new conversation on cllick of new chat button 
+    const startNewConversation = () => {
+        setUserQuery([]);
+        setIsDefaultMessages([]);
+    }
 
 
 
@@ -86,8 +105,8 @@ function Chats() {
 
                                         industryData[industryName].map((item, index) => (
                                             <div className="industry-details-conatiner">
-                                            <img src="./bullet-point.svg" alt="bullet-point" className="bullet-point"/>    
-                                            <p key={index} className="industry-details">{item}</p>
+                                                <img src="./bullet-point.svg" alt="bullet-point" className="bullet-point" />
+                                                <p key={index} className="industry-details">{item}</p>
                                             </div>
                                         ))
 
@@ -127,101 +146,33 @@ function Chats() {
                     {/* static data */}
                     <div className="chats-conversation-container">
                         <div className="Chats-conversation">
-                            {/* default question-1 */}
-                            <div className="user">
-                                <img src="./profile.svg" alt="profile"  className="user-icon"/>
-                                <p className="question">Summarize Transforming healthcare project for me</p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
-                            </div>
-                            <div className="bot">
-                                <img src="./bot-icon.svg" alt="bot-icon" />
-                                <p className="answer">The transforming healthcare project is a mobile application that helps users access detailed
-                                    information about the specialists and their availability at a hospital, as well as digitally book appointments,
-                                    find information about healthcare facilities provided by the hospital, and more. It was developed using .Net, iOS,
-                                    and Android technologies for the USA health and fitness sector.
-                                </p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                
-                            </div>
+                            {/* default messages */}
+                            {isDefaultMessages.map((message, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div className="user">
+                                            <img src="./profile.svg" alt="profile" className="user-icon" />
+                                            <p className="question">{message.ques}</p>
+                                            <img src="./copy-icon.svg" alt="copy-icon" />
+                                            <img src="./download-icon.svg" alt="download-icon" />
+                                        </div>
+                                        <div className="bot">
+                                            <img src="./bot-icon.svg" alt="bot-icon" />
+                                            <p className="answer">{message.ans}
+                                            </p>
+                                            <img src="./copy-icon.svg" alt="copy-icon" />
 
-                            {/* default question-2 */}
-                            <div className="user">
-                                <img src="./profile.svg" alt="profile" className="user-icon"/>
-                                <p className="question">What are the business benefits realized in Smart pregnancy app</p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
-                            </div>
-                            <div className="bot">
-                                <img src="./bot-icon.svg" alt="bot-icon" />
-                                <p className="answer">The app helps in
-                                    1. Improved Patient Engagement & Education
-                                    2. Better Health Outcomes for Mom and Baby
-                                    3. Enhanced Physician-Patient Communication
-                                    4. Reduction of Health Disparities
-                                    5. Increased Patient Satisfaction and Loyalty </p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                
-                            </div>
-
-                            {/* default question-3 */}
-                            <div className="user">
-                                <img src="./profile.svg" alt="profile" className="user-icon" />
-                                <p className="question">What was the overall sentiment of the project execution – customer perspective and
-                                    team perspective in Tech transformation project?</p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
-                            </div>
-                            <div className="bot">
-                                <img src="./bot-icon.svg" alt="bot-icon" />
-                                <p className="answer">Please note that I'm just an AI and do not have personal opinions or emotions,
-                                    but based on the given context, I can provide a neutral analysis.
-
-                                    The project was aimed at building a platform to bridge the gap between small-scale businesses and customers,
-                                    but the client had limited resources to execute their ideas. The KCS team conducted extensive research and dedicated
-                                    prolonged hours to understand the client's requirements. From both customer and team perspectives,
-                                    the overall sentiment of the project execution was likely positive.
-                                    The customer perspective:
-
-                                    The client was facing operational complexity in the entire process, but with the help of KCS, they were able to eliminate that gap.
-                                    The KCS team took the time to understand their requirements and provided fit-to-purpose solutions for a better experience and interactivity.
-                                    This suggests that the customer was satisfied with the outcome of the project.
-
-
-                                    The team perspective:
-
-                                    The KCS team left no stones unturned in the quest to build a precise solution that met the client's needs.
-                                    They dedicated prolonged hours to understand the requirements and conducted extensive research to deliver a comprehensive tech transformation
-                                    project. This suggests that the team was
-                                </p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                
-                            </div>
-
-                            {/* default question-4 */}
-                            <div className="user">
-                                <img src="./profile.svg" alt="profile" className="user-icon"/>
-                                <p className="question">What technologies are utilized in Smart vehicle tracking system?</p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                <img src="./download-icon.svg" alt="download-icon" />
-                            </div>
-                            <div className="bot">
-                                <img src="./bot-icon.svg" alt="bot-icon" />
-                                <p className="answer">Based on the given context, the following technologies are utilized in the Smart vehicle tracking system:
-                                    1. Asp.Net MVC
-                                    2. Web API
-                                    3. MS SQL
-                                    4. AWS Cloud </p>
-                                <img src="./copy-icon.svg" alt="copy-icon" />
-                                
-                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
 
 
                             {/* dynamic data */}
-                            {query.map((message, index) => (
+                            {userQuery.map((message, index) => (
                                 <div className="chats-conversation">
                                     <div className="user" key={index}>
-                                        <img src="./profile.svg" alt="profile" className="user-icon"/>
+                                        <img src="./profile.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
                                         <img src="./copy-icon.svg" alt="copy-icon" />
                                         <img src="./download-icon.svg" alt="download-icon" />
@@ -239,7 +190,7 @@ function Chats() {
                                             intranet portal for improved collaboration and communication among
                                             stakeholders. </p>
                                         <img src="./copy-icon.svg" alt="copy-icon" />
-                                       
+
                                     </div>
 
                                 </div>
