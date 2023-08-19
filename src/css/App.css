@@ -9,7 +9,7 @@
 /* main app theme */
 .app {
   display: flex;
-  background-color: white;
+  background-color:#F3F3F3;
   height: 100vh;
   width: 100vw;
   max-width: 100vw;
@@ -110,10 +110,9 @@
 
 /* Load chat component */
 .Chat-component {
-  background-color: white;
   position: relative;
-  top: 0%;
-  right: 0%;
+  top: 2%;
+  right:0%;
   left: 0%;
 }
 

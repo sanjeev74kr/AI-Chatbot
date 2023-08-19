@@ -48,7 +48,7 @@ function Chats() {
         setInputValue('');
 
         setTimeout(() => {
-            const conversationContainer = document.querySelector(".Chats-conversation");
+            const conversationContainer = document.querySelector(".chats-conversation-container");
             conversationContainer.scrollTop = conversationContainer.scrollHeight;
         }, 10);
     }
@@ -176,18 +176,19 @@ function Chats() {
                     <div className="search-box-container">
                         <div className="search-box">
                             <img className="search-icon" src="./search.svg" alt="search-icon"></img>
-                            <input type="text" className="input-box" placeholder="search"
+                            <input type="text" className="input-box" placeholder="Search"
                                 value={inputValue}
                                 onChange={handleInputChange}
                                 onKeyDown={(e) => handleEnterPressed(e)}
 
                             />
-                            <img id="send-button" className="clickable-icon" src="./send.svg" alt="send-button" onClick={handleSendQueryButton} />
+                            <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
+                            <p className="vertical-line"></p>
                             <label htmlFor="uploadFileInput">
                                 <img
                                     id="uploadFileButton"
                                     className="clickable-icon"
-                                    src="./upload-file.svg"
+                                    src="./upload-file-button.svg"
                                     alt="upload-file-button"
                                 />
                             </label>
@@ -199,29 +200,32 @@ function Chats() {
                                 onChange={handleFileUpload}
                             />
                         </div>
-                        <p id="mobile-new-chat-button" className="clickable-icon" onClick={startNewConversation}>+</p>
+                        
                     </div>
 
 
                     <div className="chats-conversation-container">
-                        <div className="Chats-conversation">
+                        <div >
 
                             {/* default messages */}
                             {isDefaultMessages.map((message, index) => {
                                 return (
-                                    <div key={index}>
+                                    <div className="Chats-conversation" key={index}>
                                         <div className="user">
-                                            <img src="./profile.svg" alt="profile" className="user-icon" />
+                                            <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
-                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.ques)} />
-                                            <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={() => handleDownload(message.ques, message.ans)} />
+                                            <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.ques)} />
                                         </div>
                                         <div className="bot">
-                                            <img src="./bot-icon.svg" alt="bot-icon" />
+                                            <img src="./brand-icon.svg" alt="bot-icon" />
                                             <p className="answer">{message.ans}
                                             </p>
-                                            <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.ans)} />
+                                            <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.ans)} />
 
+                                        </div>
+                                        <div className="share-download-button-container">
+                                            <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
+                                            <img className="clickable-icon" id="download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
                                         </div>
                                     </div>
                                 )
@@ -230,19 +234,22 @@ function Chats() {
 
                             {/* dynamic data */}
                             {userQuery.map((message, index) => (
-                                <div className="chats-conversation">
+                                <div className="Chats-conversation">
                                     <div className="user" key={index}>
-                                        <img src="./profile.svg" alt="profile" className="user-icon" />
+                                        <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
-                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(message.text)} />
-                                        <img className="clickable-icon" src="./download-icon.svg" alt="download-icon" onClick={() => handleDownload(message.text, defaultReply)} />
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
                                     </div>
 
                                     <div className="bot">
-                                        <img src="./bot-icon.svg" alt="bot-icon" />
+                                        <img src="./brand-icon.svg" alt="bot-icon" />
                                         <p className="answer">{defaultReply}</p>
-                                        <img className="clickable-icon" src="./copy-icon.svg" alt="copy-icon" onClick={() => handleCopy(defaultReply)} />
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(defaultReply)} />
+                                    </div >
 
+                                    <div className="share-download-button-container">
+                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon"/>
+                                        <img className="clickable-icon" id="download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
                                     </div>
 
                                 </div>
