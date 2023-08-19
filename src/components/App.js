@@ -22,18 +22,19 @@ function App() {
     <div className="app">
 
       {/* heading part */}
-      <div className='heading-part'>
-          <div className='brand-identity'>
-            <img className='brand-icon' src='./brand-icon.svg' alt='DI-icon' />
-            <p className='brand-text'> RON! </p>
-          </div>
-          <div className='heading-buttons'>
-            <button className='dashboard-component-button'>Dashboard</button>
-            <button className='selected' onClick={handleChatComponentButtonClick} >AI Chatbot</button>
-          </div>
-          <div className='profile-button-container'>
-          <img className="profile-button" src="./profile.svg" alt="profile-icon"  onClick={toggleProfileOptions} />
-          </div>
+      <div className='header-container'>
+        <div className='brand-identity-container'>
+          <p className='brand-text'>R</p>
+          <img className='brand-icon' src='./brand-icon.svg' alt='brand-icon' />
+          <p className='brand-text'>N!</p>
+        </div>
+        <div className='header-button-container'>
+          <button className='selected' onClick={handleChatComponentButtonClick} >AI Chatbot</button>
+          <button className='dashboard-component-button'>Dashboard</button>
+        </div>
+        <div className='profile-button-container'>
+          <img className="profile-button" src="./profile-icon.svg" alt="profile-icon" onClick={toggleProfileOptions} />
+        </div>
       </div>
 
 
@@ -41,6 +42,7 @@ function App() {
       <div className="profile-component">
         {isProfileOptionsVisible && <ProfileButtonAction />}
       </div>
+
 
       {/* load chat-component */}
       <div className="Chat-component">
