@@ -7,7 +7,7 @@
 /* Chats Component container */
 .Chats-UI {
   display: flex;
-  height: 85vh;
+  height: 87vh;
   width: 100%;
   background-color:#F3F3F3;
   flex-direction: row;
@@ -105,8 +105,7 @@
 .chat-component-main-section {
   margin-left: 1%;
   margin-right: 1%;
-  width: 60%;
-  height:85vh;
+  width: 65%;
 }
 
 .chat-component-main-container {
@@ -131,7 +130,6 @@
   visibility: hidden;
   margin-bottom: 3%;
   align-self: center;
-
 }
 
 .search-box {
@@ -143,7 +141,6 @@
   padding: 1%;
   border-radius: 0.2rem;
 }
-
 
 /*input box */
 .input-box::before {
@@ -168,44 +165,41 @@
   color: #C9C9C9;
 }
 
-
 /*send button */
 #send-button {
   margin-left: 2%;
 }
 
-.vertical-line{
+.search-vertical-line{
   height: 1.2rem;
   border-left: 2px solid #C9C9C9;
   margin: auto;
-
 }
+
 #uploadFileButton {
   padding: 1%; 
 }
-
 /*end of search-box cutomization*/
 
-
+/* Start styling of chat-conversation-container */
 .chats-conversation-container {
   width: 100%;
-  height: 75vh;
   margin-top: 2%;
-  overflow: auto;
+  height: 77vh;
+  overflow: hidden;
 }
 
+.chats-conversation-container:hover {
+  overflow-y: auto;
+}
 
 /* conversation-display */
-.Chats-conversation {
+.chats-conversation {
   display: flex;
   flex-direction: column;
   background-color: white;
   margin-bottom: 2%;
   border-radius: 0.6rem;
-}
-
-.Chats-conversation:hover {
-  overflow-y: auto;
 }
 
 .user-icon {
@@ -230,7 +224,6 @@
   /* Additional support for word breaking */
   font-size: 1 rem;
 }
-
 
 .user {
   display: flex;
@@ -265,26 +258,6 @@
 #download-button{
   margin-left: 2%;
 }
-
-/* .open-chat-history-button-container {
-  position: absolute;
-  bottom: 50%;
-  right: 1.8%;
-}
-
-#open-chat-history-button {
-  transform: rotate(-90deg);
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: transparent;
-  white-space: nowrap;
-  padding: 10%;
-  justify-self: unset;
-  justify-content: unset;
-  border-bottom: 0.01rem solid #e2dbdb;
-  border-color: #e2dbdb;
-} */
-
 /*end of main-section styles*/
 
 
@@ -292,47 +265,62 @@
 .Chats-right-section {
   display: flex;
   flex-direction: column;
-  background-color: #f3f6fc;
-  padding: 1%;
-  width: 20%;
-  border: 1px solid #dcd7d7;
-  border-top-right-radius: 0.8rem;
-  border-bottom-right-radius: 0.8rem;
+  background-color: white;
+  width: 15%;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
 }
 
 /*Chat history top section*/
-.Chat-history-top {
+.Chat-history-top{
+  background-color: #003F7D;
   display: flex;
-  align-items: center;
-  margin-bottom: 5%;
-  max-width: 100%;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 5%;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
 }
 
 /*new-chat-button*/
-.New-chat-button {
-  background-color: rgb(0 132 255);
-  border-radius: 0.8rem;
-  margin-left: 3%;
-  min-width: 80%;
-  padding: 5%;
-  padding-left: 25%;
-  padding-right: 8%;
-  cursor: pointer;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  white-space: wrap;
+#new-chat-button {
+  display: flex;
+  flex-direction: row;
 }
 
-/*end of style of new-chat-button*/
+.new-chat-icon{
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.new-chat-text{
+  font-size: 1rem;
+  font-weight: 600;
+  color:white;
+  white-space: nowrap;
+  margin-left: 70%;
+  flex:0 10 1rem;
+}
+
+.history-vertical-line{
+  height: 1.4rem;
+  border-left: 1px solid #969696;
+  margin-left: auto;
+  margin-right: 5%;
+}
+
+#toggle-chat-history-button{
+  width: 1.375rem;
+  height: 1rem;
+}
+/*end of style of chat-history-top*/
 
 
-/*start styling of chat-history-section*/
+/*start styling of chat-history-data-section*/
 .chat-history-data-section-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -340,41 +328,30 @@
   overflow-y: auto;
 }
 
-.chat-history-data-section {
-  font-size: 1rem;
-  color: black;
+.chat-history-data-section{
   width: 100%;
 }
 
 .date {
-  font-weight: bold;
-  margin-left: 30%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 5%;
   margin-top: 10%;
 }
 
-.bookmark-plus-history-container {
+.history-container {
   display: flex;
   align-items: flex-start;
   padding: 3%;
-  margin-top: 4%;
+  margin-top: 5%;
+  margin-left: 2%;
 }
 
 .history {
-  width: 65%;
-  margin-left: 2%;
-  margin-right: 1%;
+  color:#969696;
+  margin-left: 5%;
   white-space: wrap;
 }
-
-#small-edit-icon {
-  margin-left: 1%;
-  padding: 1%;
-}
-
-#delete-icon {
-  padding: 1%;
-}
-
 /* End of styling of right section container */
 
 
@@ -397,7 +374,7 @@
 
 
 /* Make responsive for small screen */
-@media screen and (max-width:700px) {
+@media screen and (max-width:768px) {
   .chat-component-main-section {
     width: 98%;
     border-radius: 0.8rem;

@@ -12,7 +12,7 @@ function Chats() {
     const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
-    const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
+    const [updatedChatHistory] = useState(chatHistory);
 
 
     //  Functions : 
@@ -98,13 +98,6 @@ function Chats() {
     };
 
 
-    //9. Handle delete button
-    const handleDelete = (date, index) => {
-        const updatedChatHistory = { ...chatHistory };
-        updatedChatHistory[date].splice(index, 1);
-        setUpdatedChatHistory(updatedChatHistory);
-    }
-
 
     //10. Handle File Upload
     const handleFileUpload = (e) => {
@@ -183,7 +176,7 @@ function Chats() {
 
                             />
                             <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
-                            <p className="vertical-line"></p>
+                            <p className="search-vertical-line"></p>
                             <label htmlFor="uploadFileInput">
                                 <img
                                     id="uploadFileButton"
@@ -200,7 +193,7 @@ function Chats() {
                                 onChange={handleFileUpload}
                             />
                         </div>
-                        
+
                     </div>
 
 
@@ -210,7 +203,7 @@ function Chats() {
                             {/* default messages */}
                             {isDefaultMessages.map((message, index) => {
                                 return (
-                                    <div className="Chats-conversation" key={index}>
+                                    <div className="chats-conversation" key={index}>
                                         <div className="user">
                                             <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                             <p className="question">{message.ques}</p>
@@ -234,7 +227,7 @@ function Chats() {
 
                             {/* dynamic data */}
                             {userQuery.map((message, index) => (
-                                <div className="Chats-conversation">
+                                <div className="chats-conversation">
                                     <div className="user" key={index}>
                                         <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                         <p className="question">{message.text}</p>
@@ -248,18 +241,13 @@ function Chats() {
                                     </div >
 
                                     <div className="share-download-button-container">
-                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon"/>
+                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
                                         <img className="clickable-icon" id="download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
                                     </div>
 
                                 </div>
                             ))}
                         </div>
-                    </div>
-                    <div className="open-chat-history-button-container">
-                        {isChatHistoryToggle &&
-                            <button id="open-chat-history-button" onClick={handleToggleChatHistoryButton}>Chat History</button>
-                        }
                     </div>
                 </div>
             </section>
@@ -269,8 +257,12 @@ function Chats() {
             {!isChatHistoryToggle &&
                 <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="Chat-history-top">
-                        <img id="close-chat-history-button" className="clickable-icon" src='./hamburger-icon.svg' alt="notification" onClick={handleToggleChatHistoryButton} />
-                        <p className="New-chat-button" onClick={startNewConversation}>+ New Chat </p>
+                        <div className="clickable-icon" id="new-chat-button" onClick={startNewConversation}>
+                            <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
+                            <p className="new-chat-text"> New Chat</p>
+                        </div>
+                        <p className="history-vertical-line"> </p>
+                        <img id="toggle-chat-history-button" className="clickable-icon" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
                     </div>
 
 
@@ -281,11 +273,10 @@ function Chats() {
                                 {updatedChatHistory[date].length > 0 &&
                                     <p className="date">{date}</p>}
                                 {updatedChatHistory[date].map((topic, index) => (
-                                    <div className="bookmark-plus-history-container" key={index}>
-                                        <img id="bookmark-button" className="clickable-icon" src="./bookmark-icon.svg" alt="bookmark-icon" />
+                                    <div className="history-container" key={index}>
+                                        <img id="chat-history-icon" src="./clock-icon.svg" alt="chat-history-icon" />
                                         <p className="history">{topic}</p>
-                                        <img src="./edit-small-icon.svg" alt="edit-icon" id="small-edit-icon" className="clickable-icon"></img>
-                                        <img src="./delete-icon.svg" alt="delete-icon" id="delete-icon" className="clickable-icon" onClick={() => handleDelete(date, index)}></img>
+
                                     </div>
                                 ))}
                             </div>
