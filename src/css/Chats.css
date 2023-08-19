@@ -9,7 +9,7 @@
   display: flex;
   height: 87vh;
   width: 100%;
-  background-color:#F3F3F3;
+  background-color: #F3F3F3;
   flex-direction: row;
 }
 
@@ -18,16 +18,24 @@
 .chat-component-left-section {
   display: flex;
   flex-direction: column;
-  width: 16%;
+  width: 15%;
+  margin-left: 1%;
   background-color: white;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
 }
 
 .left-section-title-container {
-  border-bottom: 0.09rem solid #e2dbdb;
-  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #003F7D;
+  padding: 6%;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
 }
 
 .left-section-title {
+  color: white;
   margin-left: 2%;
   font-size: 0.9rem;
   font-weight: 600;
@@ -50,18 +58,18 @@
 }
 
 
-.industry-name-container {
+.industry-title-container {
   display: flex;
   margin-right: 1%;
   justify-content: flex-start;
 }
 
 
-.data {
+.industry-name {
   padding: 1%;
   margin-left: 1%;
   margin-right: 1%;
-  width: 60%;
+  width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -69,30 +77,44 @@
 
 #expand-button {
   margin-left: auto;
+  width: 0.8rem;
+  height: 0.8rem;
+
+}
+
+.horizontal-line {
+  border-bottom: 1px solid #f4ecec;
+  margin: 4%;
+}
+
+.industry-nested-data-container {
+  height: auto;
+  width: 100%;
+  align-self: flex-start;
+  margin-bottom: 2%;
+  margin-top: 4%;
 }
 
 .industry-nested-data {
-  height: auto;
-  align-self: flex-start;
-  padding: 2%;
-  margin-left: 8%;
-  margin-bottom: 2%;
-}
-
-.industry-details-conatiner {
   display: flex;
   justify-content: flex-start;
+  color: #969696;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.industry-nested-data:hover {
+  color: #003F7D;
+  background-color: #e4ecf5;
+  border-radius: 0.2rem;
 }
 
 #bullet-point {
-  align-self: flex-start;
-  width: 2rem;
-  height: 1.8rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.industry-details {
-  padding: 2%;
-  width: 80%;
+.industry-nested-items {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -123,21 +145,11 @@
   align-items: center;
 }
 
-#mobile-new-chat-button {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-left: auto;
-  visibility: hidden;
-  margin-bottom: 3%;
-  align-self: center;
-}
-
 .search-box {
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: white;
-  border: 1px solid #ccc;
   padding: 1%;
   border-radius: 0.2rem;
 }
@@ -170,15 +182,16 @@
   margin-left: 2%;
 }
 
-.search-vertical-line{
+.search-vertical-line {
   height: 1.2rem;
   border-left: 2px solid #C9C9C9;
   margin: auto;
 }
 
 #uploadFileButton {
-  padding: 1%; 
+  padding: 1%;
 }
+
 /*end of search-box cutomization*/
 
 /* Start styling of chat-conversation-container */
@@ -250,14 +263,15 @@
   line-height: 2;
 }
 
-.share-download-button-container{
- margin-left: 8%;
- margin-bottom: 2%;
+.share-download-button-container {
+  margin-left: 8%;
+  margin-bottom: 2%;
 }
 
-#download-button{
+#download-button {
   margin-left: 2%;
 }
+
 /*end of main-section styles*/
 
 
@@ -272,11 +286,11 @@
 }
 
 /*Chat history top section*/
-.Chat-history-top{
+.Chat-history-top {
   background-color: #003F7D;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 5%;
   border-top-right-radius: 0.2rem;
   border-top-left-radius: 0.2rem;
@@ -288,31 +302,32 @@
   flex-direction: row;
 }
 
-.new-chat-icon{
+.new-chat-icon {
   width: 1.125rem;
   height: 1.125rem;
 }
 
-.new-chat-text{
+.new-chat-text {
   font-size: 1rem;
   font-weight: 600;
-  color:white;
+  color: white;
   white-space: nowrap;
   margin-left: 70%;
-  flex:0 10 1rem;
+  flex: 0 10 1rem;
 }
 
-.history-vertical-line{
+.history-vertical-line {
   height: 1.4rem;
   border-left: 1px solid #969696;
   margin-left: auto;
   margin-right: 5%;
 }
 
-#toggle-chat-history-button{
+#toggle-chat-history-button {
   width: 1.375rem;
   height: 1rem;
 }
+
 /*end of style of chat-history-top*/
 
 
@@ -328,7 +343,7 @@
   overflow-y: auto;
 }
 
-.chat-history-data-section{
+.chat-history-data-section {
   width: 100%;
 }
 
@@ -348,10 +363,11 @@
 }
 
 .history {
-  color:#969696;
+  color: #969696;
   margin-left: 5%;
   white-space: wrap;
 }
+
 /* End of styling of right section container */
 
 

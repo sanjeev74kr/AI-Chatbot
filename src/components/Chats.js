@@ -18,11 +18,11 @@ function Chats() {
     //  Functions : 
 
     //1. Handle industry-data if it has nested items
-    const handleExpandButton = (industryName) => {
-        if (industryData[industryName])
+    const handleExpandButton = (index) => {
+        if (industryData[index])
             setIsExpanded((prevState) => ({
                 ...prevState,
-                [industryName]: !prevState[industryName]
+                [index]: !prevState[index]
             }));
     };
 
@@ -124,36 +124,40 @@ function Chats() {
             {/* chat-component-left-section  */}
             <section className='chat-component-left-section'>
                 <div className="left-section-title-container">
-                    <p className="left-section-title">Categories</p>
+                    <p className="left-section-title">Industries</p>
+                    <img className="left-section-toogle-button" src="./toggle-button-right-arrow.svg" alt="left-section-toogle-button" />
                 </div>
                 <div className="industry-data-container">
-                    {Object.keys(industryData).map((industryName) => (
+                    {industryData.map((industry, index) => (
                         <div className="industry-data">
-                            <div className='industry-name-container' key={industryName}>
-                                <img id="page-icon" src="./page.svg" alt="page-icon" />
-                                <p className='data'>{industryName}</p>
+                            <div className='industry-title-container' key={index}>
+                                <img id="industry-icon" src={industry.icon} alt="page-icon" />
+                                <p className='industry-name'>{industry.name}</p>
 
-                                <img id="expand-button" className="clickable-icon" src={isExpanded[industryName] ? "./minus-icon.svg" : "./add-circle-button.svg"}
+                                <img id="expand-button" className="clickable-icon" src={isExpanded[index] ? "./up-arrow-icon.svg" : "./down-arrow-icon.svg"}
                                     alt="expand-button"
-                                    onClick={() => handleExpandButton(industryName)} />
+                                    onClick={() => handleExpandButton(index)} />
                             </div>
-                            {isExpanded[industryName] && (
-                                <div className="industry-nested-data">
-                                    {industryData[industryName].length > 0 ?
 
-                                        industryData[industryName].map((item, index) => (
-                                            <div className="industry-details-conatiner">
+                            {isExpanded[index] && (
+                                <div className="industry-nested-data-container">
+                                    {industry.nestedData.length > 0 ?
+
+                                        industry.nestedData.map((item, index) => (
+                                            <div className="industry-nested-data">
                                                 <img src="./bullet-point.svg" alt="bullet-point" id="bullet-point" />
-                                                <p key={index} className="industry-details">{item}</p>
+                                                <p key={index} className="industry-nested-items">{item}</p>
                                             </div>
                                         ))
 
                                         :
-                                        <p>No details</p>
+                                        <p style={{ color: "#969696", marginLeft: "1rem" }}>No details</p>
                                     }
                                 </div>
+
                             )
                             }
+                            <div className="horizontal-line"></div>
                         </div>
                     ))}
                 </div>
