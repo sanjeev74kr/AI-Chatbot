@@ -1,6 +1,6 @@
 import '../css/App.css';
 import Chats from './Chats';
-import ProfileButtonAction from './ProfileButtonAction';
+import ProfileButtonOptions from './ProfileButtonOptions';
 import { useState } from 'react';
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
 
       {/*load profile options component*/}
       <div className="profile-component">
-        {isProfileOptionsVisible && <ProfileButtonAction />}
+        {isProfileOptionsVisible && <ProfileButtonOptions />}
       </div>
 
 

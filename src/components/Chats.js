@@ -217,7 +217,8 @@ function Chats() {
             }
 
             {/* chat-component-main-section */}
-            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : '' || {isLeftSectionToggle}? "shrink-left-section":''}` }>
+            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} ${isLeftSectionToggle ? 'shrink-left-section' : ''}`}
+>
 
                 <div className="chat-component-main-container">
 
