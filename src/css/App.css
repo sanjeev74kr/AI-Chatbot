@@ -139,7 +139,7 @@
 
 
 /*Make responsive for small screen device */
-@media screen and (max-width:700px) {
+@media screen and (max-width:7608x) {
   .app {
     display: flex;
     flex-direction: column;
@@ -147,6 +147,7 @@
   }
 
   .Chat-component {
+    display: flex;
     align-self: center;
   }
 }

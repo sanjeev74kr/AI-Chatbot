@@ -13,6 +13,7 @@ function Chats() {
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
     const [updatedChatHistory] = useState(chatHistory);
+    const [isLeftSectionToggle, setIsLeftSectionToggle]= useState(false);
 
 
     //  Functions : 
@@ -117,15 +118,22 @@ function Chats() {
     }
 
 
+    //handle-left-section-toggle-button
+    const handleLeftSectionToggleButton=()=>{
+     setIsLeftSectionToggle(!isLeftSectionToggle);
+    }
+
+
 
     return (
         <main className="Chats-UI">
 
             {/* chat-component-left-section  */}
-            <section className='chat-component-left-section'>
+            {!isLeftSectionToggle &&
+            <section className="chat-component-left-section">
                 <div className="left-section-title-container">
                     <p className="left-section-title">Industries</p>
-                    <img className="left-section-toogle-button" src="./toggle-button-right-arrow.svg" alt="left-section-toogle-button" />
+                    <img className="left-section-toogle-button" src="./toggle-button-right-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton}/>
                 </div>
                 <div className="industry-data-container">
                     {industryData.map((industry, index) => (
@@ -162,10 +170,30 @@ function Chats() {
                     ))}
                 </div>
             </section>
+}
 
+            {isLeftSectionToggle &&
+              <section className="shrunked-chat-component-left-section">
+                <div className="shrunked-left-section-container">
+                    <div>
+                    <img src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton}/>
+                    <div className="shrunked-horizontal-line"></div>
+                    </div>
+                    {
+                        industryData.map((industry,index)=>(
+                            <div className="industry-icon-container" key={index}>
+                                <img src={industry.icon} alt="industry-icons"/>
+                                <div className="shrunked-horizontal-line"></div>
+                            </div>
+                        )
+                        )
+                    }
+                </div>
+              </section>
+            }
 
             {/* chat-component-main-section */}
-            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
+            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : '' || {isLeftSectionToggle}? "":'shrink-left-section'}` }>
 
                 <div className="chat-component-main-container">
 
@@ -264,9 +292,9 @@ function Chats() {
 
 
             {/* chat-component right section */}
-            {!isChatHistoryToggle &&
-                <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
-                    <div className="Chat-history-top">
+            
+                <section className={`chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
+                    <div className="chat-history-top">
                         <div className="clickable-icon" id="new-chat-button" onClick={handleNewChatButton}>
                             <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
                             <p className="new-chat-text"> New Chat</p>
@@ -294,7 +322,7 @@ function Chats() {
 
                     </div>
                 </section>
-            }
+            
         </main >
     )
 }

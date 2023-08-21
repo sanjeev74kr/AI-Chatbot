@@ -14,6 +14,29 @@
 }
 
 
+.shrunked-chat-component-left-section{
+  width:4%;
+  margin-left: 1%;
+  background-color: white;
+}
+.shrunked-left-section-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25%;
+  border-top-left-radius: 0.2rem;
+ border-top-right-radius: 0.2rem;  
+}
+.shrunked-horizontal-line{
+border-bottom: 1px solid #C9C9C9;
+  margin-top: 50%;
+}
+
+.industry-icon-container{
+  margin-top: 50%; 
+}
+
+
 /*starting of chat-component-left-section */
 .chat-component-left-section {
   display: flex;
@@ -83,8 +106,8 @@
 }
 
 .horizontal-line {
-  border-bottom: 1px solid #f4ecec;
-  margin: 4%;
+  border-bottom: 1px solid #f0e7e7;
+  margin-top: 6%;
 }
 
 .industry-nested-data-container {
@@ -294,7 +317,7 @@
 
 
 /*chats-right-section-container */
-.Chats-right-section {
+.chats-right-section {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -304,7 +327,7 @@
 }
 
 /*Chat history top section*/
-.Chat-history-top {
+.chat-history-top {
   background-color: #003F7D;
   display: flex;
   justify-content: space-between;
@@ -394,16 +417,14 @@
 
 
 /* style toggle-behavior of right section*/
-.Chats-right-section,
+.chats-right-section,
 .chat-component-main-section {
   transition: width 0.1s ease;
 }
 
 /*  shrink the right section */
-.Chats-right-section.shrink-right-section {
-  display: none;
-
-  
+.chats-right-section.shrink-right-section {
+  display: none;  
 }
 
 /* Expand the main section when the right section is shrunk */
@@ -423,24 +444,35 @@
 /* Make responsive for small screen */
 @media screen and (max-width:768px) {
   .chat-component-main-section {
-    width: 98%;
+    width: 90%;
     border-radius: 0.8rem;
   }
 
   .chat-component-left-section,
-  .Chats-right-section {
+  .chats-right-section {
     display: none;
+  }
+
+  .shrunked-chat-component-left-section{
+    display: flex;
   }
 
  .shrunked-right-section-button{
   display: flex;
-  margin-left: auto;
  }
 
  .search-box{
   width: 88%;
  }
 
+}
+
+.chat-component-main-section.shrink-left-section {
+  width:90%;
+}
+
+.chat-component-main-section.shrink-left-section and .chat-component-main-section.shrink-right-section{
+  width:95%;
 }
 
 
