@@ -69,7 +69,7 @@ function Chats() {
 
 
     //6. for new conversation on cllick of new chat button 
-    const startNewConversation = () => {
+    const handleNewChatButton = () => {
         setUserQuery([]);
         setIsDefaultMessages([]);
     }
@@ -180,7 +180,7 @@ function Chats() {
 
                             />
                             <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
-                            <p className="search-vertical-line"></p>
+                            <p className="vertical-line"></p>
                             <label htmlFor="uploadFileInput">
                                 <img
                                     id="uploadFileButton"
@@ -198,9 +198,15 @@ function Chats() {
                             />
                         </div>
 
+                        <div className="shrunked-right-section-button">
+                    <img className="clickable-button shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton}/>
+                    <div className='vertical-line'></div>
+                    <img className="clickable-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton}/>    
+                    </div>  
+
                     </div>
-
-
+                   
+                  
                     <div className="chats-conversation-container">
                         <div >
 
@@ -261,11 +267,11 @@ function Chats() {
             {!isChatHistoryToggle &&
                 <section className={`Chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="Chat-history-top">
-                        <div className="clickable-icon" id="new-chat-button" onClick={startNewConversation}>
+                        <div className="clickable-icon" id="new-chat-button" onClick={handleNewChatButton}>
                             <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
                             <p className="new-chat-text"> New Chat</p>
                         </div>
-                        <p className="history-vertical-line"> </p>
+                        <p className="vertical-line history-vertical-line"> </p>
                         <img id="toggle-chat-history-button" className="clickable-icon" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
                     </div>
 
