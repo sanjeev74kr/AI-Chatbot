@@ -45,7 +45,7 @@ function App() {
 
 
       {/* load chat-component */}
-      <div className="Chat-component">
+      <div className="chat-component">
         {showChatComponent && <Chats />}
       </div>
 

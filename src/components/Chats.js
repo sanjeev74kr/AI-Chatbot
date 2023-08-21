@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../css/Chats.css'
 import industryData from '../utils/industryData';
 import { defaultMessages, defaultReply } from "../utils/defaultMessages.js";
@@ -13,7 +13,7 @@ function Chats() {
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
     const [updatedChatHistory] = useState(chatHistory);
-    const [isLeftSectionToggle, setIsLeftSectionToggle]= useState(false);
+    const [isLeftSectionToggle, setIsLeftSectionToggle]= useState(true);
 
 
     //  Functions : 
@@ -120,8 +120,32 @@ function Chats() {
 
     //handle-left-section-toggle-button
     const handleLeftSectionToggleButton=()=>{
+        if(window.innerWidth<=768)
+        setIsLeftSectionToggle(true);
+    else
      setIsLeftSectionToggle(!isLeftSectionToggle);
+    
     }
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+        // Initial call to handle left section toggle based on screen width
+        handleLeftSectionToggleButton(mediaQuery.matches);
+
+        // Add listener for screen width changes
+        const handleMediaQueryChange = (e) => {
+            handleLeftSectionToggleButton(e.matches);
+        };
+
+        mediaQuery.addListener(handleMediaQueryChange);
+
+        // Clean up the listener when component unmounts
+        return () => {
+            mediaQuery.removeListener(handleMediaQueryChange);
+        };
+    }, []); // Empty dependency array to run this effect only once
+
 
 
 
@@ -193,7 +217,7 @@ function Chats() {
             }
 
             {/* chat-component-main-section */}
-            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : '' || {isLeftSectionToggle}? "":'shrink-left-section'}` }>
+            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : '' || {isLeftSectionToggle}? "shrink-left-section":''}` }>
 
                 <div className="chat-component-main-container">
 
