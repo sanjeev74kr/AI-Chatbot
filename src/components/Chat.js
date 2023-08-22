@@ -15,9 +15,20 @@ function Chat() {
     const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
+    const [question,setQuestion]= useState('');
+    const [answer,setAnswer]= useState("");
 
-
-    //  Functions : 
+//  Functions :
+const fetchAnswer= async()=>{
+    try{
+        const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question));
+        const data=await response.json();
+        setAnswer(data.answer);
+    }
+    catch(error){
+        console.error("Error fetching answer");
+    }
+}
 
     //1. Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
@@ -45,8 +56,12 @@ function Chat() {
         };
 
         setIsDefaultMessages([]);
+         
+        setQuestion(newQuery.text);
+        
 
         setUserQuery([...userQuery, newQuery]);
+        fetchAnswer();
         setInputValue('');
 
         setTimeout(() => {
@@ -314,8 +329,8 @@ function Chat() {
 
                                     <div className="bot">
                                         <img src="./brand-icon.svg" alt="bot-icon" />
-                                        <p className="answer">{defaultReply}</p>
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(defaultReply)} />
+                                        <p className="answer">{answer}</p>
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
 
                                     <div className="share-download-button-container">
