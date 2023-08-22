@@ -1,11 +1,11 @@
 import React from "react";
 import { useState,useEffect } from "react";
-import '../css/Chats.css'
-import industryData from '../utils/industryData';
-import { defaultMessages, defaultReply } from "../utils/defaultMessages.js";
-import chatHistory from "../utils/chatHistory";
+import '../styles/chat.css'
+import industryData from '../data/industryData';
+import { defaultMessages, defaultReply } from "../data/defaultMessages.js";
+import chatHistory from "../data/chatHistory";
 
-function Chats() {
+function Chat() {
     //variables
     const [isExpanded, setIsExpanded] = useState({}); // Plus button of left side
     const [inputValue, setInputValue] = useState('');
@@ -157,7 +157,7 @@ function Chats() {
             <section className="chat-component-left-section">
                 <div className="left-section-title-container">
                     <p className="left-section-title">Industries</p>
-                    <img className="left-section-toogle-button" src="./toggle-button-right-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton}/>
+                    <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton}/>
                 </div>
                 <div className="industry-data-container">
                     {industryData.map((industry, index) => (
@@ -200,7 +200,7 @@ function Chats() {
               <section className="shrunked-chat-component-left-section">
                 <div className="shrunked-left-section-container">
                     <div>
-                    <img src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton}/>
+                    <img className="toggle-button" src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton}/>
                     <div className="shrunked-horizontal-line"></div>
                     </div>
                     {
@@ -252,9 +252,9 @@ function Chats() {
                         </div>
 
                         <div className="shrunked-right-section-button">
-                    <img className="clickable-button shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton}/>
+                    <img className="shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton}/>
                     <div className='vertical-line'></div>
-                    <img className="clickable-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton}/>    
+                    <img className="toggle-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton}/>    
                     </div>  
 
                     </div>
@@ -281,7 +281,7 @@ function Chats() {
                                         </div>
                                         <div className="share-download-button-container">
                                             <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                            <img className="clickable-icon" id="download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
+                                            <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
                                         </div>
                                     </div>
                                 )
@@ -305,7 +305,7 @@ function Chats() {
 
                                     <div className="share-download-button-container">
                                         <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                        <img className="clickable-icon" id="download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
+                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
                                     </div>
 
                                 </div>
@@ -325,7 +325,7 @@ function Chats() {
                             <p className="new-chat-text"> New Chat</p>
                         </div>
                         <p className="vertical-line history-vertical-line"> </p>
-                        <img id="toggle-chat-history-button" className="clickable-icon" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
+                        <img id="toggle-chat-history-button" className="toggle-button" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
                     </div>
 
 
@@ -339,7 +339,8 @@ function Chats() {
                                     <div className="history-container" key={index}>
                                         <img id="chat-history-icon" src="./clock-icon.svg" alt="chat-history-icon" />
                                         <p className="history">{topic}</p>
-
+                                        <img className="clickable-icon edit-button"src="./edit-button.svg" alt="edit-button"/>
+                                        <img className="clickable-icon delete-button"src="./delete-button.svg" alt="delete-button"/>
                                     </div>
                                 ))}
                             </div>
@@ -352,4 +353,4 @@ function Chats() {
     )
 }
 
-export default Chats;
+export default Chat;

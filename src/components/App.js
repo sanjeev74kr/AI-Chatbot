@@ -1,5 +1,5 @@
-import '../css/App.css';
-import Chats from './Chats';
+import '../styles/app.css';
+import Chat from './Chat';
 import ProfileButtonOptions from './ProfileButtonOptions';
 import { useState } from 'react';
 
@@ -46,7 +46,7 @@ function App() {
 
       {/* load chat-component */}
       <div className="chat-component">
-        {showChatComponent && <Chats />}
+        {showChatComponent && <Chat />}
       </div>
 
     </div>
