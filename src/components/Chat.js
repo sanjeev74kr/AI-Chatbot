@@ -19,6 +19,12 @@ function Chat() {
     const [answer,setAnswer]= useState("");
 
 //  Functions :
+useEffect(() => {
+    if (question !== '') {
+        fetchAnswer();
+    }
+}, [question]);
+
 const fetchAnswer= async()=>{
     console.log("fetchanaswer called ");
     try{
@@ -68,7 +74,7 @@ const fetchAnswer= async()=>{
         
 
         setUserQuery([...userQuery, newQuery]);
-        fetchAnswer();
+        
         setInputValue('');
 
         setTimeout(() => {
@@ -336,7 +342,8 @@ const fetchAnswer= async()=>{
 
                                     <div className="bot">
                                         <img src="./brand-icon.svg" alt="bot-icon" />
-                                        <p className="answer">{answer}</p>
+                                        <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
+                                        </p>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
 
