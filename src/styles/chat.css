@@ -436,6 +436,27 @@
   margin-right: 1%;
 }
 
+.edit-section{
+  display: flex;
+  background-color: white;
+  width: 100%;
+  border: 2px solid  #969696;
+  border-radius:0.2rem;
+  padding: 2%;
+}
+
+.editable-text{
+  border: none;
+  outline: none; 
+  width:85%;
+}
+
+.save-button{
+  border: none;
+  background-color: transparent;
+  margin-left: 5%;
+}
+
 /* End of styling of right section container */
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import '../styles/chat.css'
 import industryData from '../data/industryData';
 import { defaultMessages, defaultReply } from "../data/defaultMessages.js";
@@ -12,8 +12,9 @@ function Chat() {
     const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
-    const [updatedChatHistory,setUpdatedChatHistory] = useState(chatHistory);
-    const [isLeftSectionToggle, setIsLeftSectionToggle]= useState(true);
+    const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
+    const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
+    const [editingIndices, setEditingIndices] = useState({});
 
 
     //  Functions : 
@@ -119,11 +120,11 @@ function Chat() {
 
 
     //11. handle-left-section-toggle-button
-    const handleLeftSectionToggleButton=()=>{
-        if(window.innerWidth<=768)
-        setIsLeftSectionToggle(true);
-    else
-     setIsLeftSectionToggle(!isLeftSectionToggle);
+    const handleLeftSectionToggleButton = () => {
+        if (window.innerWidth <= 768)
+            setIsLeftSectionToggle(true);
+        else
+            setIsLeftSectionToggle(!isLeftSectionToggle);
     }
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -146,12 +147,19 @@ function Chat() {
 
 
     //12. handle delete button
-    const handleDelete=(date,index)=>{
-        const updatedChatHistory={...chatHistory};
-        updatedChatHistory[date].splice(index,1);
+    const handleDelete = (date, index) => {
+        const updatedChatHistory = { ...chatHistory };
+        updatedChatHistory[date].splice(index, 1);
         setUpdatedChatHistory(updatedChatHistory);
-
     }
+
+    //13.  Update the editing index for a specific date
+    const handleEdit = (date, index) => {
+        setEditingIndices((prevEditingIndices) => ({
+            ...prevEditingIndices,
+            [date]: index,
+        }));
+    };
 
 
     return (
@@ -159,73 +167,73 @@ function Chat() {
 
             {/* chat-component-left-section  */}
             {!isLeftSectionToggle &&
-            <section className="chat-component-left-section">
-                <div className="left-section-title-container">
-                    <p className="left-section-title">Industries</p>
-                    <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton}/>
-                </div>
-                <div className="industry-data-container">
-                    {industryData.map((industry, index) => (
-                        <div className="industry-data">
-                            <div className='industry-title-container' key={index}>
-                                <img id="industry-icon" src={industry.icon} alt="page-icon" />
-                                <p className='industry-name'>{industry.name}</p>
+                <section className="chat-component-left-section">
+                    <div className="left-section-title-container">
+                        <p className="left-section-title">Industries</p>
+                        <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton} />
+                    </div>
+                    <div className="industry-data-container">
+                        {industryData.map((industry, index) => (
+                            <div className="industry-data">
+                                <div className='industry-title-container' key={index}>
+                                    <img id="industry-icon" src={industry.icon} alt="page-icon" />
+                                    <p className='industry-name'>{industry.name}</p>
 
-                                <img id="expand-button" className="clickable-icon" src={isExpanded[index] ? "./up-arrow-icon.svg" : "./down-arrow-icon.svg"}
-                                    alt="expand-button"
-                                    onClick={() => handleExpandButton(index)} />
-                            </div>
-
-                            {isExpanded[index] && (
-                                <div className="industry-nested-data-container">
-                                    {industry.nestedData.length > 0 ?
-
-                                        industry.nestedData.map((item, index) => (
-                                            <div className="industry-nested-data">
-                                                <img src="./bullet-point.svg" alt="bullet-point" id="bullet-point" />
-                                                <p key={index} className="industry-nested-items">{item}</p>
-                                            </div>
-                                        ))
-
-                                        :
-                                        <p style={{ color: "#969696", marginLeft: "1rem" }}>No details</p>
-                                    }
+                                    <img id="expand-button" className="clickable-icon" src={isExpanded[index] ? "./up-arrow-icon.svg" : "./down-arrow-icon.svg"}
+                                        alt="expand-button"
+                                        onClick={() => handleExpandButton(index)} />
                                 </div>
 
-                            )
-                            }
-                            <div className="horizontal-line"></div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-}
+                                {isExpanded[index] && (
+                                    <div className="industry-nested-data-container">
+                                        {industry.nestedData.length > 0 ?
+
+                                            industry.nestedData.map((item, index) => (
+                                                <div className="industry-nested-data">
+                                                    <img src="./bullet-point.svg" alt="bullet-point" id="bullet-point" />
+                                                    <p key={index} className="industry-nested-items">{item}</p>
+                                                </div>
+                                            ))
+
+                                            :
+                                            <p style={{ color: "#969696", marginLeft: "1rem" }}>No details</p>
+                                        }
+                                    </div>
+
+                                )
+                                }
+                                <div className="horizontal-line"></div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            }
 
             {isLeftSectionToggle &&
-              <section className="shrunked-chat-component-left-section">
-                <div className="shrunked-left-section-container">
-                    <div>
-                    <img className="toggle-button" src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton}/>
-                    <div className="shrunked-horizontal-line"></div>
+                <section className="shrunked-chat-component-left-section">
+                    <div className="shrunked-left-section-container">
+                        <div>
+                            <img className="toggle-button" src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton} />
+                            <div className="shrunked-horizontal-line"></div>
+                        </div>
+                        {
+                            industryData.map((industry, index) => (
+                                <div className="industry-icon-container" key={index}>
+                                    <img src={industry.icon} alt="industry-icons" />
+                                    <div className="shrunked-horizontal-line"></div>
+                                </div>
+                            )
+                            )
+                        }
                     </div>
-                    {
-                        industryData.map((industry,index)=>(
-                            <div className="industry-icon-container" key={index}>
-                                <img src={industry.icon} alt="industry-icons"/>
-                                <div className="shrunked-horizontal-line"></div>
-                            </div>
-                        )
-                        )
-                    }
-                </div>
-              </section>
+                </section>
             }
 
             {/* chat-component-main-section */}
             <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} 
             ${isLeftSectionToggle ? 'shrink-left-section' : ''}
             ${isChatHistoryToggle && isLeftSectionToggle ? 'expanded-main-section' : ''}`}
->
+            >
 
                 <div className="chat-component-main-container">
 
@@ -259,14 +267,14 @@ function Chat() {
                         </div>
 
                         <div className="shrunked-right-section-button">
-                    <img className="shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton}/>
-                    <div className='vertical-line'></div>
-                    <img className="toggle-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton}/>    
-                    </div>  
+                            <img className="shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton} />
+                            <div className='vertical-line'></div>
+                            <img className="toggle-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton} />
+                        </div>
 
                     </div>
-                   
-                  
+
+
                     <div className="chats-conversation-container">
                         <div >
 
@@ -324,38 +332,80 @@ function Chat() {
 
 
             {/* chat-component right section */}
-            
-                <section className={`chat-component-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
-                    <div className="chat-history-top">
-                        <div className="clickable-icon" id="new-chat-button" onClick={handleNewChatButton}>
-                            <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
-                            <p className="new-chat-text"> New Chat</p>
+
+            <section className={`chat-component-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
+                <div className="chat-history-top">
+                    <div className="clickable-icon" id="new-chat-button" onClick={handleNewChatButton}>
+                        <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
+                        <p className="new-chat-text"> New Chat</p>
+                    </div>
+                    <p className="vertical-line history-vertical-line"> </p>
+                    <img id="toggle-chat-history-button" className="toggle-button" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
+                </div>
+
+
+                {/* chat-history-section  */}
+                <div className="chat-history-data-section-container">
+                    {Object.keys(updatedChatHistory).map((date) => (
+                        <div className="chat-history-data-section" key={date}>
+                            {updatedChatHistory[date].length > 0 && <p className="date">{date}</p>}
+                            
+                            {updatedChatHistory[date].map((topic, index) => (
+                                
+                                <div className="history-container" key={index}>
+                                    {editingIndices[date] === index ? (
+                                        <div className="edit-section">
+                                            <input className="editable-text"
+                                                type="text"
+                                                value={topic}
+                                                onChange={(e) => {
+                                                    const updatedHistory = { ...updatedChatHistory };
+                                                    updatedHistory[date][index] = e.target.value;
+                                                    setUpdatedChatHistory(updatedHistory);
+                                                }}
+                                            />
+                                            <button className="save-button"
+                                                onClick={() => {
+                                                    setEditingIndices((prevEditingIndices) => ({
+                                                        ...prevEditingIndices,
+                                                        [date]: null,
+                                                    }));
+                                                }}
+                                            >
+                                                <img  src="./save-button.svg" alt="save-button"></img>
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <img
+                                                id="chat-history-icon"
+                                                src="./clock-icon.svg"
+                                                alt="chat-history-icon"
+                                            />
+                                            <p className="history">{topic}</p>
+                                            <img
+                                                className="clickable-icon edit-button"
+                                                src="./edit-button.svg"
+                                                alt="edit-button"
+                                                onClick={() => handleEdit(date, index)}
+                                            />
+                                            <img
+                                                className="clickable-icon delete-button"
+                                                src="./delete-button.svg"
+                                                alt="delete-button"
+                                                onClick={() => handleDelete(date, index)}
+                                            />
+                                        </>
+                                    )}
+                                </div>
+
+                            ))}
+
                         </div>
-                        <p className="vertical-line history-vertical-line"> </p>
-                        <img id="toggle-chat-history-button" className="toggle-button" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
-                    </div>
+                    ))}
+                </div>
+            </section>
 
-
-                    {/* chat-history-section  */}
-                    <div className="chat-history-data-section-container" >
-                        {Object.keys(updatedChatHistory).map(date => (
-                            <div className="chat-history-data-section" key={date}>
-                                {updatedChatHistory[date].length > 0 &&
-                                    <p className="date">{date}</p>}
-                                {updatedChatHistory[date].map((topic, index) => (
-                                    <div className="history-container" key={index}>
-                                        <img id="chat-history-icon" src="./clock-icon.svg" alt="chat-history-icon" />
-                                        <p className="history">{topic}</p>
-                                        <img className="clickable-icon edit-button"src="./edit-button.svg" alt="edit-button"/>
-                                        <img className="clickable-icon delete-button"src="./delete-button.svg" alt="delete-button" onClick={()=>handleDelete(date,index)}/>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-
-                    </div>
-                </section>
-            
         </main >
     )
 }
