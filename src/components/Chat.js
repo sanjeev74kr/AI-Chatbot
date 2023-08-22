@@ -20,12 +20,15 @@ function Chat() {
 
 //  Functions :
 const fetchAnswer= async()=>{
+    console.log("fetchanaswer called ");
     try{
         const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
         {
             mode: 'no-cors'
         });
+        console.log("response is:",response);
         const data=await response.json();
+        console.log("data is:",data);
         setAnswer(data.answer);
     }
     catch(error){
@@ -61,7 +64,7 @@ const fetchAnswer= async()=>{
         setIsDefaultMessages([]);
          
         setQuestion(newQuery.text);
-        console.log(question);
+        console.log("question is:",question);
         
 
         setUserQuery([...userQuery, newQuery]);
