@@ -124,7 +124,6 @@ function Chat() {
         setIsLeftSectionToggle(true);
     else
      setIsLeftSectionToggle(!isLeftSectionToggle);
-    
     }
 
     useEffect(() => {
@@ -217,7 +216,9 @@ function Chat() {
             }
 
             {/* chat-component-main-section */}
-            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} ${isLeftSectionToggle ? 'shrink-left-section' : ''}`}
+            <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} 
+            ${isLeftSectionToggle ? 'shrink-left-section' : ''}
+            ${isChatHistoryToggle && isLeftSectionToggle ? 'expanded-main-section' : ''}`}
 >
 
                 <div className="chat-component-main-container">
@@ -318,7 +319,7 @@ function Chat() {
 
             {/* chat-component right section */}
             
-                <section className={`chats-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
+                <section className={`chat-component-right-section ${isChatHistoryToggle ? 'shrink-right-section' : ''}`}>
                     <div className="chat-history-top">
                         <div className="clickable-icon" id="new-chat-button" onClick={handleNewChatButton}>
                             <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />

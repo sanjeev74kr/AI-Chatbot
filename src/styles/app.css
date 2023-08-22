@@ -134,11 +134,13 @@
 ::-webkit-scrollbar {
   width: 0.2rem;
   background-color: transparent;
+  height: 0.2rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 0.8rem;
+  height: 2%;
 }
 
 
