@@ -472,7 +472,8 @@
 
 /* on shrinkage of both left and right section */
 .chat-component-main-section.expanded-main-section {
-  width: 93%;
+  width: 92.5%;
+  overflow: hidden;
 }
 
 

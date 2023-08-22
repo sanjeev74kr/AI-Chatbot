@@ -12,7 +12,7 @@ function Chat() {
     const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
-    const [updatedChatHistory] = useState(chatHistory);
+    const [updatedChatHistory,setUpdatedChatHistory] = useState(chatHistory);
     const [isLeftSectionToggle, setIsLeftSectionToggle]= useState(true);
 
 
@@ -81,7 +81,7 @@ function Chat() {
         navigator.clipboard.writeText(text);
     }
 
-    //8.Hanlde download button
+    //8.Handle download button
     const handleDownload = (ques, ans) => {
         const content = `Question: ${ques}\nAnswer: ${ans}`;
         const blob = new Blob([content], { type: 'text/plain' });
@@ -118,14 +118,13 @@ function Chat() {
     }
 
 
-    //handle-left-section-toggle-button
+    //11. handle-left-section-toggle-button
     const handleLeftSectionToggleButton=()=>{
         if(window.innerWidth<=768)
         setIsLeftSectionToggle(true);
     else
      setIsLeftSectionToggle(!isLeftSectionToggle);
     }
-
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 768px)");
 
@@ -146,6 +145,13 @@ function Chat() {
     }, []); // Empty dependency array to run this effect only once
 
 
+    //12. handle delete button
+    const handleDelete=(date,index)=>{
+        const updatedChatHistory={...chatHistory};
+        updatedChatHistory[date].splice(index,1);
+        setUpdatedChatHistory(updatedChatHistory);
+
+    }
 
 
     return (
@@ -341,7 +347,7 @@ function Chat() {
                                         <img id="chat-history-icon" src="./clock-icon.svg" alt="chat-history-icon" />
                                         <p className="history">{topic}</p>
                                         <img className="clickable-icon edit-button"src="./edit-button.svg" alt="edit-button"/>
-                                        <img className="clickable-icon delete-button"src="./delete-button.svg" alt="delete-button"/>
+                                        <img className="clickable-icon delete-button"src="./delete-button.svg" alt="delete-button" onClick={()=>handleDelete(date,index)}/>
                                     </div>
                                 ))}
                             </div>
