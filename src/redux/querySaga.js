@@ -1,41 +1,80 @@
 import {takeEvery, put} from 'redux-saga/effects'
 
+ 
 
-function* getAnswer(action) {
-console.log("action in saga",action);
-    const question  = action.data;
-    console.log(`question in get answer is: ${question}`);
+ 
+
+function* getAnswer(action){
+    
+    const question = action.data;
+    
+   
+
     try {
-        console.log("I enter");
-        const response = yield fetch('https://dafb-34-142-200-222.ngrok.io/Ron', {
+
+        const response = yield fetch(`https://dafb-34-142-200-222.ngrok.io/Ron`, {
+
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-              query: 'What technologies are utilized in Transforming healthcare?'
-            }),
-            mode: 'no-cors' // Use 'cors' mode instead of 'no-cors'
-          });
-          
-        console.log("but stuck?");
-        const answer = yield response;
-        
-        console.log("Answer from backend is: ", answer);
-        console.log("NO");
+            body: JSON.stringify({'query':question}),
+
+            mode: 'cors' // Use 'cors' mode instead of 'no-cors'
+
+        });
+
+ 
+
+        const answer = yield response.json();
+
+        console.log("Answer from backend is: ", {answer});
+
+   
+
         yield put({ type: "setAnswer", answer });
+
     } catch (error) {
+
         console.error("Error fetching answer:", error);
-       
+
+        // You might want to handle the error here, like dispatching an error action
+
     }
+
+    // let answer=yield fetch(`http://127.0.0.1:8000/get_answer/?question=${question}` ,{
+
+    //     method:'GET',
+
+    //     mode: 'no-cors'
+
+    // });
+
+ 
+
+    // answer=yield answer.json();
+
+   
+
+    // console.log("Answer from backend is: ",answer);
+
+   
+
+    // yield put({type:"setAnswer",answer});
+
 }
 
+ 
+
+ 
 
 function* querySaga(){
-   
-    yield takeEvery("Query", getAnswer);
-    console.log("querysaga is called");
-    console.log("question passed in querysaga: ",);
+
+yield takeEvery("Query",getAnswer);
+
 }
+
+ 
 
 export {querySaga};
