@@ -3,6 +3,7 @@ import Chat from './Chat';
 import ProfileButtonOptions from './ProfileButtonOptions';
 import { useState } from 'react';
 
+
 function App() {
   const [showChatComponent, setShowChatComponent] = useState(true);
   const [isProfileOptionsVisible, setIsProfileOptionsVisible] = useState(false);

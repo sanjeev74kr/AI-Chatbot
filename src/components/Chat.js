@@ -4,6 +4,10 @@ import '../styles/chat.css'
 import industryData from '../data/industryData';
 import { defaultMessages, defaultReply } from "../data/defaultMessages.js";
 import chatHistory from "../data/chatHistory";
+import { useDispatch } from "react-redux";
+import queryAction from "../redux/queryAction";
+import {useSelector} from 'react-redux'
+
 
 function Chat() {
     //variables
@@ -18,29 +22,34 @@ function Chat() {
     const [question,setQuestion]= useState('');
     const [answer,setAnswer]= useState("");
 
-//  Functions :
-useEffect(() => {
-    if (question !== '') {
-        fetchAnswer();
-    }
-}, [question]);
+    const dispatch=useDispatch();
+    
+    const result=useSelector((state)=>state.botReply);
+    console.log("result is:",result);
 
-const fetchAnswer= async()=>{
-    console.log("fetchanaswer called ");
-    try{
-        const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
-        {
-            mode: 'no-cors'
-        });
-        console.log("response is:",response);
-        const data=await response.json();
-        console.log("data is:",data);
-        setAnswer(data.answer);
-    }
-    catch(error){
-        console.error("Error fetching answer");
-    }
-}
+//  Functions :
+// useEffect(() => {
+//     if (question !== '') {
+//         fetchAnswer();
+//     }
+// }, [question]);
+
+// const fetchAnswer= async()=>{
+//     console.log("fetchanaswer called ");
+//     try{
+//         const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
+//         {
+//             mode: 'no-cors'
+//         });
+//         console.log("response is:",response);
+//         const data=await response.json();
+//         console.log("data is:",data);
+//         setAnswer(data.answer);
+//     }
+//     catch(error){
+//         console.error("Error fetching answer");
+//     }
+// }
 
     //1. Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
@@ -70,7 +79,8 @@ const fetchAnswer= async()=>{
         setIsDefaultMessages([]);
          
         setQuestion(newQuery.text);
-        console.log("question is:",question);
+        
+        dispatch(queryAction(newQuery.text));
         
 
         setUserQuery([...userQuery, newQuery]);
@@ -342,8 +352,9 @@ const fetchAnswer= async()=>{
 
                                     <div className="bot">
                                         <img src="./brand-icon.svg" alt="bot-icon" />
-                                        <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
-                                        </p>
+                                        {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
+                                        </p> */}
+                                        <p>{result}</p>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
 
