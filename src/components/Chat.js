@@ -24,8 +24,7 @@ function Chat() {
 
     const dispatch=useDispatch();
     
-    const result=useSelector((state)=>state.botReply);
-    console.log("result is:",result);
+   
 
 //  Functions :
 // useEffect(() => {
@@ -199,6 +198,9 @@ function Chat() {
         }));
     };
 
+    const result=useSelector((state)=>state.botReply);
+    console.log("result is:",result);
+    
 
     return (
         <main className="Chats-UI">
