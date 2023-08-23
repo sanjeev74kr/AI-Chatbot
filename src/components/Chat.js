@@ -198,8 +198,14 @@ function Chat() {
         }));
     };
 
-    const result=useSelector((state)=>state.botReply.response.output_text);
-    console.log("result is:",result);
+
+    const result = useSelector((state) => state.botReply.response?.output_text);
+
+useEffect(() => {
+  setAnswer(result || "");
+}, [result]);
+
+    
 
 
     return (
@@ -356,9 +362,9 @@ function Chat() {
                                         <img src="./brand-icon.svg" alt="bot-icon" />
                                         {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
                                         </p> */}
-                                        {result!=null &&
-                                        <p>{result}</p>
-}
+                                        
+                                        <p>{answer}</p>
+
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
 
