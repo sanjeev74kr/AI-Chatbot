@@ -198,7 +198,7 @@ function Chat() {
         }));
     };
 
-    const result=useSelector((state)=>state);
+    const result=useSelector((state)=>state.botReply.response.output_text);
     console.log("result is:",result);
 
 
@@ -357,7 +357,7 @@ function Chat() {
                                         {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
                                         </p> */}
                                         {result!=null &&
-                                        <p>{result.botReply.response.output_text}</p>
+                                        <p>{result}</p>
 }
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
