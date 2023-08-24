@@ -8,7 +8,7 @@ function* getAnswer(action){
 
     try {
 
-        const response = yield fetch(`https://dafb-34-142-200-222.ngrok.io/Ron`, {
+        const response = yield fetch(`https://08c6-34-138-181-105.ngrok.io/Ron`, {
 
             method: 'POST',
             headers: {
@@ -25,7 +25,7 @@ function* getAnswer(action){
 
         const answer = yield response.json();
 
-        console.log("Answer from backend is: ", {answer});
+        console.log("Answer from backend is: ", answer);
 
    
 

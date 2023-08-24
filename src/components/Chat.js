@@ -6,7 +6,8 @@ import { defaultMessages, defaultReply } from "../data/defaultMessages.js";
 import chatHistory from "../data/chatHistory";
 import { useDispatch } from "react-redux";
 import queryAction from "../redux/queryAction";
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+import { handleAns, handleQandA } from "../redux/CounterSlice";
 
 
 function Chat() {
@@ -19,36 +20,36 @@ function Chat() {
     const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
-    const [question,setQuestion]= useState('');
-    const [answer,setAnswer]= useState("");
+    const [question, setQuestion] = useState('');
+    const [answer, setAnswer] = useState("");
 
-    const dispatch=useDispatch();
-    
-   
+    const dispatch = useDispatch();
 
-//  Functions :
-// useEffect(() => {
-//     if (question !== '') {
-//         fetchAnswer();
-//     }
-// }, [question]);
+const queandans = useSelector((state)=> state.counter.question)
 
-// const fetchAnswer= async()=>{
-//     console.log("fetchanaswer called ");
-//     try{
-//         const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
-//         {
-//             mode: 'no-cors'
-//         });
-//         console.log("response is:",response);
-//         const data=await response.json();
-//         console.log("data is:",data);
-//         setAnswer(data.answer);
-//     }
-//     catch(error){
-//         console.error("Error fetching answer");
-//     }
-// }
+    //  Functions :
+    // useEffect(() => {
+    //     if (question !== '') {
+    //         fetchAnswer();
+    //     }
+    // }, [question]);
+
+    // const fetchAnswer= async()=>{
+    //     console.log("fetchanaswer called ");
+    //     try{
+    //         const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
+    //         {
+    //             mode: 'no-cors'
+    //         });
+    //         console.log("response is:",response);
+    //         const data=await response.json();
+    //         console.log("data is:",data);
+    //         setAnswer(data.answer);
+    //     }
+    //     catch(error){
+    //         console.error("Error fetching answer");
+    //     }
+    // }
 
     //1. Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
@@ -63,27 +64,69 @@ function Chat() {
     //2. Handle Search input box
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
+        setQuestion(e.target.value);
     }
 
 
     //3. Handle user userQuery of chat conversation
-    const handleSendQueryButton = () => {
+    const handleSendQueryButton = async () => {
         if (inputValue.trim() === '') return;
 
         const newQuery = {
-            text: inputValue,
+            que: inputValue,
             isUser: true,
         };
 
+        try {
+
+            const response = await fetch(`http://127.0.0.1:8000/Ron/`, {
+
+                method: 'POST',
+                headers: {
+                    // 'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 'question': question }),
+
+                // mode: 'cors'
+                 // Use 'cors' mode instead of 'no-cors'
+
+            }).then(async (result)=>{
+                if(result.status===200){
+                    const answer = await result.json();
+                    console.log("answer",answer);
+                    dispatch(handleQandA({ que: inputValue, ans: answer }))
+                }
+
+            }).catch(e=>{
+                console.log("Error:",e);
+
+            })
+
+
+
+            // const answer = await response.json();
+            // dispatch(handleQandA({ que: inputValue, ans: answer }))
+
+            // console.log("Answer from backend is: ", answer);
+
+
+        } catch (error) {
+
+            console.error("Error fetching answer:", error);
+
+
+
+        }
         setIsDefaultMessages([]);
-         
+
         setQuestion(newQuery.text);
-        
+
         dispatch(queryAction(newQuery.text));
-        
+
 
         setUserQuery([...userQuery, newQuery]);
-        
+
         setInputValue('');
 
         setTimeout(() => {
@@ -111,6 +154,7 @@ function Chat() {
     const handleNewChatButton = () => {
         setUserQuery([]);
         setIsDefaultMessages([]);
+        dispatch(handleAns())
     }
 
 
@@ -199,13 +243,48 @@ function Chat() {
     };
 
 
-    const result = useSelector((state) => state.botReply.response?.output_text);
+    // const result = useSelector((state) => state.botReply.response?.output_text);
 
-useEffect(() => {
-  setAnswer(result || "");
-}, [result]);
-
+    useEffect(() => {
+        // setAnswer(result || "");
+        // const temp = async () => {
+        //     try {
     
+        //         const response = await fetch(`http://127.0.0.1:8000/Ron/`, {
+    
+        //             method: 'POST',
+        //             headers: {
+        //                 // 'Accept': 'application/json',
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({ 'question': 'which technology are utilized in smart vehical system?' }),
+    
+        //             //mode: 'no-cors' // Use 'cors' mode instead of 'no-cors'
+    
+        //         });
+    
+    
+    
+        //         const answer = await response.json();
+        //         console.log("Answer from backend is: ", answer);
+        //         dispatch(handleQandA({ que: inputValue, ans: answer }))
+    
+    
+    
+        //     } 
+        //     catch (error) {
+    
+        //         console.error("Error fetching answer:", error);
+    
+    
+    
+        //     }
+        // }
+        // temp();   
+    }, []);
+    // }, [result]);
+
+
 
 
     return (
@@ -335,7 +414,7 @@ useEffect(() => {
                                         </div>
                                         <div className="bot">
                                             <img src="./brand-icon.svg" alt="bot-icon" />
-                                            <p className="answer">{message.ans}
+                                            <p className="answer">{message.ans.response?.output_text}
                                             </p>
                                             <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.ans)} />
 
@@ -350,11 +429,11 @@ useEffect(() => {
 
 
                             {/* dynamic data */}
-                            {userQuery.map((message, index) => (
+                            {queandans.map((message, index) => (
                                 <div className="chats-conversation">
                                     <div className="user" key={index}>
                                         <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                        <p className="question">{message.text}</p>
+                                        <p className="question">{message?.que}</p>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
                                     </div>
 
@@ -362,8 +441,8 @@ useEffect(() => {
                                         <img src="./brand-icon.svg" alt="bot-icon" />
                                         {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
                                         </p> */}
-                                        
-                                        <p>{answer}</p>
+
+                                        <p>{message?.ans.answer}</p>
 
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
                                     </div >
@@ -375,6 +454,29 @@ useEffect(() => {
 
                                 </div>
                             ))}
+                            {/* {userQuery.map((message, index) => (
+                                <div className="chats-conversation">
+                                    <div className="user" key={index}>
+                                        <img src="./profile-icon.svg" alt="profile" className="user-icon" />
+                                        <p className="question">{message.text}</p>
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
+                                    </div>
+
+                                    <div className="bot">
+                                        <img src="./brand-icon.svg" alt="bot-icon" />
+
+                                        <p>{answer}</p>
+
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
+                                    </div >
+
+                                    <div className="share-download-button-container">
+                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
+                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
+                                    </div>
+
+                                </div>
+                            ))} */}
                         </div>
                     </div>
                 </div>
@@ -399,9 +501,9 @@ useEffect(() => {
                     {Object.keys(updatedChatHistory).map((date) => (
                         <div className="chat-history-data-section" key={date}>
                             {updatedChatHistory[date].length > 0 && <p className="date">{date}</p>}
-                            
+
                             {updatedChatHistory[date].map((topic, index) => (
-                                
+
                                 <div className="history-container" key={index}>
                                     {editingIndices[date] === index ? (
                                         <div className="edit-section">
@@ -422,7 +524,7 @@ useEffect(() => {
                                                     }));
                                                 }}
                                             >
-                                                <img  src="./save-button.svg" alt="save-button"></img>
+                                                <img src="./save-button.svg" alt="save-button"></img>
                                             </button>
                                         </div>
                                     ) : (
