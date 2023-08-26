@@ -343,7 +343,14 @@ function Chat() {
                                         <img src="./brand-icon.svg" alt="bot-icon" />
                                         <div className="answer">{queandans[index]?.ans.response.output_text !== undefined
                                             ? queandans[index]?.ans.response.output_text
-                                            : <div className="shiver-animation">Loading....</div>}</div>
+                                            : <div className="loading-animation">
+                                              <div className="line line1"></div>
+                                              <div className="line line2"></div>
+                                              <div className="line line3"></div>    
+                                            </div>
+                                        }
+                                            
+                                        </div>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
                                     </div>
 
