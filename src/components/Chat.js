@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import '../styles/chat.css'
 import industryData from '../data/industryData';
-import { defaultMessages, defaultReply } from "../data/defaultMessages.js";
 import chatHistory from "../data/chatHistory";
 import { useDispatch } from "react-redux";
 import queryAction from "../redux/queryAction";
@@ -14,21 +13,36 @@ function Chat() {
     //variables
     const [isExpanded, setIsExpanded] = useState({}); // Plus button of left side
     const [inputValue, setInputValue] = useState('');
-    const [isDefaultMessages, setIsDefaultMessages] = useState(defaultMessages);
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
     const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
-    const [answer, setAnswer] = useState("");
+    const [showAnswer, setShowAnswer] = useState(false);
 
     const dispatch = useDispatch();
 
-const queandans = useSelector((state)=> state.counter.query)
+    const queandans = useSelector((state) => state.counter.query);
+    console.log("quedandans is:", queandans);
+
+    useEffect(() => {
+        if (queandans.length > 0) {
+            setShowAnswer(false); // Reset showAnswer to false before showing the next answer
+
+            // Show the answer after a delay
+            const showAnswerTimeout = setTimeout(() => {
+                setShowAnswer(true);
+            }, 2000);
+
+            // Clear the timeout if the component unmounts or if showAnswer becomes true
+            return () => clearTimeout(showAnswerTimeout);
+        }},
+        [queandans])
 
 
-    //1. Handle industry-data if it has nested items
+
+    //Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
         if (industryData[index])
             setIsExpanded((prevState) => ({
@@ -38,14 +52,14 @@ const queandans = useSelector((state)=> state.counter.query)
     };
 
 
-    //2. Handle Search input box
+    //Handle Search input box
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
         setQuery(e.target.value);
     }
 
 
-    //3. Handle user userQuery of chat conversation
+    //Handle user userQuery of chat conversation
     const handleSendQueryButton = async () => {
         if (inputValue.trim() === '') return;
 
@@ -56,37 +70,26 @@ const queandans = useSelector((state)=> state.counter.query)
 
         try {
 
-            const response = await fetch(`http://127.0.0.1:8000/Ron/`, {
+            const response = await fetch(`http://14.140.154.131:8000/Ron`, {
 
                 method: 'POST',
                 headers: {
-                    // 'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
+                mode:'cors',
                 body: JSON.stringify({ 'query': query }),
 
-                // mode: 'cors'
-                 // Use 'cors' mode instead of 'no-cors'
-
-            }).then(async (result)=>{
-                if(result.status===200){
+            }).then(async (result) => {
+                if (result.status === 200) {
                     const answer = await result.json();
-                    console.log("answer",answer);
+                    console.log("answer", answer);
                     dispatch(handleQandA({ que: inputValue, ans: answer }))
                 }
 
-            }).catch(e=>{
-                console.log("Error:",e);
+            }).catch(e => {
+                console.log("Error:", e);
 
             })
-
-
-
-            // const answer = await response.json();
-            // dispatch(handleQandA({ que: inputValue, ans: answer }))
-
-            // console.log("Answer from backend is: ", answer);
-
 
         } catch (error) {
 
@@ -95,7 +98,7 @@ const queandans = useSelector((state)=> state.counter.query)
 
 
         }
-        setIsDefaultMessages([]);
+
 
         setQuery(newQuery.text);
 
@@ -113,7 +116,7 @@ const queandans = useSelector((state)=> state.counter.query)
     }
 
 
-    //4. Handle when user press enter button while writing in  input box 
+    //Handle when user press enter button while writing in  input box 
     const handleEnterPressed = (e) => {
         if (e.key === 'Enter')
             handleSendQueryButton();
@@ -121,26 +124,25 @@ const queandans = useSelector((state)=> state.counter.query)
     }
 
 
-    //5.  open-close chatHistory section of right side
+    // open-close chatHistory section of right side
     const handleToggleChatHistoryButton = () => {
         setIsChatHistoryToggle(!isChatHistoryToggle);
     }
 
 
-    //6. for new conversation on cllick of new chat button 
+    //for new conversation on cllick of new chat button 
     const handleNewChatButton = () => {
         setUserQuery([]);
-        setIsDefaultMessages([]);
         dispatch(handleAns())
     }
 
 
-    //7.Handle copy button
+    //Handle copy button
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text);
     }
 
-    //8.Handle download button
+    //Handle download button
     const handleDownload = (ques, ans) => {
         const content = `Query: ${ques}\nAnswer: ${ans}`;
         const blob = new Blob([content], { type: 'text/plain' });
@@ -159,7 +161,7 @@ const queandans = useSelector((state)=> state.counter.query)
 
 
 
-    //10. Handle File Upload
+    //Handle File Upload
     const handleFileUpload = (e) => {
         const selectedFile = e.target.files[0];
 
@@ -177,7 +179,7 @@ const queandans = useSelector((state)=> state.counter.query)
     }
 
 
-    //11. handle-left-section-toggle-button
+    //handle-left-section-toggle-button
     const handleLeftSectionToggleButton = () => {
         if (window.innerWidth <= 768)
             setIsLeftSectionToggle(true);
@@ -204,63 +206,20 @@ const queandans = useSelector((state)=> state.counter.query)
     }, []); // Empty dependency array to run this effect only once
 
 
-    //12. handle delete button
+    //handle delete button
     const handleDelete = (date, index) => {
         const updatedChatHistory = { ...chatHistory };
         updatedChatHistory[date].splice(index, 1);
         setUpdatedChatHistory(updatedChatHistory);
     }
 
-    //13.  Update the editing index for a specific date
+    //Update the editing index for a specific date
     const handleEdit = (date, index) => {
         setEditingIndices((prevEditingIndices) => ({
             ...prevEditingIndices,
             [date]: index,
         }));
     };
-
-
-    // const result = useSelector((state) => state.botReply.response?.output_text);
-
-    useEffect(() => {
-        // setAnswer(result || "");
-        // const temp = async () => {
-        //     try {
-    
-        //         const response = await fetch(`http://127.0.0.1:8000/Ron/`, {
-    
-        //             method: 'POST',
-        //             headers: {
-        //                 // 'Accept': 'application/json',
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify({ 'question': 'which technology are utilized in smart vehical system?' }),
-    
-        //             //mode: 'no-cors' // Use 'cors' mode instead of 'no-cors'
-    
-        //         });
-    
-    
-    
-        //         const answer = await response.json();
-        //         console.log("Answer from backend is: ", answer);
-        //         dispatch(handleQandA({ que: inputValue, ans: answer }))
-    
-    
-    
-        //     } 
-        //     catch (error) {
-    
-        //         console.error("Error fetching answer:", error);
-    
-    
-    
-        //     }
-        // }
-        // temp();   
-    }, []);
-    // }, [result]);
-
 
 
 
@@ -347,8 +306,8 @@ const queandans = useSelector((state)=> state.counter.query)
                                 value={inputValue}
                                 onChange={handleInputChange}
                                 onKeyDown={(e) => handleEnterPressed(e)}
-
                             />
+
                             <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
                             <p className="vertical-line"></p>
                             <label htmlFor="uploadFileInput">
@@ -358,6 +317,7 @@ const queandans = useSelector((state)=> state.counter.query)
                                     src="./upload-file-button.svg"
                                     alt="upload-file-button"
                                 />
+
                             </label>
                             <input
                                 type="file"
@@ -378,83 +338,46 @@ const queandans = useSelector((state)=> state.counter.query)
 
 
                     <div className="chats-conversation-container">
-                        <div >
 
-                            {/* default messages */}
-                            {isDefaultMessages.map((message, index) => {
-                                return (
-                                    <div className="chats-conversation" key={index}>
-                                        <div className="user">
-                                            <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                            <p className="question">{message.ques}</p>
-                                            <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.ques)} />
-                                        </div>
-                                        <div className="bot">
-                                            <img src="./brand-icon.svg" alt="bot-icon" />
-                                            <p className="answer">{message.ans.response?.output_text}
-                                            </p>
-                                            <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.ans)} />
+                        {/* dynamic data */}
+                        {queandans.map((message, index) => (
 
-                                        </div>
-                                        <div className="share-download-button-container">
-                                            <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                            <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                            <div className="chats-conversation">
+                                <div className="user" key={index}>
+                                    <img src="./profile-icon.svg" alt="profile" className="user-icon" />
+                                    <p className="query">{message?.que}</p>
+                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message?.que)} />
+                                </div>
 
 
-                            {/* dynamic data */}
-                            {queandans.map((message, index) => (
-                                <div className="chats-conversation">
-                                    <div className="user" key={index}>
-                                        <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                        <p className="query">{message?.que}</p>
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
-                                    </div>
 
-                                    <div className="bot">
-                                        <img src="./brand-icon.svg" alt="bot-icon" />
-                                        {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
+                                <div className="bot">
+                                    <img src="./brand-icon.svg" alt="bot-icon" />
+                                    {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
                                         </p> */}
 
-                                        <p>{message?.ans.answer}</p>
+                                    {showAnswer ? (
+                                        <p className="answer">{message?.ans.answer}</p>
+                                        
+                                    ) : (
 
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
-                                    </div >
+                                        <div className="shiver-animation">Loading....</div>
 
-                                    <div className="share-download-button-container">
-                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
-                                    </div>
+                                    )
+                                    }
+                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message?.ans.answer)} />
+                                </div >
 
+                                <div className="share-download-button-container">
+                                    <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
+                                    <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message?.que, message?.ans.answer)} />
                                 </div>
-                            ))}
-                            {/* {userQuery.map((message, index) => (
-                                <div className="chats-conversation">
-                                    <div className="user" key={index}>
-                                        <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                        <p className="question">{message.text}</p>
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
-                                    </div>
 
-                                    <div className="bot">
-                                        <img src="./brand-icon.svg" alt="bot-icon" />
 
-                                        <p>{answer}</p>
 
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer)} />
-                                    </div >
+                            </div>
+                        ))}
 
-                                    <div className="share-download-button-container">
-                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message.text, defaultReply)} />
-                                    </div>
-
-                                </div>
-                            ))} */}
-                        </div>
                     </div>
                 </div>
             </section>

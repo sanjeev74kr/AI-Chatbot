@@ -300,7 +300,7 @@
   align-items: flex-start;
 }
 
-.question {
+.query {
   width: 90%;
   margin-left: 2%;
   margin-right: 2%;
@@ -547,5 +547,19 @@
 }
 
 .shiver-animation {
-  animation: shiver 1s ease infinite;
+  width:0%;
+  height:100%;
+  margin-left: 5%;
+  animation: shiver 1s ease infinite, typing 10s linear infinite;
+}
+
+
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+  to {
+      width: 10%;
+  }
 }
