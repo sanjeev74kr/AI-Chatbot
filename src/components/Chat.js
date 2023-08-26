@@ -27,18 +27,8 @@ function Chat() {
     console.log("quedandans is:", queandans);
 
     useEffect(() => {
-        if (queandans.length > 0) {
-            setShowAnswer(false); // Reset showAnswer to false before showing the next answer
-
-            // Show the answer after a delay
-            const showAnswerTimeout = setTimeout(() => {
-                setShowAnswer(true);
-            }, 2000);
-
-            // Clear the timeout if the component unmounts or if showAnswer becomes true
-            return () => clearTimeout(showAnswerTimeout);
-        }},
-        [queandans])
+            setShowAnswer(true);
+     }, [queandans]);
 
 
 
@@ -67,6 +57,10 @@ function Chat() {
             que: inputValue,
             isUser: true,
         };
+
+        setUserQuery([...userQuery, newQuery]);
+
+        setInputValue('');
 
         try {
 
@@ -105,13 +99,11 @@ function Chat() {
         dispatch(queryAction(newQuery.text));
 
 
-        setUserQuery([...userQuery, newQuery]);
-
-        setInputValue('');
+      
 
         setTimeout(() => {
             const conversationContainer = document.querySelector(".chats-conversation-container");
-            conversationContainer.scrollTop = conversationContainer.scrollHeight;
+            conversationContainer.scrollBottom = conversationContainer.scrollHeight;
         }, 10);
     }
 
@@ -340,10 +332,10 @@ function Chat() {
                     <div className="chats-conversation-container">
 
                         {/* dynamic data */}
-                        {queandans.map((message, index) => (
+                        {queandans.slice().reverse().map((message, index) => (
 
-                            <div className="chats-conversation">
-                                <div className="user" key={index}>
+                            <div className="chats-conversation" key={index}>
+                                <div className="user">
                                     <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                     <p className="query">{message?.que}</p>
                                     <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message?.que)} />
