@@ -357,7 +357,7 @@ function Chat() {
                                         </p> */}
 
                                     {showAnswer ? (
-                                        <p className="answer">{message?.ans.answer}</p>
+                                        <p className="answer">{message?.ans.response.output_text}</p>
                                         
                                     ) : (
 
