@@ -5,17 +5,17 @@ const counterSlice = createSlice({
     name: "counter",
 
     initialState: {
-        question: [],
+        query: [],
         ans: []
     },
     reducers: {
         handleQandA(state, action) {
             // console.log(state)
             // console.log(action)
-            state.question.push(action.payload)
+            state.query.push(action.payload)
         },
         handleAns(state) {
-            state.question = []
+            state.query = []
         }
     }
 })

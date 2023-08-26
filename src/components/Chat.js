@@ -20,36 +20,13 @@ function Chat() {
     const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
-    const [question, setQuestion] = useState('');
+    const [query, setQuery] = useState('');
     const [answer, setAnswer] = useState("");
 
     const dispatch = useDispatch();
 
-const queandans = useSelector((state)=> state.counter.question)
+const queandans = useSelector((state)=> state.counter.query)
 
-    //  Functions :
-    // useEffect(() => {
-    //     if (question !== '') {
-    //         fetchAnswer();
-    //     }
-    // }, [question]);
-
-    // const fetchAnswer= async()=>{
-    //     console.log("fetchanaswer called ");
-    //     try{
-    //         const response= await fetch("http://127.0.0.1:8000/get_answer/?question="+encodeURIComponent(question),
-    //         {
-    //             mode: 'no-cors'
-    //         });
-    //         console.log("response is:",response);
-    //         const data=await response.json();
-    //         console.log("data is:",data);
-    //         setAnswer(data.answer);
-    //     }
-    //     catch(error){
-    //         console.error("Error fetching answer");
-    //     }
-    // }
 
     //1. Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
@@ -64,7 +41,7 @@ const queandans = useSelector((state)=> state.counter.question)
     //2. Handle Search input box
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
-        setQuestion(e.target.value);
+        setQuery(e.target.value);
     }
 
 
@@ -86,7 +63,7 @@ const queandans = useSelector((state)=> state.counter.question)
                     // 'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 'question': question }),
+                body: JSON.stringify({ 'query': query }),
 
                 // mode: 'cors'
                  // Use 'cors' mode instead of 'no-cors'
@@ -120,7 +97,7 @@ const queandans = useSelector((state)=> state.counter.question)
         }
         setIsDefaultMessages([]);
 
-        setQuestion(newQuery.text);
+        setQuery(newQuery.text);
 
         dispatch(queryAction(newQuery.text));
 
@@ -165,7 +142,7 @@ const queandans = useSelector((state)=> state.counter.question)
 
     //8.Handle download button
     const handleDownload = (ques, ans) => {
-        const content = `Question: ${ques}\nAnswer: ${ans}`;
+        const content = `Query: ${ques}\nAnswer: ${ans}`;
         const blob = new Blob([content], { type: 'text/plain' });
         const url = window.URL.createObjectURL(blob);
 
@@ -433,7 +410,7 @@ const queandans = useSelector((state)=> state.counter.question)
                                 <div className="chats-conversation">
                                     <div className="user" key={index}>
                                         <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                        <p className="question">{message?.que}</p>
+                                        <p className="query">{message?.que}</p>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message.text)} />
                                     </div>
 
