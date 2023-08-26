@@ -19,17 +19,12 @@ function Chat() {
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
-    const [showAnswer, setShowAnswer] = useState(false);
+
 
     const dispatch = useDispatch();
 
     const queandans = useSelector((state) => state.counter.query);
     console.log("quedandans is:", queandans);
-
-    useEffect(() => {
-            setShowAnswer(true);
-     }, [queandans]);
-
 
 
     //Handle industry-data if it has nested items
@@ -58,9 +53,13 @@ function Chat() {
             isUser: true,
         };
 
+
         setUserQuery([...userQuery, newQuery]);
 
         setInputValue('');
+
+
+
 
         try {
 
@@ -70,13 +69,14 @@ function Chat() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                mode:'cors',
+                mode: 'cors',
                 body: JSON.stringify({ 'query': query }),
 
             }).then(async (result) => {
                 if (result.status === 200) {
                     const answer = await result.json();
                     console.log("answer", answer);
+                    console.log("input value after getting result:", inputValue);
                     dispatch(handleQandA({ que: inputValue, ans: answer }))
                 }
 
@@ -99,7 +99,7 @@ function Chat() {
         dispatch(queryAction(newQuery.text));
 
 
-      
+
 
         setTimeout(() => {
             const conversationContainer = document.querySelector(".chats-conversation-container");
@@ -332,43 +332,32 @@ function Chat() {
                     <div className="chats-conversation-container">
 
                         {/* dynamic data */}
-                        {queandans.slice().reverse().map((message, index) => (
 
+                        {userQuery.map((userMessage, index) => (
                             <div className="chats-conversation" key={index}>
                                 <div className="user">
                                     <img src="./profile-icon.svg" alt="profile" className="user-icon" />
-                                    <p className="query">{message?.que}</p>
-                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message?.que)} />
+                                    <p className="query">{userMessage.que}</p>
+                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
                                 </div>
 
+                                <div>
+                                    <div className="bot">
+                                        <img src="./brand-icon.svg" alt="bot-icon" />
+                                        <div className="answer">{queandans[index]?.ans.response.output_text !== undefined
+                                            ? queandans[index]?.ans.response.output_text
+                                            : <div className="shiver-animation">Loading....</div>}</div>
+                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
+                                    </div>
 
-
-                                <div className="bot">
-                                    <img src="./brand-icon.svg" alt="bot-icon" />
-                                    {/* <p className="answer"> {defaultMessages.find(item => item.ques === message.text) ? defaultMessages.find(item => item.ques === message.text).ans : defaultReply}
-                                        </p> */}
-
-                                    {showAnswer ? (
-                                        <p className="answer">{message?.ans.response.output_text}</p>
-                                        
-                                    ) : (
-
-                                        <div className="shiver-animation">Loading....</div>
-
-                                    )
-                                    }
-                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(message?.ans.answer)} />
-                                </div >
-
-                                <div className="share-download-button-container">
-                                    <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                    <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(message?.que, message?.ans.answer)} />
+                                    <div className="share-download-button-container">
+                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
+                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(userMessage.que, queandans[index]?.ans.response.output_text)} />
+                                    </div>
                                 </div>
-
-
-
                             </div>
-                        ))}
+                        )).reverse()}
+
 
                     </div>
                 </div>
