@@ -10,8 +10,6 @@ const counterSlice = createSlice({
     },
     reducers: {
         handleQandA(state, action) {
-             console.log("state in counterSlice is:",state)
-             console.log("Action in counterSlice is:",action)
             state.query.push(action.payload)
         },
         handleAns(state) {

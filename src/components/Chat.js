@@ -20,11 +20,8 @@ function Chat() {
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
 
-
     const dispatch = useDispatch();
-
     const queandans = useSelector((state) => state.counter.query);
-    console.log("quedandans is:", queandans);
 
 
     //Handle industry-data if it has nested items
@@ -76,7 +73,7 @@ function Chat() {
                 if (result.status === 200) {
                     const answer = await result.json();
                     console.log("answer", answer);
-                    console.log("input value after getting result:", inputValue);
+
                     dispatch(handleQandA({ que: inputValue, ans: answer }))
                 }
 

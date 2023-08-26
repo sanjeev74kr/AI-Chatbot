@@ -1,10 +1,8 @@
-import {takeEvery, put} from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
-function* getAnswer(action){
-    
+function* getAnswer(action) {
+
     const question = action.data;
-    
-   
 
     try {
 
@@ -12,22 +10,22 @@ function* getAnswer(action){
 
             method: 'POST',
             headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'query':question}),
+            body: JSON.stringify({ 'query': question }),
 
-            mode: 'cors' // Use 'cors' mode instead of 'no-cors'
+            mode: 'cors'
 
         });
 
- 
+
 
         const answer = yield response.json();
 
         console.log("Answer from backend is: ", answer);
 
-   
+
 
         yield put({ type: "setAnswer", answer });
 
@@ -35,23 +33,15 @@ function* getAnswer(action){
 
         console.error("Error fetching answer:", error);
 
-        
-
     }
 
-    
-}
-
- 
-
- 
-
-function* querySaga(){
-
-yield takeEvery("Query",getAnswer);
 
 }
 
- 
 
-export {querySaga};
+function* querySaga() {
+
+    yield takeEvery("Query", getAnswer);
+}
+
+export { querySaga };
