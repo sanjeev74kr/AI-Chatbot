@@ -430,6 +430,9 @@
   margin-right: 2.5%;
   white-space: wrap;
 }
+.edit-button{
+  margin-left: auto;
+}
 
 .delete-button {
   margin-left: 2.5%;

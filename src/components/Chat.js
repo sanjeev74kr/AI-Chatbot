@@ -2,11 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import '../styles/chat.css'
 import industryData from '../data/industryData';
-import chatHistory from "../data/chatHistory";
 import { useDispatch } from "react-redux";
 import queryAction from "../redux/queryAction";
 import { useSelector } from 'react-redux'
 import { handleAns, handleQandA } from "../redux/CounterSlice";
+import formatDate from "../utils/formatDate";
 
 
 function Chat() {
@@ -15,13 +15,40 @@ function Chat() {
     const [inputValue, setInputValue] = useState('');
     const [userQuery, setUserQuery] = useState([]);
     const [isChatHistoryToggle, setIsChatHistoryToggle] = useState(false);
-    const [updatedChatHistory, setUpdatedChatHistory] = useState(chatHistory);
+    const [updatedChatHistory, setUpdatedChatHistory] = useState({});
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
+
+   
+
+    
+
+    const chatHistory = () => {
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().split('T')[0];
+    
+      setUpdatedChatHistory((prevUpdatedChatHistory) => {
+        // Create a copy of the previous chat history
+        const updatedHistory = {...prevUpdatedChatHistory };
+    
+        // Check if the current date exists in the chat history
+        if (updatedHistory[formattedDate]) {
+          // If the date exists, add the new message to its array
+          updatedHistory[formattedDate].push(inputValue);
+        } else {
+          // If the date doesn't exist, create a new array with the new message
+          updatedHistory[formattedDate] = [inputValue];
+        }
+        return updatedHistory;
+      });
+    };
+    
+
+  
 
 
     //Handle industry-data if it has nested items
@@ -52,8 +79,12 @@ function Chat() {
 
 
         setUserQuery([...userQuery, newQuery]);
+        
+         chatHistory();
 
         setInputValue('');
+
+       
 
 
 
@@ -73,7 +104,7 @@ function Chat() {
                 if (result.status === 200) {
                     const answer = await result.json();
                     console.log("answer", answer);
-
+                    
                     dispatch(handleQandA({ que: inputValue, ans: answer }))
                 }
 
@@ -94,8 +125,6 @@ function Chat() {
         setQuery(newQuery.text);
 
         dispatch(queryAction(newQuery.text));
-
-
 
 
         setTimeout(() => {
@@ -197,9 +226,9 @@ function Chat() {
 
     //handle delete button
     const handleDelete = (date, index) => {
-        const updatedChatHistory = { ...chatHistory };
-        updatedChatHistory[date].splice(index, 1);
-        setUpdatedChatHistory(updatedChatHistory);
+        const updateChatHistory = { ...updatedChatHistory };
+        updateChatHistory[date].splice(index, 1);
+        setUpdatedChatHistory(updateChatHistory);
     }
 
     //Update the editing index for a specific date
@@ -385,7 +414,7 @@ function Chat() {
                 <div className="chat-history-data-section-container">
                     {Object.keys(updatedChatHistory).map((date) => (
                         <div className="chat-history-data-section" key={date}>
-                            {updatedChatHistory[date].length > 0 && <p className="date">{date}</p>}
+                            {updatedChatHistory[date].length > 0 && <p className="date">{formatDate(date)}</p>}
 
                             {updatedChatHistory[date].map((topic, index) => (
 
