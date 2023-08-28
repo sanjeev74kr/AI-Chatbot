@@ -131,7 +131,7 @@ function Chat() {
 
 
     //toogle edit-delete component
-    const toggleEditDelete = (date,index) => {
+    const toggleEditDelete = (date, index) => {
         setShowEditDelete((prevVisibility) => ({
             ...prevVisibility,
             [`${date}-${index}`]: !prevVisibility[`${date}-${index}`],
@@ -375,7 +375,8 @@ function Chat() {
                                 <div className="user">
                                     <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                     <p className="query">{userMessage.que}</p>
-                                    <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
+                                    <img className="conversation-section-icon speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
+                                    <img className="conversation-section-icon copy-button" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
                                 </div>
 
                                 <div>
@@ -393,10 +394,19 @@ function Chat() {
                                         </div>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
                                     </div>
-
-                                    <div className="share-download-button-container">
-                                        <img src="./share-button.svg" alt="share-button" className="clickable-icon" />
-                                        <img className="clickable-icon download-button" src="./download-button.svg" alt="download-button" onClick={() => handleDownload(userMessage.que, queandans[index]?.ans.response.output_text)} />
+                                    <div className="bottom-conversation-part">
+                                        <div className="conversation-bottom-button-container">
+                                            <img className="conversation-section-icon" src="./speaker-icon.svg" alt="speaker-icon" />
+                                            <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" />
+                                            <img className="conversation-section-icon" src="./save-icon.svg" alt="save-icon" />
+                                            <img className="conversation-section-icon" src="./like-icon.svg" alt="like-icon" />
+                                            <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" />
+                                            {/* <img src="./share-button.svg" alt="share-button" className="clickable-icon" />*/}
+                                        </div>
+                                        <div className="conversation-section-icon download-button-container" onClick={() => handleDownload(userMessage.que, queandans[index]?.ans.response.output_text)} >
+                                            <img className="download-button-img" src="./download-button.svg" alt="download-button" />
+                                            <p className="download-button-text">Download</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -460,35 +470,35 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
-                                            <img className="clickable hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={()=>toggleEditDelete(date,index)}/>
+                                            <img className="clickable hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={() => toggleEditDelete(date, index)} />
 
                                             {showEditDelete[`${date}-${index}`] &&
                                                 <div className="edit-delete-container">
                                                     <div className="clickable-icon edit-container" onClick={() => handleEdit(date, index)}>
-                                                    <img
-                                                        className="clickable-icon edit-button"
-                                                        src="./edit-button.svg"
-                                                        alt="edit-button"
-                                                        
-                                                    />
-                                                    <p className="edit-delete-text">Edit Title</p>
+                                                        <img
+                                                            className="clickable-icon edit-button"
+                                                            src="./edit-button.svg"
+                                                            alt="edit-button"
+
+                                                        />
+                                                        <p className="edit-delete-text">Edit Title</p>
                                                     </div>
                                                     <div className="clickable-icon delete-container" onClick={() => handleDelete(date, index)}>
-                                                    <img
-                                                        className="clickable-icon delete-button"
-                                                        src="./delete-button.svg"
-                                                        alt="delete-button"
-                                                        
-                                                    />
-                                                    <p className="edit-delete-text">Delete</p>
+                                                        <img
+                                                            className="clickable-icon delete-button"
+                                                            src="./delete-button.svg"
+                                                            alt="delete-button"
+
+                                                        />
+                                                        <p className="edit-delete-text">Delete</p>
                                                     </div>
 
                                                 </div>
-                                                }
-                                             
+                                            }
 
-                                                </>
-                                        
+
+                                        </>
+
                                     )}
                                 </div>
 
