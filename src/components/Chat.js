@@ -450,6 +450,7 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
+                                            
                                             <img
                                                 className="clickable-icon edit-button"
                                                 src="./edit-button.svg"

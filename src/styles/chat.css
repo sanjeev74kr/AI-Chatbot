@@ -282,7 +282,7 @@
 .user,
 .bot {
   padding: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 0%;
   max-width: 100%;
   /* Limiting the maximum width of messages */
   word-wrap: break-word;
