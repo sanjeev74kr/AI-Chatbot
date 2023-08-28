@@ -19,6 +19,7 @@ function Chat() {
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
+    const [showEditDelete, setShowEditDelete] = useState(false);
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
@@ -129,6 +130,15 @@ function Chat() {
     }
 
 
+    //toogle edit-delete component
+    const toggleEditDelete = (date,index) => {
+        setShowEditDelete((prevVisibility) => ({
+            ...prevVisibility,
+            [`${date}-${index}`]: !prevVisibility[`${date}-${index}`],
+        }))
+    };
+
+
     //Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
         if (industryData[index])
@@ -222,7 +232,7 @@ function Chat() {
     }, []); // Empty dependency array to run this effect only once
 
 
-   
+
     //handle delete button
     const handleDelete = (date, index) => {
         const updateChatHistory = { ...updatedChatHistory };
@@ -230,7 +240,7 @@ function Chat() {
         setUpdatedChatHistory(updateChatHistory);
     }
 
-  
+
     //Update the editing index for a specific date
     const handleEdit = (date, index) => {
         setEditingIndices((prevEditingIndices) => ({
@@ -282,7 +292,7 @@ function Chat() {
 
                                 )
                                 }
-                                <div className="horizontal-line"></div>
+                                {/* <div className="horizontal-line"></div> */}
                             </div>
                         ))}
                     </div>
@@ -450,20 +460,29 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
-                                            
-                                            <img
-                                                className="clickable-icon edit-button"
-                                                src="./edit-button.svg"
-                                                alt="edit-button"
-                                                onClick={() => handleEdit(date, index)}
-                                            />
-                                            <img
-                                                className="clickable-icon delete-button"
-                                                src="./delete-button.svg"
-                                                alt="delete-button"
-                                                onClick={() => handleDelete(date, index)}
-                                            />
-                                        </>
+                                            <img className="clickable hamburger-icon" src="./edit-button.svg" alt="" onClick={()=>toggleEditDelete(date,index)}/>
+
+                                            {showEditDelete[`${date}-${index}`] &&
+                                                <div className="edit-delete-container">
+                                                    <img
+                                                        className="clickable-icon edit-button"
+                                                        src="./edit-button.svg"
+                                                        alt="edit-button"
+                                                        onClick={() => handleEdit(date, index)}
+                                                    />
+                                                    <img
+                                                        className="clickable-icon delete-button"
+                                                        src="./delete-button.svg"
+                                                        alt="delete-button"
+                                                        onClick={() => handleDelete(date, index)}
+                                                    />
+
+                                                </div>
+                                                }
+                                             
+
+                                                </>
+                                        
                                     )}
                                 </div>
 

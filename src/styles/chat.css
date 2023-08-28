@@ -46,7 +46,7 @@
   flex-direction: column;
   width: 15%;
   margin-left: 1%;
-  background-color: white;
+  background-color: #013DB9;
   border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
 }
@@ -54,7 +54,7 @@
 .left-section-title-container {
   display: flex;
   justify-content: space-between;
-  background-color: #003F7D;
+  /* background-color: #003F7D; */
   padding: 6%;
   border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
@@ -78,6 +78,7 @@
 .industry-data-container {
   padding: 1%;
   overflow: hidden;
+  
 }
 
 .industry-data-container:hover {
@@ -107,6 +108,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color:white
 }
 
 
@@ -343,7 +345,7 @@
 
 /*Chat history top section*/
 .chat-history-top {
-  background-color: #003F7D;
+  background-color:  #01C324;;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -430,6 +432,20 @@
   margin-right: 2.5%;
   white-space: wrap;
 }
+
+.hamburger-icon{
+  margin-left: auto;
+}
+
+.edit-delete-container{
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  border: 1px solid gray;
+  
+
+}
+
 .edit-button{
   margin-left: auto;
 }
