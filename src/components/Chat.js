@@ -392,12 +392,12 @@ function Chat() {
                                         }
 
                                         </div>
-                                        <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
+                                        {/* <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} /> */}
                                     </div>
                                     <div className="bottom-conversation-part">
                                         <div className="conversation-bottom-button-container">
                                             <img className="conversation-section-icon" src="./speaker-icon.svg" alt="speaker-icon" />
-                                            <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" />
+                                            <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
                                             <img className="conversation-section-icon" src="./save-icon.svg" alt="save-icon" />
                                             <img className="conversation-section-icon" src="./like-icon.svg" alt="like-icon" />
                                             <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" />
