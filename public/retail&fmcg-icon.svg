@@ -1,12 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-    <g clip-path="url(#clip0_41_2623)">
-      <path d="M6.75293 16.5C7.1666 16.5 7.50195 16.1642 7.50195 15.75C7.50195 15.3358 7.1666 15 6.75293 15C6.33925 15 6.00391 15.3358 6.00391 15.75C6.00391 16.1642 6.33925 16.5 6.75293 16.5Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M14.9922 16.5C15.4059 16.5 15.7412 16.1642 15.7412 15.75C15.7412 15.3358 15.4059 15 14.9922 15C14.5785 15 14.2432 15.3358 14.2432 15.75C14.2432 16.1642 14.5785 16.5 14.9922 16.5Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M0.760742 0.75H3.75683L5.76421 10.7925C5.8327 11.1378 6.02031 11.448 6.29418 11.6687C6.56805 11.8895 6.91074 12.0067 7.26225 12H14.5427C14.8943 12.0067 15.237 11.8895 15.5108 11.6687C15.7847 11.448 15.9723 11.1378 16.0408 10.7925L17.2392 4.5H4.50585" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-      <clipPath id="clip0_41_2623">
-        <rect width="17.9765" height="18" fill="white" transform="translate(0.0117188)"/>
-      </clipPath>
-    </defs>
-  </svg>
+  <g clip-path="url(#clip0_41_2623)">
+    <path
+      d="M6.75293 16.5C7.1666 16.5 7.50195 16.1642 7.50195 15.75C7.50195 15.3358 7.1666 15 6.75293 15C6.33925 15 6.00391 15.3358 6.00391 15.75C6.00391 16.1642 6.33925 16.5 6.75293 16.5Z"
+      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path
+      d="M14.9922 16.5C15.4059 16.5 15.7412 16.1642 15.7412 15.75C15.7412 15.3358 15.4059 15 14.9922 15C14.5785 15 14.2432 15.3358 14.2432 15.75C14.2432 16.1642 14.5785 16.5 14.9922 16.5Z"
+      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path
+      d="M0.760742 0.75H3.75683L5.76421 10.7925C5.8327 11.1378 6.02031 11.448 6.29418 11.6687C6.56805 11.8895 6.91074 12.0067 7.26225 12H14.5427C14.8943 12.0067 15.237 11.8895 15.5108 11.6687C15.7847 11.448 15.9723 11.1378 16.0408 10.7925L17.2392 4.5H4.50585"
+      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_41_2623">
+      <rect width="17.9765" height="18" fill="white" transform="translate(0.0117188)" />
+    </clipPath>
+  </defs>
+</svg>
