@@ -23,42 +23,32 @@ function Chat() {
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
 
-   
 
-    
+    console.log("RENDER");
+
 
     const chatHistory = () => {
-      const currentDate = new Date();
-      const formattedDate = currentDate.toISOString().split('T')[0];
-    
-      setUpdatedChatHistory((prevUpdatedChatHistory) => {
-        // Create a copy of the previous chat history
-        const updatedHistory = {...prevUpdatedChatHistory };
-    
-        // Check if the current date exists in the chat history
-        if (updatedHistory[formattedDate]) {
-          // If the date exists, add the new message to its array
-          updatedHistory[formattedDate].push(inputValue);
-        } else {
-          // If the date doesn't exist, create a new array with the new message
-          updatedHistory[formattedDate] = [inputValue];
-        }
-        return updatedHistory;
-      });
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().split('T')[0];
+        console.log("Chat-history called");
+        setUpdatedChatHistory((prevChatHistory) => {
+            // Create a copy of the previous chat history
+            const updatedHistory = { ...prevChatHistory };
+            console.log("updatedHistory:", updatedHistory);
+            // Check if the current date exists in the chat history
+            if (updatedHistory[formattedDate]) {
+                // If the date exists, add the new message to its array
+                updatedHistory[formattedDate].push(inputValue);
+                console.log("updatedHistory in if:", updatedHistory);
+            } else {
+                // If the date doesn't exist, create a new array with the new message
+                updatedHistory[formattedDate] = [inputValue];
+                console.log("updatedHistory in else:", updatedHistory);
+            }
+            return updatedHistory;
+        });
     };
-    
 
-  
-
-
-    //Handle industry-data if it has nested items
-    const handleExpandButton = (index) => {
-        if (industryData[index])
-            setIsExpanded((prevState) => ({
-                ...prevState,
-                [index]: !prevState[index]
-            }));
-    };
 
 
     //Handle Search input box
@@ -79,13 +69,10 @@ function Chat() {
 
 
         setUserQuery([...userQuery, newQuery]);
-        
-         chatHistory();
+
+        chatHistory();
 
         setInputValue('');
-
-       
-
 
 
 
@@ -104,7 +91,7 @@ function Chat() {
                 if (result.status === 200) {
                     const answer = await result.json();
                     console.log("answer", answer);
-                    
+
                     dispatch(handleQandA({ que: inputValue, ans: answer }))
                 }
 
@@ -142,6 +129,17 @@ function Chat() {
     }
 
 
+    //Handle industry-data if it has nested items
+    const handleExpandButton = (index) => {
+        if (industryData[index])
+            setIsExpanded((prevState) => ({
+                ...prevState,
+                [index]: !prevState[index]
+            }));
+    };
+
+
+
     // open-close chatHistory section of right side
     const handleToggleChatHistoryButton = () => {
         setIsChatHistoryToggle(!isChatHistoryToggle);
@@ -160,6 +158,7 @@ function Chat() {
         navigator.clipboard.writeText(text);
     }
 
+
     //Handle download button
     const handleDownload = (ques, ans) => {
         const content = `Query: ${ques}\nAnswer: ${ans}`;
@@ -176,7 +175,6 @@ function Chat() {
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
     };
-
 
 
     //Handle File Upload
@@ -224,6 +222,7 @@ function Chat() {
     }, []); // Empty dependency array to run this effect only once
 
 
+   
     //handle delete button
     const handleDelete = (date, index) => {
         const updateChatHistory = { ...updatedChatHistory };
@@ -231,6 +230,7 @@ function Chat() {
         setUpdatedChatHistory(updateChatHistory);
     }
 
+  
     //Update the editing index for a specific date
     const handleEdit = (date, index) => {
         setEditingIndices((prevEditingIndices) => ({
@@ -238,6 +238,7 @@ function Chat() {
             [date]: index,
         }));
     };
+
 
 
 
@@ -373,12 +374,12 @@ function Chat() {
                                         <div className="answer">{queandans[index]?.ans.response.output_text !== undefined
                                             ? queandans[index]?.ans.response.output_text
                                             : <div className="loading-animation">
-                                              <div className="line line1"></div>
-                                              <div className="line line2"></div>
-                                              <div className="line line3"></div>    
+                                                <div className="line line1"></div>
+                                                <div className="line line2"></div>
+                                                <div className="line line3"></div>
                                             </div>
                                         }
-                                            
+
                                         </div>
                                         <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
                                     </div>

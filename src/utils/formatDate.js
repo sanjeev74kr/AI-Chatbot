@@ -10,7 +10,7 @@ function formatDate(timestamp) {
     } else if (days === 1) {
       return 'Yesterday';
     } else if (days < 7) {
-      return `Previous ${days} days`;
+      return `This Week`;
     } else if (days < 30) {
       return `This month`;
     } else {
