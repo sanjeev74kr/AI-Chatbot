@@ -460,22 +460,28 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
-                                            <img className="clickable hamburger-icon" src="./edit-button.svg" alt="" onClick={()=>toggleEditDelete(date,index)}/>
+                                            <img className="clickable hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={()=>toggleEditDelete(date,index)}/>
 
                                             {showEditDelete[`${date}-${index}`] &&
                                                 <div className="edit-delete-container">
+                                                    <div className="clickable-icon edit-container" onClick={() => handleEdit(date, index)}>
                                                     <img
                                                         className="clickable-icon edit-button"
                                                         src="./edit-button.svg"
                                                         alt="edit-button"
-                                                        onClick={() => handleEdit(date, index)}
+                                                        
                                                     />
+                                                    <p className="edit-delete-text">Edit Title</p>
+                                                    </div>
+                                                    <div className="clickable-icon delete-container" onClick={() => handleDelete(date, index)}>
                                                     <img
                                                         className="clickable-icon delete-button"
                                                         src="./delete-button.svg"
                                                         alt="delete-button"
-                                                        onClick={() => handleDelete(date, index)}
+                                                        
                                                     />
+                                                    <p className="edit-delete-text">Delete</p>
+                                                    </div>
 
                                                 </div>
                                                 }
