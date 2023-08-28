@@ -344,7 +344,7 @@ display: flex;
   padding: 0.5%;
 }
 
-.download-button-container{
+/* .download-button-container{
 display: flex;
 justify-content: space-around;
 width:12%;
@@ -365,7 +365,7 @@ align-items: center;
 
 .download-button-text {
   color:rgb(16, 16, 16)
-}
+} */
 
 .conversation-section-icon{
   cursor: pointer;
