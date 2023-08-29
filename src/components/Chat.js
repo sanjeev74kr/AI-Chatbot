@@ -22,9 +22,8 @@ function Chat() {
     const [isLeftSectionToggle, setIsLeftSectionToggle] = useState(true);
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
-    const [showEditDelete, setShowEditDelete] = useState(false);
+    const [showEditDelete, setShowEditDelete] = useState({});
     const editDeleteContainerRef = useRef(null);
-
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
@@ -142,13 +141,12 @@ function Chat() {
             ...prevVisibility,
             [`${date}-${index}`]: !prevVisibility[`${date}-${index}`],
         }));
-        console.log("toggledit below called",showEditDelete);
     };
 
 
     const handleHamburgerClick = (event, date, index) => {
         console.log("handlehamburger called",showEditDelete);
-        event.stopPropagation(); // Prevent the click from propagating to the document
+        event.stopPropagation(); 
         toggleEditDelete(date, index);
     };
 
@@ -158,7 +156,7 @@ function Chat() {
             console.log("outside called",showEditDelete);
             if (editDeleteContainerRef.current && !editDeleteContainerRef.current.contains(event.target)) {
                 // Click occurred outside the edit-delete-container, so hide it
-                setShowEditDelete(false);
+                setShowEditDelete({});
             }
         }
     
