@@ -7,6 +7,8 @@ import queryAction from "../redux/queryAction";
 import { useSelector } from 'react-redux'
 import { handleAns, handleQandA } from "../redux/CounterSlice";
 import formatDate from "../utils/formatDate";
+import LoadingAnimationSVG from "./LoadingAnimationSVG.js";
+
 
 
 function Chat() {
@@ -384,11 +386,13 @@ function Chat() {
                                         <img src="./brand-icon.svg" alt="bot-icon" />
                                         <div className="answer">{queandans[index]?.ans.response.output_text !== undefined
                                             ? queandans[index]?.ans.response.output_text
-                                            : <div className="loading-animation">
-                                                <div className="line line1"></div>
-                                                <div className="line line2"></div>
-                                                <div className="line line3"></div>
-                                            </div>
+                                            :<LoadingAnimationSVG/>
+                                            
+                                            // : <div className="loading-animation">
+                                            //     <div className="line line1"></div>
+                                            //     <div className="line line2"></div>
+                                            //     <div className="line line3"></div>
+                                            // </div>
                                         }
 
                                         </div>
