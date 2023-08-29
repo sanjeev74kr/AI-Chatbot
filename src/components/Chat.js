@@ -22,10 +22,12 @@ function Chat() {
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
     const [showEditDelete, setShowEditDelete] = useState(false);
+    const [answer,setAnswer]=useState([]);
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
-
+    
+    useEffect(()=>setAnswer(queandans),[queandans]);
 
     console.log("RENDER");
 
@@ -240,6 +242,14 @@ function Chat() {
         const updateChatHistory = { ...updatedChatHistory };
         updateChatHistory[date].splice(index, 1);
         setUpdatedChatHistory(updateChatHistory);
+        
+        const updatedUserQuery = [...userQuery];
+        updatedUserQuery.splice(index, 1);
+        setUserQuery(updatedUserQuery);
+    
+        const updatedQueAndAns = [...queandans];
+        updatedQueAndAns.splice(index, 1);
+        setAnswer(updatedQueAndAns);
     }
 
 
@@ -384,8 +394,8 @@ function Chat() {
                                 <div>
                                     <div className="bot">
                                         <img src="./brand-icon.svg" alt="bot-icon" />
-                                        <div className="answer">{queandans[index]?.ans.response.output_text !== undefined
-                                            ? queandans[index]?.ans.response.output_text
+                                        <div className="answer">{answer[index]?.ans.response.output_text !== undefined
+                                            ? answer[index]?.ans.response.output_text
                                             :<LoadingAnimationSVG/>
                                             
                                             // : <div className="loading-animation">
@@ -396,18 +406,18 @@ function Chat() {
                                         }
 
                                         </div>
-                                        {/* <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} /> */}
+                                        {/* <img className="clickable-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} /> */}
                                     </div>
                                     
                                         <div className="conversation-bottom-button-container">
                                             <img className="conversation-section-icon" src="./speaker-icon.svg" alt="speaker-icon" />
-                                            <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(queandans[index]?.ans.response.output_text)} />
-                                            <img className="conversation-section-icon" src="./download-button.svg" alt="save-icon" />
+                                            <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
+                                            <img className="conversation-section-icon" src="./download-button.svg" alt="save-icon" onClick={()=>handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
                                             <img className="conversation-section-icon" src="./like-icon.svg" alt="like-icon" />
                                             <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" />
                                             {/* <img src="./share-button.svg" alt="share-button" className="clickable-icon" />*/}
                                         </div>
-                                        {/* <div className="conversation-section-icon download-button-container" onClick={() => handleDownload(userMessage.que, queandans[index]?.ans.response.output_text)} >
+                                        {/* <div className="conversation-section-icon download-button-container" onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} >
                                             <img className="download-button-img" src="./download-button.svg" alt="download-button" />
                                             <p className="download-button-text">Download</p>
                                         </div> */}
@@ -474,7 +484,7 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
-                                            <img className="clickable hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={() => toggleEditDelete(date, index)} />
+                                            <img className="clickable-icon hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={() => toggleEditDelete(date, index)} />
 
                                             {showEditDelete[`${date}-${index}`] &&
                                                 <div className="edit-delete-container">
