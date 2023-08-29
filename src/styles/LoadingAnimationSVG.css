@@ -4,7 +4,7 @@
 	margin: 0;
 	padding: 0;
 }
-:root {
+/* :root {
 	--hue: 223;
 	--bg: hsl(var(--hue),90%,90%);
 	--fg: hsl(var(--hue),90%,10%);
@@ -20,11 +20,11 @@ body {
 	transition:
 		background-color var(--trans-dur),
 		color var(--trans-dur);
-}
+} */
 .pl {
 	display: block;
 	margin: auto;
-	width: 16em;
+	width: 10rem;
 	height: auto;
 }
 .pl line {
@@ -52,13 +52,13 @@ body {
 	animation-name: line5;
 }
 
-/* Dark theme */
+/* Dark theme
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg: hsl(var(--hue),90%,10%);
 		--fg: hsl(var(--hue),90%,90%);
 	}
-}
+} */
 
 /* Animations */
 @keyframes line1 {

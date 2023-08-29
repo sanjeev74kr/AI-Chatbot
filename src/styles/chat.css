@@ -484,12 +484,9 @@ align-items: center;
   margin-left: 5%;
   margin-right: 2.5%;
   max-width:80%;
-  word-wrap: break-word;
-  /* Wrapping long words */
-  overflow-wrap: break-word;
-  /* Fallback for older browsers */
-  word-break: break-word;
-  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
 }
 
 
@@ -640,7 +637,7 @@ margin-top: 10%;
 }
 
 
-/* Add this to your CSS file */
+/* Loading animations
 @keyframes shiver {
   0% {
     transform: translateX(0);
@@ -706,7 +703,7 @@ margin-top: 10%;
   100% {
     transform: scaleX(1);
   }
-}
+} */
 
 
 

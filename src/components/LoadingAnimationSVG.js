@@ -3,7 +3,7 @@ import '../styles/LoadingAnimationSVG.css'; // Import the CSS styles
 
 const LoadingAnimationSVG = () => {
   return (
-    <svg className="pl" viewBox="0 0 128 128" width="128px" height="128px">
+    <svg className="pl" viewBox="0 0 128 128" width="128px" height="100px">
       
 	<defs>
 		<linearGradient id="pl-grad" x1="0" y1="0" x2="1" y2="1">
