@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 import '../styles/chat.css'
 import industryData from '../data/industryData';
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { handleAns, handleQandA, handleDeleteQandA } from "../redux/CounterSlice";
 import formatDate from "../utils/formatDate";
 import LoadingAnimationSVG from "./LoadingAnimationSVG.js";
+
 
 
 
@@ -22,17 +23,14 @@ function Chat() {
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
     const [showEditDelete, setShowEditDelete] = useState(false);
-   
+    const editDeleteContainerRef = useRef(null);
+
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
     const [answer,setAnswer]=useState();
 
     useEffect(()=>setAnswer(queandans),[queandans]);
-    
-    console.log("änswer in useState",answer);
-    console.log("RENDER");
-
 
 
     const chatHistory = () => {
@@ -139,11 +137,37 @@ function Chat() {
 
     //toogle edit-delete component
     const toggleEditDelete = (date, index) => {
+        console.log("toggledit called",showEditDelete);
         setShowEditDelete((prevVisibility) => ({
             ...prevVisibility,
             [`${date}-${index}`]: !prevVisibility[`${date}-${index}`],
-        }))
+        }));
+        console.log("toggledit below called",showEditDelete);
     };
+
+
+    const handleHamburgerClick = (event, date, index) => {
+        console.log("handlehamburger called",showEditDelete);
+        event.stopPropagation(); // Prevent the click from propagating to the document
+        toggleEditDelete(date, index);
+    };
+
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            console.log("outside called",showEditDelete);
+            if (editDeleteContainerRef.current && !editDeleteContainerRef.current.contains(event.target)) {
+                // Click occurred outside the edit-delete-container, so hide it
+                setShowEditDelete(false);
+            }
+        }
+    
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
 
     //Handle industry-data if it has nested items
@@ -490,10 +514,10 @@ function Chat() {
                                                 alt="chat-history-icon"
                                             />
                                             <p className="history">{topic}</p>
-                                            <img className="clickable-icon hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={() => toggleEditDelete(date, index)} />
+                                            <img className="clickable-icon hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={(event) => handleHamburgerClick(event, date, index)} />
 
                                             {showEditDelete[`${date}-${index}`] &&
-                                                <div className="edit-delete-container">
+                                                <div ref={editDeleteContainerRef} className="edit-delete-container">
                                                     <div className="clickable-icon edit-container" onClick={() => handleEdit(date, index)}>
                                                         <img
                                                             className="clickable-icon edit-button"
