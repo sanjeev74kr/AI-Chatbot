@@ -14,10 +14,15 @@ const counterSlice = createSlice({
         },
         handleAns(state) {
             state.query = []
+        },
+        handleDeleteQandA(state, action) {
+            const deletedQuery = action.payload;
+            state.query = state.query.filter(item => item.que !== deletedQuery.que);
+            state.ans = state.ans.filter(item => item.que !== deletedQuery.que);
         }
     }
 })
 
-export const { handleQandA, handleAns } = counterSlice.actions;
+export const { handleQandA, handleAns,handleDeleteQandA } = counterSlice.actions;
 
 export default counterSlice.reducer;

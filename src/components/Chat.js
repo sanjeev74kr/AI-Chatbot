@@ -5,7 +5,7 @@ import industryData from '../data/industryData';
 import { useDispatch } from "react-redux";
 import queryAction from "../redux/queryAction";
 import { useSelector } from 'react-redux'
-import { handleAns, handleQandA } from "../redux/CounterSlice";
+import { handleAns, handleQandA, handleDeleteQandA } from "../redux/CounterSlice";
 import formatDate from "../utils/formatDate";
 import LoadingAnimationSVG from "./LoadingAnimationSVG.js";
 
@@ -22,14 +22,17 @@ function Chat() {
     const [editingIndices, setEditingIndices] = useState({});
     const [query, setQuery] = useState('');
     const [showEditDelete, setShowEditDelete] = useState(false);
-    const [answer,setAnswer]=useState([]);
+   
 
     const dispatch = useDispatch();
     const queandans = useSelector((state) => state.counter.query);
-    
-    useEffect(()=>setAnswer(queandans),[queandans]);
+    const [answer,setAnswer]=useState();
 
+    useEffect(()=>setAnswer(queandans),[queandans]);
+    
+    console.log("änswer in useState",answer);
     console.log("RENDER");
+
 
 
     const chatHistory = () => {
@@ -244,12 +247,15 @@ function Chat() {
         setUpdatedChatHistory(updateChatHistory);
         
         const updatedUserQuery = [...userQuery];
-        updatedUserQuery.splice(index, 1);
+        const deletedQuery = updatedUserQuery.splice(index, 1)[0];
         setUserQuery(updatedUserQuery);
     
-        const updatedQueAndAns = [...queandans];
+        const updatedQueAndAns = [...answer];
         updatedQueAndAns.splice(index, 1);
-        setAnswer(updatedQueAndAns);
+        
+        setAnswer(updatedQueAndAns); 
+
+        dispatch(handleDeleteQandA(deletedQuery));
     }
 
 
