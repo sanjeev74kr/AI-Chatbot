@@ -1,53 +1,19 @@
 import '../styles/app.css';
-import Chat from './Chat';
-import ProfileButtonOptions from './ProfileButtonOptions';
 import { useState } from 'react';
-
+import { Header } from './Header';
+import Chat from './Chat';
 
 function App() {
-  const [showChatComponent, setShowChatComponent] = useState(true);
-  const [isProfileOptionsVisible, setIsProfileOptionsVisible] = useState(false);
-
-
-  const handleChatComponentButtonClick = () => {
-    setShowChatComponent(true);
-  }
-
-  const toggleProfileOptions = () => {
-    setIsProfileOptionsVisible(!isProfileOptionsVisible);
-  }
-
+  const [showAIChatbotComponent, setShowAIChatbotComponent] = useState(true);
 
   return (
-    // main app entry 
     <div className="app">
+      {/*Load Header */}
+      <Header setShowAIChatbotComponent={setShowAIChatbotComponent} />
 
-      {/* heading part */}
-      <div className='header-container'>
-        <div className='brand-identity-container'>
-          <p className='brand-text'>R</p>
-          <img className='brand-icon' src='./brand-icon.svg' alt='brand-icon' />
-          <p className='brand-text'>N!</p>
-        </div>
-        <div className='header-button-container'>
-          <button className='selected' onClick={handleChatComponentButtonClick} >AI Chatbot</button>
-          <button className='dashboard-component-button'>Dashboard</button>
-        </div>
-        <div className='profile-button-container'>
-          <img className="profile-button" src="./profile-icon.svg" alt="profile-icon" onClick={toggleProfileOptions} />
-        </div>
-      </div>
-
-
-      {/*load profile options component*/}
-      <div className="profile-component">
-        {isProfileOptionsVisible && <ProfileButtonOptions />}
-      </div>
-
-
-      {/* load chat-component */}
+      {/* Load chat-component */}
       <div className="chat-component">
-        {showChatComponent && <Chat />}
+        {showAIChatbotComponent && <Chat />}
       </div>
 
     </div>

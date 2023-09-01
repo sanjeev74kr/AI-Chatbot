@@ -1,0 +1,107 @@
+/* header container */
+.header-container {
+    width: 100%;
+    background-color: #003F7D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 0.1rem solid #f4ebeb;
+}
+
+.brand-identity-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.brand-text {
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.header-button-container {
+    display: flex;
+    margin-right: 22%;
+}
+
+.ai-chatbot-component-button {
+    width: fit-content;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    border: 1px solid white;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    padding: 6%;
+    padding-left: 15%;
+    padding-right: 15%;
+    cursor: pointer;
+}
+
+.dashboard-component-button {
+    width: fit-content;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    border: 1px solid white;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    padding: 6%;
+    padding-left: 15%;
+    padding-right: 15%;
+    cursor: pointer;
+}
+
+.selected {
+    width: fit-content;
+    background-color: white;
+    color: #003F7D;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    border: 1px solid white;
+    padding: 6%;
+    padding-left: 15%;
+    padding-right: 15%;
+    cursor: pointer;
+}
+
+.ai-chatbot-component-button.selected{
+  border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+}
+
+.dashboard-component-button.selected{
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+
+.profile-button-container {
+    display: flex;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.profile-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+/*end of header section */
+
+
+/* Load profile-options component */
+.profile-component {
+    position: absolute;
+    top: 8.5%;
+    right: 1%;
+    z-index: 10
+}

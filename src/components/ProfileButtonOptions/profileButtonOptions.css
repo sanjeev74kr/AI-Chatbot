@@ -1,9 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .profile-options-container {
   display: flex;
   flex-direction: column;
@@ -19,18 +13,18 @@
 }
 
 
-.manage-account-container{
+.manage-account-container {
   display: flex;
   margin-left: 4%;
   cursor: pointer;
 }
 
-.profile-options-icon{
-width:1.5rem;
-height:1.625rem;
+.profile-options-icon {
+  width: 1.5rem;
+  height: 1.625rem;
 }
 
-.signOut-container{
+.signOut-container {
   display: flex;
   margin-left: 4%;
   cursor: pointer;
@@ -41,5 +35,4 @@ height:1.625rem;
   margin-left: 5%;
   font-size: 1rem;
   white-space: nowrap;
-  
 }
