@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/LoadingAnimationSVG.css'; // Import the CSS styles
 
-const LoadingAnimationSVG = () => {
+const loadingAnimationSVG = () => {
   return (
     <svg className="pl" viewBox="0 0 128 128" width="128px" height="100px">
       
@@ -61,4 +60,4 @@ const LoadingAnimationSVG = () => {
   );
 }
 
-export default LoadingAnimationSVG;
+export default loadingAnimationSVG;

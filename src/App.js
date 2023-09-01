@@ -1,7 +1,7 @@
-import '../styles/app.css';
+import './styles/app.css';
 import { useState } from 'react';
-import { Header } from './Header';
-import Chat from './Chat';
+import { Header } from './components/Header';
+import AIChatbot from './screens/AIChatbot/AIChatbot';
 
 function App() {
   const [showAIChatbotComponent, setShowAIChatbotComponent] = useState(true);
@@ -13,7 +13,7 @@ function App() {
 
       {/* Load chat-component */}
       <div className="chat-component">
-        {showAIChatbotComponent && <Chat />}
+        {showAIChatbotComponent && <AIChatbot />}
       </div>
 
     </div>
