@@ -23,6 +23,6 @@ const counterSlice = createSlice({
     }
 })
 
-export const { handleQandA, handleAns,handleDeleteQandA } = counterSlice.actions;
+export const { handleQandA, handleAns, handleDeleteQandA } = counterSlice.actions;
 
 export default counterSlice.reducer;

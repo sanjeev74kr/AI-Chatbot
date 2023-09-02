@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CounterSlice from "./CounterSlice";
+import { CounterSlice } from ".";
 
 
 const store = configureStore({
@@ -9,7 +9,5 @@ const store = configureStore({
 
         getDefaultMiddleware({}),
 });
-
-console.log("store is called");
 
 export default store;

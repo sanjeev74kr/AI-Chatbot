@@ -12,7 +12,7 @@ const industryData = [
   {
     icon: "./power&utility-icon.svg",
     name: "Power & Utility",
-    nestedData:["Power resources", "Project details"],
+    nestedData: ["Power resources", "Project details"],
   },
   {
     icon: "./realstate-icon.svg",
@@ -23,8 +23,8 @@ const industryData = [
     icon: "./retail&fmcg-icon.svg",
     name: "Retail/FMCG",
     nestedData: [],
-      },
-  {   
+  },
+  {
     icon: "./transportation-icon.svg",
     name: "Transportation",
     nestedData: [],

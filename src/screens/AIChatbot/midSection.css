@@ -1,0 +1,182 @@
+/* start of Chat-component main section container style*/
+.chat-component-main-section {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 65%;
+}
+
+.chat-component-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* start of search box customization*/
+.search-box-container {
+  width: 100%;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1%;
+  border-radius: 0.2rem;
+}
+
+/*input box */
+.input-box::before {
+  color: black;
+  /* Set the caret color */
+}
+
+.input-box {
+  width: 85%;
+  margin-left: 1%;
+  margin-right: 1%;
+  background-color: white;
+  border: none;
+  outline: none;
+  caret-color: black;
+  font-size: 1.2em;
+  color: black;
+}
+
+/* Change the color of the placeholder text */
+.input-box::placeholder {
+  color: #C9C9C9;
+}
+
+/*send button */
+#send-button {
+  margin-left: 2%;
+}
+
+#uploadFileButton {
+  padding: 1%;
+}
+
+.shrunked-right-section-button {
+
+  background-color: #003F7D;
+  display: flex;
+  width: 10%;
+  padding: 1%;
+  margin-left: auto;
+  border-radius: 0.2rem;
+  display: none;
+}
+
+.shrunked-new-chat-button {
+  margin: 5%;
+  cursor: pointer;
+}
+
+.toggle-chat-history-button {
+  margin: 5%;
+}
+
+/*end of search-box container-styling*/
+
+
+/* Start styling of chat-conversation-container */
+.chats-conversation-container {
+  width: 100%;
+  margin-top: 2%;
+  height: 77vh;
+  overflow: hidden;
+}
+
+.chats-conversation-container:hover {
+  overflow-y: auto;
+}
+
+/* conversation-display */
+.chats-conversation {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-bottom: 2%;
+  border-radius: 0.6rem;
+}
+
+.user-icon {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #003F7D;
+  border-radius: 50%;
+}
+
+/*customization of user and bot-msg box */
+.user,
+.bot {
+  padding: 2%;
+  margin-bottom: 0%;
+  max-width: 100%;
+  /* Limiting the maximum width of messages */
+  word-wrap: break-word;
+  /* Wrapping long words */
+  overflow-wrap: break-word;
+  /* Fallback for older browsers */
+  word-break: break-word;
+  /* Additional support for word breaking */
+  font-size: 1 rem;
+}
+
+.user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.query {
+  width: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.speaker-button {
+  margin-left: 2%;
+}
+
+.copy-button {
+  margin-left: 2%;
+}
+
+.bot {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.answer {
+  width: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+  line-height: 2;
+}
+
+.bottom-conversation-part {
+  display: flex;
+}
+
+.conversation-bottom-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0.6rem;
+  background-color: rgb(255, 251, 251);
+  width: 20%;
+  margin-left: 5%;
+  margin-bottom: 2%;
+  padding: 0.5%;
+}
+
+.conversation-section-icon {
+  cursor: pointer;
+}

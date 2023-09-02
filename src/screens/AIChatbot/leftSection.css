@@ -1,7 +1,7 @@
 .shrunked-chat-component-left-section {
   width: 3.5%;
   margin-left: 1%;
-  background-color:#013DB9;
+  background-color: #013DB9;
 }
 
 /* Style clickable-icon */
@@ -70,7 +70,7 @@
 .industry-data-container {
   padding: 1%;
   overflow: hidden;
-  
+
 }
 
 .industry-data-container:hover {
@@ -100,7 +100,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color:white
+  color: white
 }
 
 

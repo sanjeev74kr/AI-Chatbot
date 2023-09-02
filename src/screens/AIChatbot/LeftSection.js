@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import industryData from '../../data/industryData';
-import {AIChatbotLeftSectionStyles} from './leftSection.css'
+import industryData from '../../sampleData/industryData';
+import { AIChatbotLeftSectionStyles } from './leftSection.css'
 
 function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
-    const [isExpanded, setIsExpanded] = useState({});     
+
+    const [isExpanded, setIsExpanded] = useState({});
 
     //Handle industry-data if it has nested items
     const handleExpandButton = (index) => {

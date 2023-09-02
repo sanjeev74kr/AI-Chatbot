@@ -73,12 +73,12 @@
     cursor: pointer;
 }
 
-.ai-chatbot-component-button.selected{
-  border-top-left-radius: 0.2rem;
+.ai-chatbot-component-button.selected {
+    border-top-left-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;
 }
 
-.dashboard-component-button.selected{
+.dashboard-component-button.selected {
     border-top-right-radius: 0.2rem;
     border-bottom-right-radius: 0.2rem;
 }
