@@ -18,7 +18,7 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     //handle-left-section-toggle-button
     const handleLeftSectionToggleButton = () => {
         if (window.innerWidth <= 768)
-            setIsLeftSectionToggle(true);
+            setIsLeftSectionToggle(!isLeftSectionToggle);
         else
             setIsLeftSectionToggle(!isLeftSectionToggle);
     }

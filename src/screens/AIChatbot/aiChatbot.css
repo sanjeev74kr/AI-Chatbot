@@ -22,7 +22,7 @@
 /* Expand the main section when the right section is shrunk */
 .chat-component-main-section.shrink-right-section {
   width: 81%;
-
+  
   .shrunked-right-section-button {
     display: flex;
   }
@@ -31,6 +31,8 @@
     width: 88%;
   }
 }
+
+
 
 
 /*Expand the main section on shrinkage of left-section */
@@ -46,16 +48,16 @@
 }
 
 
-
 /* Make responsive for small screen */
 @media screen and (max-width:768px) {
 
   .chat-component-main-section {
     width: 85%;
+    margin-left: 2.5%;
+    margin-right: 0.5%;
   }
 
-  .chat-component-left-section,
-  .chat-component-right-section {
+  .chat-component-right-section{
     display: none;
   }
 
@@ -63,14 +65,24 @@
     width: 10%;
   }
 
-  .shrunked-right-section-button {
+  .chat-component-left-section{
+    width:30%;
+    height:100%;
+    position: absolute;
+    z-index:999;
+  }
+  
+.shrunked-right-section-button{
+   display: none;
+  }
+
+  .small-device-new-chat-button-container{
     display: flex;
-    margin-left: 3%;
-    width: 15%;
+    margin-left: auto;
+  
   }
-
+   
   .search-box {
-    width: 80%;
+    width: 85%;
   }
-
 }

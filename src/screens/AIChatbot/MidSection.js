@@ -142,7 +142,9 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         <div className='vertical-line'></div>
                         <img className="toggle-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton} />
                     </div>
-
+                    <div className="small-device-new-chat-button-container">
+                    <img className="small-device-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton} />    
+                    </div>
                 </div>
 
 

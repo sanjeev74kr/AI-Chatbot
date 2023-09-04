@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { aiChatbotStyles } from './aiChatbot.css'
 import AIChatbotLeftSection from './LeftSection'
 import AIChatbotMidSection from './MidSection';
 import AIChatbotRightSection from './RightSection';
+import { aiChatbotStyles } from './aiChatbot.css'
 import { useDispatch } from "react-redux";
 import { handleAns } from "../../services/CounterSlice";
 

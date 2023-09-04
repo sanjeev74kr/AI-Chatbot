@@ -1,11 +1,13 @@
 
 import { handleQandA } from "./CounterSlice";
 
+const BASE_URL= process.env.BASE_URL;
+
 async function QueryAPIHandler(query, inputValue, dispatch) {
 
     try {
 
-        const response = await fetch(`http://14.140.154.131:8000/Ron`, {
+        const response = await fetch(`${BASE_URL}`, {
 
             method: 'POST',
             headers: {
