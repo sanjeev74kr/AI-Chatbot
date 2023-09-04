@@ -3,8 +3,8 @@ import industryData from '../../sampleData/industryData';
 import { AIChatbotLeftSectionStyles } from './leftSection.css'
 
 function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
-
     const [isExpanded, setIsExpanded] = useState({});
+    const [isclickedLeftToggle, setIsClickedLeftToggle] = useState(false);
 
     //Handle industry-data if it has nested items
     const handleExpandButton = (index) => {
@@ -17,9 +17,16 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
 
     //handle-left-section-toggle-button
     const handleLeftSectionToggleButton = () => {
+
         if (window.innerWidth <= 768)
-            setIsLeftSectionToggle(!isLeftSectionToggle);
-        else
+            setIsLeftSectionToggle(true);
+        else{
+            setIsLeftSectionToggle(false);
+        }
+
+        setIsClickedLeftToggle(true);
+
+        if (isclickedLeftToggle)
             setIsLeftSectionToggle(!isLeftSectionToggle);
     }
     useEffect(() => {
@@ -41,7 +48,29 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
         };
     }, []); // Empty dependency array to run this effect only once
 
+    // handle-left-section-toggle-button
+    // const handleLeftSectionToggleButton = () => {
+    //     setIsLeftSectionToggle(!isLeftSectionToggle);
+    // }
 
+    // useEffect(() => {
+    //     const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    //     // Initial call to handle left section toggle based on screen width
+    //     setIsLeftSectionToggle(!mediaQuery.matches);
+
+    //     // Add listener for screen width changes
+    //     const handleMediaQueryChange = (e) => {
+    //         setIsLeftSectionToggle(!e.matches);
+    //     };
+
+    //     mediaQuery.addListener(handleMediaQueryChange);
+
+    //     // Clean up the listener when the component unmounts
+    //     return () => {
+    //         mediaQuery.removeListener(handleMediaQueryChange);
+    //     };
+    // }, []); // Empty dependency array to run this effect only once
 
     return (
         <>

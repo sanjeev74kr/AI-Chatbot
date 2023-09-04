@@ -72,23 +72,7 @@
 }
 
 .shrunked-new-chat-button {
-  margin: 5%;
   cursor: pointer;
-}
-
-.small-device-new-chat-button-container{
-  background-color: #003F7D;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 10%;
-  padding: 1%;
-  border-radius: 0.2rem;
-  display: none;
-}
-
-.small-device-new-chat-button{
- cursor: pointer;
 }
 
 .toggle-chat-history-button {
@@ -185,7 +169,7 @@
   align-items: center;
   border-radius: 0.6rem;
   background-color: rgb(255, 251, 251);
-  width: 20%;
+  width: 38%;
   margin-left: 5%;
   margin-bottom: 2%;
   padding: 0.5%;

@@ -52,9 +52,8 @@
 @media screen and (max-width:768px) {
 
   .chat-component-main-section {
-    width: 85%;
+    width: 85%; 
     margin-left: 2.5%;
-    margin-right: 0.5%;
   }
 
   .chat-component-right-section{
@@ -72,15 +71,16 @@
     z-index:999;
   }
   
-.shrunked-right-section-button{
+.vertical-line,.toggle-chat-history-button{
    display: none;
   }
 
-  .small-device-new-chat-button-container{
+  .shrunked-right-section-button{
     display: flex;
-    margin-left: auto;
-  
+    justify-content: center;
+    width: 10%;
   }
+  
    
   .search-box {
     width: 85%;
