@@ -16,6 +16,10 @@
   flex-direction: column;
   /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 
