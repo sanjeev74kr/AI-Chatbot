@@ -46,11 +46,12 @@ margin-left: auto;
 .feedback-submit-button{
 background-color: #013DB9;
 min-width: fit-content;
-width: 8rem;
-height: 2rem;
-padding: 1.5%;
+width: 6.5rem;
+height: 2.15rem;
+padding: 2%;
 color: white;
 border-radius: 0.2rem;
 font-weight: 600;
 font-size: 0.8rem;
+text-align: center;
 }

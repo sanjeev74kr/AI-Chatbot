@@ -11,7 +11,7 @@ return(
          </p>
          <img className="clickable-icon feedback-cancel-button" src={cancelIcon} alt="cancel" onClick={handleDislikeClick}/>
         </div>
-        <textarea className="feedback-text-area" ></textarea>
+        <textarea className="feedback-text-area"  placeholder='What was the issue with response?How could it be improved?'></textarea>
         <div className="clickable-icon feedback-submit-button" onClick={handleDislikeClick}>Submit Feedback</div>
 
     </div>
