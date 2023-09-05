@@ -78,7 +78,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
                     <img src="./plus-icon.svg" alt="new-chat-icon" className="new-chat-icon" />
                     <p className="new-chat-text"> New Chat</p>
                 </div>
-                <p className="vertical-line history-vertical-line"> </p>
+                <p className="history-vertical-line"> </p>
                 <img id="toggle-chat-history-button" className="toggle-button" src='./toggle-button-right-arrow.svg' alt="toggle-button" onClick={handleToggleChatHistoryButton} />
             </div>
 

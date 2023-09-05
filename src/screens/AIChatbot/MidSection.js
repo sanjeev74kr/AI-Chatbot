@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
 import { QueryAPIHandler } from "../../services";
+import { voiceIcon } from "../../assets/icons";
 
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
@@ -118,7 +119,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         />
 
                         <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
-                        <p className="vertical-line"></p>
+                        <p className="search-box-vertical line vertical-line"></p>
                         <label htmlFor="uploadFileInput">
                             <img
                                 id="uploadFileButton"
@@ -135,11 +136,15 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             style={{ display: 'none' }}
                             onChange={handleFileUpload}
                         />
+                        <p className="search-box-vertical line vertical-line"></p>
+                        
+                        <img id="voice-input-button" className="clickable-icon" src={voiceIcon} alt="send-button" onClick={handleSendQueryButton} />
+                        
                     </div>
 
                     <div className="shrunked-right-section-button">
                         <img className="shrunked-new-chat-button" src="./plus-icon.svg" alt="new-chat-button" onClick={handleNewChatButton} />
-                        <div className='vertical-line'></div>
+                        <div className='history-vertical-line'></div>
                         <img className="toggle-button toggle-chat-history-button" src="./toggle-button-right-arrow.svg" alt="toggle-right-section-button" onClick={handleToggleChatHistoryButton} />
                     </div>
                 </div>

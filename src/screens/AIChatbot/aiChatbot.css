@@ -8,6 +8,13 @@
 }
 
 
+.vertical-line {
+  height: 1.4rem;
+  border-left: 1px solid #e2dfdf;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* style toggle-behavior of right section*/
 .chat-component-right-section,
 .chat-component-main-section {
@@ -53,7 +60,8 @@
 
   .chat-component-main-section {
     width: 85%; 
-    margin-left: 2.5%;
+    margin-left: 5%;
+    margin-right: 0;
   }
 
   .chat-component-right-section{
@@ -71,10 +79,7 @@
     z-index:999;
   }
   
-.vertical-line,.toggle-chat-history-button{
-   display: none;
-  }
-
+  
   .shrunked-right-section-button{
     display: flex;
     justify-content: center;
@@ -83,6 +88,20 @@
   
    
   .search-box {
-    width: 85%;
+    width: 88%;
   }
+
+  .vertical-line{
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .conversation-bottom-button-container{
+    width:50%;
+  }
+ 
+  .history-vertical-line,.toggle-chat-history-button{
+    display: none;
+   }
 }
+

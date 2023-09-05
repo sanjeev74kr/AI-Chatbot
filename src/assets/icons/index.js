@@ -30,3 +30,4 @@ export { default as toggleButtonRightArrowIcon } from './toggle-button-right-arr
 export { default as transportationIcon } from './transportation-icon.svg'
 export { default as upArrowIcon } from './up-arrow-icon.svg'
 export { default as uploadFileIcon } from './upload-file-button.svg'
+export {default as voiceIcon} from './voice-icon.svg'

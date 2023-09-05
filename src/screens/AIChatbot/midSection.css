@@ -62,7 +62,7 @@
 }
 
 .shrunked-right-section-button {
-  background-color: #003F7D;
+  background-color: #01C324;
   display: flex;
   width: 10%;
   padding: 1%;
@@ -169,7 +169,7 @@
   align-items: center;
   border-radius: 0.6rem;
   background-color: rgb(255, 251, 251);
-  width: 38%;
+  width: 20%;
   margin-left: 5%;
   margin-bottom: 2%;
   padding: 0.5%;
@@ -178,3 +178,4 @@
 .conversation-section-icon {
   cursor: pointer;
 }
+

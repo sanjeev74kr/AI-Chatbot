@@ -40,14 +40,11 @@
   flex: 0 10 1rem;
 }
 
-.vertical-line {
-  height: 1.4rem;
-  border-left: 1px solid #969696;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .history-vertical-line {
+  height: 1.4rem;
+  border-left: 1px solid #e2dfdf;
+  margin-left: auto;
   margin-right: 5%;
 }
 
