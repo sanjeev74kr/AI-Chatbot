@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { QueryAPIHandler } from "../../services";
 import { voiceIcon } from "../../assets/icons";
+import { QueryAPIHandler } from "../../services";
+import { Feedback } from "../../components/Feedback";
+
 
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
@@ -12,8 +14,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     answer, setAnswer, dispatch }) {
 
     const [query, setQuery] = useState('');
-    const queandans = useSelector((state) => state.counter.query);
+    const [isdislikeClicked, setIsDislikeClicked] = useState(false);
+   
 
+    const queandans = useSelector((state) => state.counter.query);
 
     useEffect(() => setAnswer(queandans), [queandans]);
 
@@ -98,6 +102,11 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     }
 
 
+    const handleDislikeClick = () => {
+        setIsDislikeClicked(!isdislikeClicked);
+    }
+
+
 
 
     return (
@@ -137,9 +146,9 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             onChange={handleFileUpload}
                         />
                         <p className="search-box-vertical line vertical-line"></p>
-                        
+
                         <img id="voice-input-button" className="clickable-icon" src={voiceIcon} alt="send-button" onClick={handleSendQueryButton} />
-                        
+
                     </div>
 
                     <div className="shrunked-right-section-button">
@@ -181,10 +190,11 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
                                     <img className="conversation-section-icon" src="./download-button.svg" alt="save-icon" onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
                                     <img className="conversation-section-icon" src="./like-icon.svg" alt="like-icon" />
-                                    <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" />
-
+                                    <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" onClick={handleDislikeClick} />
                                 </div>
-
+                             {
+                                isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick}/>
+                             }
 
                             </div>
                         </div>

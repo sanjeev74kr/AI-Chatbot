@@ -1,0 +1,56 @@
+.feedback-component{
+  width:30vw;
+  height:18rem;
+  position:absolute;
+  top: 50%;
+  left: 34%;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(229, 220, 220, 0.2);
+  border-radius: 0.8rem;
+  padding: 2%;
+}
+
+.feedback-header{
+    display: flex;
+    align-items: center;
+}
+
+.feedback-dislike-icon{
+background-color: rgb(243, 223, 223);
+padding: 1%;
+}
+
+.feedback-title{
+ margin-left: 2%;
+ font-weight: bold;
+}
+
+.feedback-cancel-button{
+margin-left: auto;
+}
+
+.feedback-text-area{
+ width: 100%;
+ height:8rem;
+ background-color: white;
+ border: 0.01rem solid #999999;
+ border-radius: 0.2rem;
+ margin-top: 5%;
+ margin-bottom: 5%;
+ white-space: wrap;
+ padding: 0.5rem;
+ line-height: 1.5;
+
+}
+
+.feedback-submit-button{
+background-color: #013DB9;
+min-width: fit-content;
+width: 8rem;
+height: 2rem;
+padding: 1.5%;
+color: white;
+border-radius: 0.2rem;
+font-weight: 600;
+font-size: 0.8rem;
+}

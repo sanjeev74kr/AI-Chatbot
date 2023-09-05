@@ -16,6 +16,7 @@ function AIChatbot() {
     const [inputValue, setInputValue] = useState('');
     const [updatedChatHistory, setUpdatedChatHistory] = useState({});
     const [answer, setAnswer] = useState();
+    
 
     const dispatch = useDispatch();
 
@@ -56,7 +57,7 @@ function AIChatbot() {
             <AIChatbotMidSection isLeftSectionToggle={isLeftSectionToggle} userQuery={userQuery} setUserQuery={setUserQuery}
                 chatHistory={chatHistory} isChatHistoryToggle={isChatHistoryToggle} handleNewChatButton={handleNewChatButton}
                 handleToggleChatHistoryButton={handleToggleChatHistoryButton} inputValue={inputValue} setInputValue={setInputValue}
-                answer={answer} setAnswer={setAnswer} dispatch={dispatch} />
+                answer={answer} setAnswer={setAnswer} dispatch={dispatch}  />
 
             <AIChatbotRightSection isChatHistoryToggle={isChatHistoryToggle} handleNewChatButton={handleNewChatButton}
                 handleToggleChatHistoryButton={handleToggleChatHistoryButton} updatedChatHistory={updatedChatHistory}
