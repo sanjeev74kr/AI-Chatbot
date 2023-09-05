@@ -5,7 +5,7 @@ import { aiChatbotMidSectionStyles } from './midSection.css'
 import { voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
-
+import VoiceSearch  from "../../components/VoiceSearch/VoiceSearch";
 
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
@@ -15,8 +15,12 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
-   
 
+   const voiceSearch=VoiceSearch(setInputValue);
+   const handleStartListening=voiceSearch.handleStartListening;
+   const handleStopListening=voiceSearch.handleStopListening;
+   
+   
     const queandans = useSelector((state) => state.counter.query);
 
     useEffect(() => setAnswer(queandans), [queandans]);
@@ -147,7 +151,12 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         />
                         <p className="search-box-vertical line vertical-line"></p>
 
-                        <img id="voice-input-button" className="clickable-icon" src={voiceIcon} alt="send-button" onClick={handleSendQueryButton} />
+                        <img id="voice-input-button" className="clickable-icon" src={voiceIcon} alt="send-button" 
+                        onTouchStart={handleStartListening}
+                        onMouseDown={handleStartListening}
+                        onTouchEnd={handleStopListening}
+                        onMouseUp={handleStopListening}
+                        title="Hold to Speak"/>
 
                     </div>
 
