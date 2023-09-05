@@ -48,30 +48,7 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
         };
     }, []); // Empty dependency array to run this effect only once
 
-    // handle-left-section-toggle-button
-    // const handleLeftSectionToggleButton = () => {
-    //     setIsLeftSectionToggle(!isLeftSectionToggle);
-    // }
-
-    // useEffect(() => {
-    //     const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-    //     // Initial call to handle left section toggle based on screen width
-    //     setIsLeftSectionToggle(!mediaQuery.matches);
-
-    //     // Add listener for screen width changes
-    //     const handleMediaQueryChange = (e) => {
-    //         setIsLeftSectionToggle(!e.matches);
-    //     };
-
-    //     mediaQuery.addListener(handleMediaQueryChange);
-
-    //     // Clean up the listener when the component unmounts
-    //     return () => {
-    //         mediaQuery.removeListener(handleMediaQueryChange);
-    //     };
-    // }, []); // Empty dependency array to run this effect only once
-
+    
     return (
         <>
             {!isLeftSectionToggle &&
