@@ -1,34 +1,45 @@
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { useState,useEffect } from 'react';
+import {useEffect,useRef } from 'react';
 function VoiceSearch(setInputValue,setIsKeyDown){
-    const { transcript, resetTranscript } = useSpeechRecognition();
-    const [isListening, setIsListening] = useState(false);
+    const { transcript, resetTranscript, listening } = useSpeechRecognition();
+    const silenceTimeoutRef = useRef(null);
 
     const handleStartListening = () => {
         resetTranscript();
         SpeechRecognition.startListening()
-        setIsListening(true);
         setIsKeyDown(true);
+        setInputValue('Listening');
         
       };
     
       const handleStopListening = () => {
+        console.log("stop listening called");
         SpeechRecognition.stopListening()
-        setIsListening(false);
         setIsKeyDown(false);
+        setInputValue(transcript);
+        console.log('Transcript:', transcript);       
       };
-    
-      useEffect(() => {
-        if (isListening) {
-            console.log('Transcript:', transcript);
-          setInputValue(transcript); 
-        }
-      }, [isListening, transcript,setInputValue]);
 
+      useEffect(() => {
+        if (listening) {
+          // User is speaking, clear the silence timeout
+          clearTimeout(silenceTimeoutRef.current);
+        } else {
+          // User has stopped speaking, start a silence timeout
+          silenceTimeoutRef.current = setTimeout(() => {
+            handleStopListening();
+          }, 500); // Adjust the timeout duration as needed
+        }
+    
+        return () => {
+          clearTimeout(silenceTimeoutRef.current); // Clean up the timeout on unmount
+        };
+      }, [listening]);
+    
+    
       return {
         handleStartListening,
         handleStopListening,
-        isListening,
       };
     }
     

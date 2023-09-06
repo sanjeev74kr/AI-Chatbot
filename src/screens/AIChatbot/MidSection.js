@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { hoveredspeakerIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import {  speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch  from "../../components/VoiceSearch/VoiceSearch";
-import { copyIcon,likeIcon,dislikeIcon,downloadIcon,hoveredDownloadIcon } from "../../assets/icons";
-import { ReactComponent as Speaker } from "../../assets/icons/speaker-icon.svg";
+import { copyIcon,likeIcon,dislikeIcon,downloadIcon } from "../../assets/icons";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -154,11 +153,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         <p className="search-box-vertical line vertical-line"></p>
 
                         <img id="voice-input-button" className={`clickable-icon ${isKeyDown?'voiceInputKeyDown':''}`} src={voiceIcon} alt="send-button" 
-                        onTouchStart={handleStartListening}
-                        onMouseDown={handleStartListening}
-                        onTouchEnd={handleStopListening}
-                        onMouseUp={handleStopListening}
-                        title="Hold to Speak"/>
+                        onClick={handleStartListening} title="Click to speak"/>
 
                     </div>
 
