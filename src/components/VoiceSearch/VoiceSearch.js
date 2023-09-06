@@ -1,6 +1,6 @@
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState,useEffect } from 'react';
-function VoiceSearch(setInputValue){
+function VoiceSearch(setInputValue,setIsKeyDown){
     const { transcript, resetTranscript } = useSpeechRecognition();
     const [isListening, setIsListening] = useState(false);
 
@@ -8,12 +8,14 @@ function VoiceSearch(setInputValue){
         resetTranscript();
         SpeechRecognition.startListening()
         setIsListening(true);
+        setIsKeyDown(true);
         
       };
     
       const handleStopListening = () => {
         SpeechRecognition.stopListening()
         setIsListening(false);
+        setIsKeyDown(false);
       };
     
       useEffect(() => {

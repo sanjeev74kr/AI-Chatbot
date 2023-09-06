@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { voiceIcon } from "../../assets/icons";
+import { hoveredspeakerIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch  from "../../components/VoiceSearch/VoiceSearch";
-
+import { copyIcon,likeIcon,dislikeIcon,downloadIcon,hoveredDownloadIcon } from "../../assets/icons";
+import { ReactComponent as Speaker } from "../../assets/icons/speaker-icon.svg";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -15,8 +16,9 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
+    const [isKeyDown, setIsKeyDown]= useState(false);
 
-   const voiceSearch=VoiceSearch(setInputValue);
+   const voiceSearch=VoiceSearch(setInputValue,setIsKeyDown);
    const handleStartListening=voiceSearch.handleStartListening;
    const handleStopListening=voiceSearch.handleStopListening;
    
@@ -151,7 +153,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         />
                         <p className="search-box-vertical line vertical-line"></p>
 
-                        <img id="voice-input-button" className="clickable-icon" src={voiceIcon} alt="send-button" 
+                        <img id="voice-input-button" className={`clickable-icon ${isKeyDown?'voiceInputKeyDown':''}`} src={voiceIcon} alt="send-button" 
                         onTouchStart={handleStartListening}
                         onMouseDown={handleStartListening}
                         onTouchEnd={handleStopListening}
@@ -177,8 +179,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             <div className="user">
                                 <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                 <p className="query">{userMessage.que}</p>
-                                <img className="conversation-section-icon speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
-                                <img className="conversation-section-icon copy-button" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
+                                <img className="conversation-section-icon-top speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
+                                <img className="conversation-section-icon-top copy-button" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
                             </div>
 
                             <div>
@@ -195,11 +197,13 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                 </div>
 
                                 <div className="conversation-bottom-button-container">
-                                    <img className="conversation-section-icon" src="./speaker-icon.svg" alt="speaker-icon" />
-                                    <img className="conversation-section-icon" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
-                                    <img className="conversation-section-icon" src="./download-button.svg" alt="save-icon" onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
-                                    <img className="conversation-section-icon" src="./like-icon.svg" alt="like-icon" />
-                                    <img className="conversation-section-icon" src="./dislike-icon.svg" alt="dislike-icon" onClick={handleDislikeClick} />
+                                    {/* <img className="conversation-section-icon" src={Speaker} alt="speaker-icon" /> */}
+                                    <img className="conversation-section-icon" src={speakerIcon} alt="speaker-icon"/>
+                                    
+                                    <img className="conversation-section-icon" src={copyIcon} alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
+                                    <img className="conversation-section-icon" src={downloadIcon} alt="download"  onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)}/>
+                                    <img className="conversation-section-icon" src={likeIcon} alt="like" />
+                                    <img className="conversation-section-icon" src={dislikeIcon} alt="dislike" onClick={handleDislikeClick} />
                                 </div>
                              {
                                 isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick}/>
