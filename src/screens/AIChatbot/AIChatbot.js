@@ -6,6 +6,8 @@ import AIChatbotRightSection from './RightSection';
 import { aiChatbotStyles } from './aiChatbot.css'
 import { useDispatch } from "react-redux";
 import { handleAns } from "../../services/CounterSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function AIChatbot() {
@@ -50,6 +52,8 @@ function AIChatbot() {
         });
     };
 
+    const notify = (toastmsg) => toast(toastmsg);
+
     return (
         <main className="Chats-UI">
             <AIChatbotLeftSection isLeftSectionToggle={isLeftSectionToggle} setIsLeftSectionToggle={setIsLeftSectionToggle} />
@@ -57,12 +61,13 @@ function AIChatbot() {
             <AIChatbotMidSection isLeftSectionToggle={isLeftSectionToggle} userQuery={userQuery} setUserQuery={setUserQuery}
                 chatHistory={chatHistory} isChatHistoryToggle={isChatHistoryToggle} handleNewChatButton={handleNewChatButton}
                 handleToggleChatHistoryButton={handleToggleChatHistoryButton} inputValue={inputValue} setInputValue={setInputValue}
-                answer={answer} setAnswer={setAnswer} dispatch={dispatch}  />
+                answer={answer} setAnswer={setAnswer} dispatch={dispatch}  notify={notify}/>
 
             <AIChatbotRightSection isChatHistoryToggle={isChatHistoryToggle} handleNewChatButton={handleNewChatButton}
                 handleToggleChatHistoryButton={handleToggleChatHistoryButton} updatedChatHistory={updatedChatHistory}
                 setUpdatedChatHistory={setUpdatedChatHistory} userQuery={userQuery} setUserQuery={setUserQuery}
                 answer={answer} setAnswer={setAnswer} dispatch={dispatch} />
+                <ToastContainer />  
         </main >
     )
 }

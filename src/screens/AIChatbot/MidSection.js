@@ -11,7 +11,7 @@ import { copyIcon,likeIcon,dislikeIcon,downloadIcon } from "../../assets/icons";
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
     handleToggleChatHistoryButton, inputValue, setInputValue,
-    answer, setAnswer, dispatch }) {
+    answer, setAnswer, dispatch ,notify}) {
 
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
@@ -226,7 +226,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     <img className="conversation-section-icon" src={dislikeIcon} alt="dislike" onClick={handleDislikeClick} />
                                 </div>
                              {
-                                isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick}/>
+                                isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify}/>
                              }
 
                             </div>
