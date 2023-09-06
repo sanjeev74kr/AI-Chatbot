@@ -16,7 +16,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
     const [isKeyDown, setIsKeyDown]= useState(false);
-    const [isLiked, setIsLiked]=useState(false);
+    const [isLiked, setIsLiked] = useState(Array(answer?.length).fill(false));
+
 
    const voiceSearch=VoiceSearch(setInputValue,setIsKeyDown);
    const handleStartListening=voiceSearch.handleStartListening;
@@ -129,8 +130,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         setIsDislikeClicked(!isdislikeClicked);
     }
 
-    const handleLikeClick=()=>{
-        setIsLiked(!isLiked);
+    const handleLikeClick=(index)=>{
+        const updatedIsLiked = [...isLiked];
+        updatedIsLiked[index] = !updatedIsLiked[index];
+        setIsLiked(updatedIsLiked);
     }
 
 
@@ -207,8 +210,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                         ? answer[index]?.ans.response.output_text
                                         : <LoadingAnimationSVG />
 
+                                    
                                     }
-
                                     </div>
 
                                 </div>
@@ -219,7 +222,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     
                                     <img className="conversation-section-icon" src={copyIcon} alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"  onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)}/>
-                                    <img className="conversation-section-icon" src={isLiked?likedIcon:likeIcon} alt="like" onClick={handleLikeClick}/>
+                                    <img className="conversation-section-icon" src={isLiked[index]?likedIcon:likeIcon} alt="like" onClick={()=>handleLikeClick(index)}/>
                                     <img className="conversation-section-icon" src={dislikeIcon} alt="dislike" onClick={handleDislikeClick} />
                                 </div>
                              {
