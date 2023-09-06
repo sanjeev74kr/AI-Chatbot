@@ -21,6 +21,23 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
    const handleStartListening=voiceSearch.handleStartListening;
    const handleStopListening=voiceSearch.handleStopListening;
    
+   const handleSpeak=(screenText)=>{
+    
+    if ('speechSynthesis' in window) {
+        const synth = window.speechSynthesis;
+    
+            const utterance = new SpeechSynthesisUtterance(screenText);
+    
+            // Optional settings for the speech
+            utterance.lang = 'en-US'; // Language (e.g., US English)
+            utterance.volume = 1; // Volume (0 to 1)
+            utterance.rate = 1; // Rate of speech (0.1 to 10)
+            utterance.pitch = 1; // Pitch (0 to 2)
+    
+            // Speak the text
+            synth.speak(utterance);
+    }
+   }
    
     const queandans = useSelector((state) => state.counter.query);
 
@@ -174,7 +191,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             <div className="user">
                                 <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                 <p className="query">{userMessage.que}</p>
-                                <img className="conversation-section-icon-top speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
+                                <img className="conversation-section-icon-top speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={()=>handleSpeak(userMessage.que)} />
                                 <img className="conversation-section-icon-top copy-button" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
                             </div>
 
@@ -193,7 +210,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                 <div className="conversation-bottom-button-container">
                                     {/* <img className="conversation-section-icon" src={Speaker} alt="speaker-icon" /> */}
-                                    <img className="conversation-section-icon" src={speakerIcon} alt="speaker-icon"/>
+                                    <img className="conversation-section-icon" src={speakerIcon} alt="speaker-icon" onClick={()=>handleSpeak(answer[index]?.ans.response.output_text)}/>
                                     
                                     <img className="conversation-section-icon" src={copyIcon} alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"  onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)}/>
@@ -216,4 +233,5 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     )
 
 }
+
 export default MidSection;
