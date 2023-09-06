@@ -180,10 +180,10 @@
   padding: 2.5%;
 }
 .conversation-section-icon:hover{
-  background-color: #003F7D;
+  background-color:#003F7D;
   opacity: 0.5;
   border-radius: 50%;
-}
+ }
 
 .conversation-section-icon-top{
   cursor: pointer;
@@ -191,7 +191,7 @@
 }
 .conversation-section-icon-top:hover{
   background-color: #003F7D;
-  opacity: 0.5;
+  opacity: 0.2;
   border-radius: 50%;
 }
 

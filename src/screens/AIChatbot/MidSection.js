@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import {  speakerIcon, voiceIcon } from "../../assets/icons";
+import {  likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch  from "../../components/VoiceSearch/VoiceSearch";
@@ -16,6 +16,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
     const [isKeyDown, setIsKeyDown]= useState(false);
+    const [isLiked, setIsLiked]=useState(false);
 
    const voiceSearch=VoiceSearch(setInputValue,setIsKeyDown);
    const handleStartListening=voiceSearch.handleStartListening;
@@ -128,6 +129,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         setIsDislikeClicked(!isdislikeClicked);
     }
 
+    const handleLikeClick=()=>{
+        setIsLiked(!isLiked);
+    }
+
 
 
 
@@ -214,7 +219,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     
                                     <img className="conversation-section-icon" src={copyIcon} alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"  onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)}/>
-                                    <img className="conversation-section-icon" src={likeIcon} alt="like" />
+                                    <img className="conversation-section-icon" src={isLiked?likedIcon:likeIcon} alt="like" onClick={handleLikeClick}/>
                                     <img className="conversation-section-icon" src={dislikeIcon} alt="dislike" onClick={handleDislikeClick} />
                                 </div>
                              {
