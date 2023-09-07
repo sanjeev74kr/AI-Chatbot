@@ -1,10 +1,8 @@
 
 import { handleQandA } from "./CounterSlice";
 
-const BASE_URL= process.env.BASE_URL;
-
+const BASE_URL= process.env.REACT_APP_BASE_URL;
 async function QueryAPIHandler(query, inputValue, dispatch) {
-
     try {
 
         const response = await fetch(`${BASE_URL}`, {
