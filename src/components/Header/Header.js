@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ProfileButtonOptions } from '../ProfileButtonOptions';
+import {brandLogo} from '../../assets/icons'
 
 function Header({ setShowAIChatbotComponent }) {
 
@@ -30,7 +31,7 @@ function Header({ setShowAIChatbotComponent }) {
         <div className='header-container'>
             <div className='brand-identity-container'>
                 <p className='brand-text'>R</p>
-                <img className='brand-icon' src='./brand-icon.svg' alt='brand-icon' />
+                <img className='brand-logo' src={brandLogo} alt='brand-icon' />
                 <p className='brand-text'>N!</p>
             </div>
             <div className='header-button-container'>

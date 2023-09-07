@@ -22,6 +22,11 @@
     font-size: 1.5rem;
 }
 
+.brand-logo{
+    align-self:center;
+    margin-bottom: 0.5rem;
+}
+
 .header-button-container {
     display: flex;
     margin-right: 22%;

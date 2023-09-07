@@ -2,45 +2,45 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import {  likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import { brandLogo, likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
-import VoiceSearch  from "../../components/VoiceSearch/VoiceSearch";
-import { copyIcon,likeIcon,dislikeIcon,downloadIcon } from "../../assets/icons";
+import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
+import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon } from "../../assets/icons";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
     handleToggleChatHistoryButton, inputValue, setInputValue,
-    answer, setAnswer, dispatch ,notify}) {
+    answer, setAnswer, dispatch, notify }) {
 
     const [query, setQuery] = useState('');
     const [isdislikeClicked, setIsDislikeClicked] = useState(false);
-    const [isKeyDown, setIsKeyDown]= useState(false);
+    const [isKeyDown, setIsKeyDown] = useState(false);
     const [isLiked, setIsLiked] = useState(Array(answer?.length).fill(false));
+    const [isdislikeIconClicked, setIsDislikeIconClicked] = useState(Array(answer?.length).fill(false));
 
+    const voiceSearch = VoiceSearch(setInputValue, setIsKeyDown);
+    const handleStartListening = voiceSearch.handleStartListening;
+    const handleStopListening = voiceSearch.handleStopListening;
 
-   const voiceSearch=VoiceSearch(setInputValue,setIsKeyDown);
-   const handleStartListening=voiceSearch.handleStartListening;
-   const handleStopListening=voiceSearch.handleStopListening;
-   
-   const handleSpeak=(screenText)=>{
-    
-    if ('speechSynthesis' in window) {
-        const synth = window.speechSynthesis;
-    
+    const handleSpeak = (screenText) => {
+
+        if ('speechSynthesis' in window) {
+            const synth = window.speechSynthesis;
+
             const utterance = new SpeechSynthesisUtterance(screenText);
-    
+
             // Optional settings for the speech
             utterance.lang = 'en-US'; // Language (e.g., US English)
             utterance.volume = 1; // Volume (0 to 1)
             utterance.rate = 1; // Rate of speech (0.1 to 10)
             utterance.pitch = 1; // Pitch (0 to 2)
-    
+
             // Speak the text
             synth.speak(utterance);
+        }
     }
-   }
-   
+
     const queandans = useSelector((state) => state.counter.query);
 
     useEffect(() => setAnswer(queandans), [queandans]);
@@ -125,15 +125,47 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     }
 
-
+   //function for showing feedback component
     const handleDislikeClick = () => {
         setIsDislikeClicked(!isdislikeClicked);
     }
 
-    const handleLikeClick=(index)=>{
+    //function for changing dislike icon color
+    const handleDislikeIconClicked = (index) => {
+        const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
+        updatedIsDislikeIconClicked[index] = !updatedIsDislikeIconClicked[index];
+        setIsDislikeIconClicked(updatedIsDislikeIconClicked);
+
+        //if dislike clicked then disable like if already liked
+        const updatedIsLiked = [...isLiked]
+        if (updatedIsLiked[index] == true) {
+            updatedIsLiked[index] = false;
+            setIsLiked(updatedIsLiked);
+        }
+    }
+    
+    //Function for calling both feedback-loading function and icon color change function
+    const handleDislikeButtonClick = (index) => {
+        const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
+        //if not disliked earlier then open feedback component
+        if (updatedIsDislikeIconClicked[index] == false)
+            handleDislikeClick();
+         
+        handleDislikeIconClicked(index);
+    }
+     
+    //Function for changing like icon color
+    const handleLikeClick = (index) => {
         const updatedIsLiked = [...isLiked];
         updatedIsLiked[index] = !updatedIsLiked[index];
         setIsLiked(updatedIsLiked);
+
+        //if like clicked then disable dislike if already disliked
+        const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
+        if (updatedIsDislikeIconClicked[index] == true) {
+            updatedIsDislikeIconClicked[index] = false;
+            setIsDislikeIconClicked(updatedIsDislikeIconClicked);
+        }
     }
 
 
@@ -177,8 +209,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         />
                         <p className="search-box-vertical line vertical-line"></p>
 
-                        <img id="voice-input-button" className={`clickable-icon ${isKeyDown?'voiceInputKeyDown':''}`} src={voiceIcon} alt="send-button" 
-                        onClick={handleStartListening} title="Click to speak"/>
+                        <img id="voice-input-button" className={`clickable-icon ${isKeyDown ? 'voiceInputKeyDown' : ''}`} src={voiceIcon} alt="send-button"
+                            onClick={handleStartListening} title="Click to speak" />
 
                     </div>
 
@@ -199,18 +231,18 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             <div className="user">
                                 <img src="./profile-icon.svg" alt="profile" className="user-icon" />
                                 <p className="query">{userMessage.que}</p>
-                                <img className="conversation-section-icon-top speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={()=>handleSpeak(userMessage.que)} />
+                                <img className="conversation-section-icon-top speaker-button" src="./speaker-icon.svg" alt="copy-button" onClick={() => handleSpeak(userMessage.que)} />
                                 <img className="conversation-section-icon-top copy-button" src="./copy-button.svg" alt="copy-button" onClick={() => handleCopy(userMessage.que)} />
                             </div>
 
                             <div>
                                 <div className="bot">
-                                    <img src="./brand-icon.svg" alt="bot-icon" />
+                                    <img src={brandLogo} alt="bot-icon" />
                                     <div className="answer">{answer[index]?.ans.response.output_text !== undefined
                                         ? answer[index]?.ans.response.output_text
                                         : <LoadingAnimationSVG />
 
-                                    
+
                                     }
                                     </div>
 
@@ -218,16 +250,24 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                 <div className="conversation-bottom-button-container">
                                     {/* <img className="conversation-section-icon" src={Speaker} alt="speaker-icon" /> */}
-                                    <img className="conversation-section-icon" src={speakerIcon} alt="speaker-icon" onClick={()=>handleSpeak(answer[index]?.ans.response.output_text)}/>
-                                    
-                                    <img className="conversation-section-icon" src={copyIcon} alt="copy-button" onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
-                                    <img className="conversation-section-icon" src={downloadIcon} alt="download"  onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)}/>
-                                    <img className="conversation-section-icon" src={isLiked[index]?likedIcon:likeIcon} alt="like" onClick={()=>handleLikeClick(index)}/>
-                                    <img className="conversation-section-icon" src={dislikeIcon} alt="dislike" onClick={handleDislikeClick} />
+                                    <img className="conversation-section-icon" src={speakerIcon} alt="speaker-icon" onClick={() => handleSpeak(answer[index]?.ans.response.output_text)} />
+
+                                    <img className="conversation-section-icon" src={copyIcon} alt="copy-button"
+                                        onClick={() => handleCopy(answer[index]?.ans.response.output_text)} />
+
+                                    <img className="conversation-section-icon" src={downloadIcon} alt="download"
+                                        onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
+
+                                    <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
+                                        onClick={() => handleLikeClick(index)} />
+
+                                    <img className="conversation-section-icon" src={isdislikeIconClicked[index] ? dislikeRedIcon : dislikeIcon} alt="dislike"
+                                        onClick={() => handleDislikeButtonClick(index)} />
+
                                 </div>
-                             {
-                                isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify}/>
-                             }
+                                {
+                                    isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify} />
+                                }
 
                             </div>
                         </div>
