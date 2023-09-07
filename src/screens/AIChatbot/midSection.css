@@ -179,26 +179,33 @@
   cursor: pointer;
   padding: 2.5%;
 }
-.conversation-section-icon:hover{
-  background-color:#003F7D;
+
+.conversation-section-icon:hover {
+  background-color: #003F7D;
   opacity: 0.5;
   border-radius: 50%;
- }
+}
 
-.conversation-section-icon-top{
+.conversation-section-icon-top {
   cursor: pointer;
   padding: 0.5%;
 }
-.conversation-section-icon-top:hover{
+
+.conversation-section-icon-top:hover {
   background-color: #003F7D;
   opacity: 0.2;
   border-radius: 50%;
 }
 
-.voiceInputKeyDown{
-background-color: #C9C9C9;
-border-radius: 50%;
-padding: 0.5%;
-width:2rem;
-height:2rem;
+#voice-input-button {
+  padding: 0.5%;
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.voiceInputKeyDown {
+  background-color: #C9C9C9;
+  border-radius: 50%;
+
+
 }
