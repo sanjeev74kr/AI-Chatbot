@@ -1,16 +1,9 @@
+/*shrunked left-section customization */
 .shrunked-chat-component-left-section {
   width: 3.5%;
-  margin-left: 1%;
+  height:104.5%;
   background-color: #013DB9;
 }
-
-/* Style clickable-icon */
-.clickable-icon {
-  cursor: pointer;
-  width: 1.125rem;
-  height: 1.125rem;
-}
-
 
 .shrunked-left-section-container {
   display: flex;
@@ -30,6 +23,7 @@
 .industry-icon-container {
   margin-top: 50%;
 }
+/* end shrunked left-section-customization */
 
 
 /*starting of chat-component-left-section */
@@ -37,19 +31,15 @@
   display: flex;
   flex-direction: column;
   width: 15%;
-  margin-left: 1%;
+  height:104.5%;
   background-color: #013DB9;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
 }
 
 .left-section-title-container {
   display: flex;
   justify-content: space-between;
-  /* background-color: #003F7D; */
   padding: 6%;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
+  margin-top: 10%;
 }
 
 .left-section-title {
