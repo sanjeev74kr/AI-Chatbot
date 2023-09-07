@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     
      /* border: 0.1rem solid #f4ebeb;  */
@@ -34,20 +34,15 @@
 
 .header-button-container {
     display: flex;
-    margin-right: 22%;
+    align-self: center;
 }
 
 .ai-chatbot-component-button {
     width: fit-content;
     background-color: transparent;
-   
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1rem;
     white-space: nowrap;
-    border: 1px solid white;
-    border-top-left-radius: 0.2rem;
-    border-bottom-left-radius: 0.2rem;
-    padding: 6%;
     padding-left: 15%;
     padding-right: 15%;
     cursor: pointer;
@@ -56,16 +51,11 @@
 }
 
 .dashboard-component-button {
-    width: fit-content;
+    width: fit-content; 
     background-color: transparent;
-    
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1rem;
     white-space: nowrap;
-    border: 1px solid white;
-    border-top-right-radius: 0.2rem;
-    border-bottom-right-radius: 0.2rem;
-    padding: 6%;
     padding-left: 15%;
     padding-right: 15%;
     cursor: pointer;
@@ -76,12 +66,13 @@
 .selected {
     width: fit-content;
     background-color: white;
-    color: #003F7D;
+    color: #01C324;
+    text-decoration: underline;
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset:135%;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1rem;
     white-space: nowrap;
-    border: 1px solid white;
-    padding: 6%;
     padding-left: 15%;
     padding-right: 15%;
     cursor: pointer;
@@ -89,21 +80,13 @@
     flex-shrink: 2;
 }
 
-.ai-chatbot-component-button.selected {
-    border-top-left-radius: 0.2rem;
-    border-bottom-left-radius: 0.2rem;
-}
-
-.dashboard-component-button.selected {
-    border-top-right-radius: 0.2rem;
-    border-bottom-right-radius: 0.2rem;
-}
 
 .profile-button-container {
     display: flex;
     background-color: white;
     border-radius: 50%;
-    margin-left: 0.5%;
+    margin-left: auto;
+    margin-right: 1%;
 }
 
 .profile-button {

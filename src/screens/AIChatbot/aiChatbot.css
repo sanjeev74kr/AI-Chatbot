@@ -58,6 +58,24 @@
 /* Make responsive for small screen */
 @media screen and (max-width:768px) {
 
+  .brand-identity-container{
+    width:30%;
+    padding: 1%;
+    padding-left: 4%;
+  }
+
+  .selected {
+    text-underline-offset:100%;
+  }
+
+  .profile-component {
+    position: absolute;
+    top: 7%;
+    right: 0%;
+    left: 55%;
+    z-index: 10;
+}
+
   .chat-component-main-section {
     width: 85%; 
     margin-left: 5%;

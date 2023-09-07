@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ProfileButtonOptions } from '../ProfileButtonOptions';
 import {brandLogo} from '../../assets/icons'
+import {profileIcon} from '../../assets/icons'
 
 function Header({ setShowAIChatbotComponent }) {
 
@@ -35,11 +36,11 @@ function Header({ setShowAIChatbotComponent }) {
                 <p className='brand-text'>N!</p>
             </div>
             <div className='header-button-container'>
-                <button className={`ai-chatbot-component-button ${isAIChatbotClicked ? 'selected' : ''}`} onClick={handleAIChatbotComponentButtonClick} >AI Chatbot</button>
-                <button className={`dashboard-component-button ${isDashboardClicked ? 'selected' : ''}`} onClick={handleDashboardClick}>Dashboard</button>
+                <p className={`ai-chatbot-component-button ${isAIChatbotClicked ? 'selected' : ''}`} onClick={handleAIChatbotComponentButtonClick} >AI Chatbot</p>
+                <p className={`dashboard-component-button ${isDashboardClicked ? 'selected' : ''}`} onClick={handleDashboardClick}>Dashboard</p>
             </div>
             <div className='profile-button-container'>
-                <img className="profile-button" src="./profile-icon.svg" alt="profile-icon" onClick={toggleProfileOptions} />
+                <img className="profile-button" src={profileIcon} alt="profile-icon" onClick={toggleProfileOptions} />
             </div>
 
             {/*Load profile options component*/}
