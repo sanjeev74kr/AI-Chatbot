@@ -81,7 +81,8 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
                                             ))
 
                                             :
-                                            <p style={{ color: "#969696", marginLeft: "1rem" }}>No details</p>
+                                            <p className='industry-nested-items'>No details</p>
+                                            // <p style={{ color: "#969696", marginLeft: "1rem" }}>No details</p>
                                         }
                                     </div>
 

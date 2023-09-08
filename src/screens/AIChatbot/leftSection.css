@@ -142,6 +142,8 @@ line-height: normal;
   color: #969696;
   margin-bottom: 5%;
   margin-top: 5%;
+
+  
 }
 
 .industry-nested-data:hover {
@@ -159,6 +161,14 @@ line-height: normal;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  /* Added */
+  color: #D8D8D8;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 14px; 
 }
 
 /*end of chat-component left-section-container*/

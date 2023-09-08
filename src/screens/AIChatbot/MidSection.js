@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { brandLogo, likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import { brandLogo, emailIcon, likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
@@ -257,7 +257,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"
                                         onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
-
+                                    
+                                    <img className="conversation-section-icon" src={emailIcon} alt="email"/>
                                     <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
                                         onClick={() => handleLikeClick(index)} />
 
