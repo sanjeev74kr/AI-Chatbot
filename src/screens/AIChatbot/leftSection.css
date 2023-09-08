@@ -150,13 +150,14 @@ line-height: normal;
   color: #003F7D;
   background-color: #e4ecf5;
   border-radius: 0.2rem;
-
+  
   /* added */
   border-radius: 4px;
 background: rgba(255, 255, 255, 0.20);
 }
 
 #bullet-point {
+  color:#D8D8D8;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -165,7 +166,8 @@ background: rgba(255, 255, 255, 0.20);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
+  padding: 2%;
+  text-align: center;
   /* Added */
   color: #D8D8D8;
 font-family: Inter;
