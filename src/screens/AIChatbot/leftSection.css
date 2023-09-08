@@ -49,6 +49,14 @@
   margin-left: 2%;
   font-size: 0.9rem;
   font-weight: 600;
+
+  /* added??? */
+  color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 }
 
 
@@ -97,13 +105,13 @@
   text-overflow: ellipsis;
   color: white;
 
-  /* Added */
+  /* Added
   color: #FFF;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: normal; */
  
 }
 

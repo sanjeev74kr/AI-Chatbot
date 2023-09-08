@@ -37,7 +37,7 @@ function Header({ setShowAIChatbotComponent }) {
             </div>
             <div className='header-button-container'>
                 <p className={`ai-chatbot-component-button ${isAIChatbotClicked ? 'selected' : ''}`} onClick={handleAIChatbotComponentButtonClick} >AI Chatbot</p>
-                <p className={`dashboard-component-button ${isDashboardClicked ? 'selected' : ''}`} onClick={handleDashboardClick}>Dashboard</p>
+                <p className={`dashboard-component-button ${isDashboardClicked ? 'selected' : ''}`} >Dashboard</p>
             </div>
             <div className='profile-button-container'>
                 <img className="profile-button" src={profileIcon} alt="profile-icon" onClick={toggleProfileOptions} />
