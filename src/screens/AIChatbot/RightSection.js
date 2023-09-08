@@ -9,6 +9,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
     const [editingIndices, setEditingIndices] = useState({});
     const [showEditDelete, setShowEditDelete] = useState({});
+    const [isHovered, setIsHovered] = useState([]);
     const editDeleteContainerRef = useRef(null);
 
 
@@ -41,6 +42,18 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
     }, []);
 
 
+
+    const handleHover = (index) => {
+       const updateIsHovered=[...isHovered];
+        updateIsHovered[index]=true;
+        setIsHovered(updateIsHovered);
+    }
+
+    const handleNotHover=(index)=>{
+        const updateIsHovered=[...isHovered];
+        updateIsHovered[index]=false;
+        setIsHovered(updateIsHovered);
+    }
 
 
     //handle delete button
@@ -91,7 +104,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
                         {updatedChatHistory[date].map((topic, index) => (
 
-                            <div className="history-container" key={index}>
+                            <div className="history-container" key={index} onMouseEnter={() => handleHover(index)} onMouseLeave={()=>handleNotHover(index)}>
                                 {editingIndices[date] === index ? (
                                     <div className="edit-section">
                                         <input className="editable-text"
@@ -121,9 +134,10 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
                                             src="./clock-icon.svg"
                                             alt="chat-history-icon"
                                         />
-                                        <p className="history">{topic}</p>
-                                        <img className="clickable-icon hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={(event) => handleHamburgerClick(event, date, index)} />
-
+                                        <p className="history" >{topic}</p>
+                                        {isHovered[index] &&
+                                            <img className="clickable-icon hamburger-icon" src="./hamburger-icon.svg" alt="hamburger-icon" onClick={(event) => handleHamburgerClick(event, date, index)} />
+                                        }
                                         {showEditDelete[`${date}-${index}`] &&
                                             <div ref={editDeleteContainerRef} className="edit-delete-container">
                                                 <div className="clickable-icon edit-container" onClick={() => handleEdit(date, index)}>
