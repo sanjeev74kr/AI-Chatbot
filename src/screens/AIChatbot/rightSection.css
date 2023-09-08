@@ -38,6 +38,15 @@
   white-space: nowrap;
   margin-left: 70%;
   flex: 0 10 1rem;
+
+  /* Added */
+  
+  color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 18px; 
 }
 
 
@@ -81,6 +90,15 @@
   font-weight: 600;
   margin-left: 5%;
   margin-top: 8%;
+
+  /* Added */
+  color: #333;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 18px; /* 150% */
+text-transform: uppercase;
 }
 
 .history-container {
@@ -104,6 +122,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
+  /* added */
+  color: #333;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 

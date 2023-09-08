@@ -125,6 +125,8 @@
   word-break: break-word;
   /* Additional support for word breaking */
   font-size: 1 rem;
+
+ 
 }
 
 .user {
@@ -137,6 +139,14 @@
   width: 90%;
   margin-left: 2%;
   margin-right: 2%;
+
+   /* added */
+   color: #333;
+   font-family: Inter;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 18px;
 }
 
 .speaker-button {
@@ -158,6 +168,14 @@
   margin-left: 2%;
   margin-right: 2%;
   line-height: 2;
+
+  /* added */
+  color: #333;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px;
 }
 
 .bottom-conversation-part {
@@ -174,6 +192,11 @@
   margin-left: 5%;
   margin-bottom: 2%;
   padding: 0.5%;
+
+  /* added*/
+  width: 211px;
+height: 30px;
+flex-shrink: 0; 
 }
 
 .conversation-section-icon {

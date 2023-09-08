@@ -138,7 +138,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
         //if dislike clicked then disable like if already liked
         const updatedIsLiked = [...isLiked]
-        if (updatedIsLiked[index] == true) {
+        if (updatedIsLiked[index] === true) {
             updatedIsLiked[index] = false;
             setIsLiked(updatedIsLiked);
         }
@@ -148,7 +148,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const handleDislikeButtonClick = (index) => {
         const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
         //if not disliked earlier then open feedback component
-        if (updatedIsDislikeIconClicked[index] == false)
+        if (updatedIsDislikeIconClicked[index] === false)
             handleDislikeClick();
          
         handleDislikeIconClicked(index);
@@ -162,7 +162,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
         //if like clicked then disable dislike if already disliked
         const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
-        if (updatedIsDislikeIconClicked[index] == true) {
+        if (updatedIsDislikeIconClicked[index] === true) {
             updatedIsDislikeIconClicked[index] = false;
             setIsDislikeIconClicked(updatedIsDislikeIconClicked);
         }
