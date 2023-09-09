@@ -7,6 +7,7 @@ import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
 import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon } from "../../assets/icons";
+import EmailShare from "../../components/Email/EmailShare";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -18,6 +19,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [isKeyDown, setIsKeyDown] = useState(false);
     const [isLiked, setIsLiked] = useState(Array(answer?.length).fill(false));
     const [isdislikeIconClicked, setIsDislikeIconClicked] = useState(Array(answer?.length).fill(false));
+    const [isEmailClicked, setIsEmailClicked] = useState([]);
 
     const voiceSearch = VoiceSearch(setInputValue, setIsKeyDown);
     const handleStartListening = voiceSearch.handleStartListening;
@@ -125,7 +127,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     }
 
-   //function for showing feedback component
+    //function for showing feedback component
     const handleDislikeClick = () => {
         setIsDislikeClicked(!isdislikeClicked);
     }
@@ -143,17 +145,17 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
             setIsLiked(updatedIsLiked);
         }
     }
-    
+
     //Function for calling both feedback-loading function and icon color change function
     const handleDislikeButtonClick = (index) => {
         const updatedIsDislikeIconClicked = [...isdislikeIconClicked];
         //if not disliked earlier then open feedback component
         if (updatedIsDislikeIconClicked[index] === false)
             handleDislikeClick();
-         
+
         handleDislikeIconClicked(index);
     }
-     
+
     //Function for changing like icon color
     const handleLikeClick = (index) => {
         const updatedIsLiked = [...isLiked];
@@ -169,7 +171,11 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     }
 
 
-
+    const handleEmailClick = (index) => {
+        const updatedEmailClick = [...isEmailClicked];
+        updatedEmailClick[index] = true;
+        setIsEmailClicked(updatedEmailClick);
+    }
 
     return (
         <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} 
@@ -257,8 +263,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"
                                         onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
-                                    
-                                    <img className="conversation-section-icon" src={emailIcon} alt="email"/>
+
+                                    <img className="conversation-section-icon" src={emailIcon} alt="email" onClick={() => handleEmailClick(index)} />
+                                    {isEmailClicked[index] && <EmailShare userQuery={userMessage.que} answer={answer[index]?.ans.response.output_text} />}
+
                                     <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
                                         onClick={() => handleLikeClick(index)} />
 
