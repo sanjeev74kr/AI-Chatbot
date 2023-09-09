@@ -52,7 +52,13 @@ function AIChatbot() {
         });
     };
 
-    const notify = (toastmsg) => toast(toastmsg);
+    const notify = (toastmsg) =>{
+        return toast(toastmsg,{
+        position:"bottom-center"
+        })
+    
+    }
+    
 
     return (
         <main className="Chats-UI">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import industryData from '../../sampleData/industryData';
 import { AIChatbotLeftSectionStyles } from './leftSection.css'
+import { bulletPointIcon } from '../../assets/icons';
 
 function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     const [isExpanded, setIsExpanded] = useState({});
@@ -75,7 +76,7 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
 
                                             industry.nestedData.map((item, index) => (
                                                 <div className="industry-nested-data">
-                                                    <img src="./bullet-point.svg" alt="bullet-point" id="bullet-point" />
+                                                    <img src={bulletPointIcon} alt="bullet-point" id="bullet-point" />
                                                     <p key={index} className="industry-nested-items">{item}</p>
                                                 </div>
                                             ))
