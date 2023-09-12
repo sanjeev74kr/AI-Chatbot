@@ -233,3 +233,58 @@ flex-shrink: 0;
 
 
 }
+
+.transforming-healthcare{
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  /* justify-content: center; */
+  width: 100%;
+  margin-bottom: 2%;
+  /* line-height: 2; */
+  gap: 0.625rem;
+  padding: 2%;
+  overflow: hidden;
+  position: relative;
+  /* margin: 0 auto; */
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 1s ease;
+  /* width: 100%; */
+}
+
+.carousel-item {
+  flex: 0 0 33.33%; /* Display three items at a time */
+  gap: 2%;
+}
+
+.transforming-healthcare-container{
+  display: flex;
+  padding: 0.375rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.25rem;
+  border: 1px solid #C9C9C9;
+  width: 95%;
+}
+
+.healthcare-carosel-right-arrow {
+  cursor: pointer;
+  /* position: absolute; */
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+}
+
+.healthcare-carosel-left-arrow{
+  transform: rotate(180deg);
+  cursor: pointer;
+}

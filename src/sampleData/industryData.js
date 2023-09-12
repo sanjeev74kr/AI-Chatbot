@@ -32,3 +32,31 @@ const industryData = [
 ]
 
 export default industryData;
+
+
+export const healthcareInfo = [
+  {
+    id : 1,
+    info : "transforming healthcare project...."
+  },
+  {
+    id : 2,
+    info : "transforming healthcare project...."
+  },
+  {
+    id : 3,
+    info : "transforming healthcare project...."
+  },
+  {
+    id : 4,
+    info : "transforming healthcare project...."
+  },
+  {
+    id : 5,
+    info : "transforming healthcare project...."
+  },
+  {
+    id : 6,
+    info : "transforming healthcare project...."
+  },
+]

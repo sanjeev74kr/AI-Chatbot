@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
@@ -6,8 +6,9 @@ import { brandLogo, emailIcon, likedIcon, speakerIcon, voiceIcon } from "../../a
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
-import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon } from "../../assets/icons";
+import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon, externalLinkIcon, chevronRightIcon } from "../../assets/icons";
 import EmailShare from "../../components/Email/EmailShare";
+import { healthcareInfo } from "../../sampleData/industryData";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -20,6 +21,9 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [isLiked, setIsLiked] = useState(Array(answer?.length).fill(false));
     const [isdislikeIconClicked, setIsDislikeIconClicked] = useState(Array(answer?.length).fill(false));
     const [isEmailClicked, setIsEmailClicked] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0); // useState for handling slider of healthcare
+    const carouselInnerRef = useRef(null);
+    const [timer,setTimer] = useState(true)
 
     const voiceSearch = VoiceSearch(setInputValue, setIsKeyDown);
     const handleStartListening = voiceSearch.handleStartListening;
@@ -177,6 +181,23 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         setIsEmailClicked(updatedEmailClick);
     }
 
+    const handleScroll = (direction) => {
+        const slideWidth = carouselInnerRef.current.offsetWidth / 3; // Width of one visible slide
+        const maxIndex = Math.max(0, healthcareInfo.length - 3); // Maximum index to prevent scrolling too far
+    
+        // if (currentIndex < maxIndex) {
+        if (direction === 'left' && currentIndex > 0) {
+          setCurrentIndex(currentIndex - 1);
+        }else if(direction === 'right' && currentIndex < maxIndex){
+            setCurrentIndex(currentIndex + 1)
+        }
+      };
+
+      //useEffet for loading SVG after 30 seconds...
+      useEffect(()=>{
+        setTimeout(()=>{setTimer(false)},30000)
+      },[])
+
     return (
         <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} 
     ${isLeftSectionToggle ? 'shrink-left-section' : ''}
@@ -244,15 +265,34 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             <div>
                                 <div className="bot">
                                     <img src={brandLogo} alt="bot-icon" />
-                                    <div className="answer">{answer[index]?.ans.response.output_text !== undefined
+                                    <div className="answer">{timer ? answer[index]?.ans.response.output_text !== undefined
                                         ? answer[index]?.ans.response.output_text
-                                        : <LoadingAnimationSVG />
+                                        : <LoadingAnimationSVG /> : <p>something went wrong</p>
 
 
                                     }
                                     </div>
 
                                 </div>
+                                {/* Slider starts here */}
+                                <div className="transforming-healthcare">
+                                    {currentIndex > 0 && <img className="healthcare-carosel-left-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("left")}/>}
+                                    <div className="carousel">
+                                        <div className="carousel-inner" style={{ transform: `translateX(-${currentIndex * 33.33}%)` }} ref={carouselInnerRef}>
+                                            {healthcareInfo.map((hData)=>(
+                                                <div className="carousel-item" key={hData.id}>
+                                                    <div className="transforming-healthcare-container">
+                                                        <p className="healthcare-text">{hData.info}</p>
+                                                        <img className="healthcare-externalink" src={externalLinkIcon} alt="external-link" />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <img className="healthcare-carosel-right-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("right")}/>
+                                </div>
+
+                                {/* Slider Ends here */}
 
                                 <div className="conversation-bottom-button-container">
                                     {/* <img className="conversation-section-icon" src={Speaker} alt="speaker-icon" /> */}
