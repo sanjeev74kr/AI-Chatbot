@@ -2,6 +2,7 @@ import formatDate from "../../utils/formatDate";
 import { useState, useEffect, useRef } from "react";
 import { aiChatbotRightSectionStyles } from './rightSection.css'
 import { handleDeleteQandA } from "../../services/CounterSlice";
+import DeleteConfirmation from '../../components/DeleteConfirmation/DeleteConfirmation'
 
 
 function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleChatHistoryButton,
@@ -10,6 +11,9 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
     const [editingIndices, setEditingIndices] = useState({});
     const [showEditDelete, setShowEditDelete] = useState({});
     const [isHovered, setIsHovered] = useState([]);
+    const [isDeleteClicked, setIsDeleteClicked] = useState([]);
+    const [deleteConfirmation, setDeleteConfirmation] = useState({ date: null, index: null });
+
     const editDeleteContainerRef = useRef(null);
 
 
@@ -44,17 +48,23 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
 
     const handleHover = (index) => {
-       const updateIsHovered=[...isHovered];
-        updateIsHovered[index]=true;
+        const updateIsHovered = [...isHovered];
+        updateIsHovered[index] = true;
         setIsHovered(updateIsHovered);
     }
 
-    const handleNotHover=(index)=>{
-        const updateIsHovered=[...isHovered];
-        updateIsHovered[index]=false;
+    const handleNotHover = (index) => {
+        const updateIsHovered = [...isHovered];
+        updateIsHovered[index] = false;
         setIsHovered(updateIsHovered);
     }
 
+    const handleDeleteIconClicked = (date, index) => {
+        const updatedIsDeleteClicked = [...isDeleteClicked];
+        updatedIsDeleteClicked[index] = true;
+        setIsDeleteClicked(updatedIsDeleteClicked);
+        setDeleteConfirmation({ date, index });
+    }
 
     //handle delete button
     const handleDelete = (date, index) => {
@@ -72,6 +82,10 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
         setAnswer(updatedQueAndAns);
 
         dispatch(handleDeleteQandA(deletedQuery));
+        const updatedIsDeleteClicked = [...isDeleteClicked];
+        updatedIsDeleteClicked[index] = false;
+        setIsDeleteClicked(updatedIsDeleteClicked);
+        
     }
 
 
@@ -104,7 +118,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
                         {updatedChatHistory[date].map((topic, index) => (
 
-                            <div className="history-container" key={index} onMouseEnter={() => handleHover(index)} onMouseLeave={()=>handleNotHover(index)}>
+                            <div className="history-container" key={index} onMouseEnter={() => handleHover(index)} onMouseLeave={() => handleNotHover(index)}>
                                 {editingIndices[date] === index ? (
                                     <div className="edit-section">
                                         <input className="editable-text"
@@ -149,7 +163,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
                                                     />
                                                     <p className="edit-delete-text">Edit Title</p>
                                                 </div>
-                                                <div className="clickable-icon delete-container" onClick={() => handleDelete(date, index)}>
+                                                <div className="clickable-icon delete-container" onClick={() => handleDeleteIconClicked(date, index)}>
                                                     <img
                                                         className="clickable-icon delete-button"
                                                         src="./delete-button.svg"
@@ -157,11 +171,18 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
                                                     />
                                                     <p className="edit-delete-text">Delete</p>
+
                                                 </div>
-
                                             </div>
-                                        }
 
+                                        }
+                                        {isDeleteClicked[index] && <DeleteConfirmation date={deleteConfirmation.date} index={deleteConfirmation.index} handleDelete={handleDelete} 
+                                        onCancel={() => {
+                                            const updatedIsDeleteClicked = [...isDeleteClicked];
+                                            updatedIsDeleteClicked[index] = false;
+                                            setIsDeleteClicked(updatedIsDeleteClicked);
+                                            setDeleteConfirmation({ date: null, index: null });
+                                        }} />}
 
                                     </>
 

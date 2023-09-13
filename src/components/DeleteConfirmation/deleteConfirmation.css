@@ -1,0 +1,43 @@
+.delete-confirmation-dialogue-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    height: 6.5rem;
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.2);
+    padding: 5%;
+    z-index:100;
+}
+
+.delete-confirmation-msg {
+    font-size: 1rem;
+}
+
+.delete-confirmation-button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.delete-confirmation-button {
+    background-color: transparent;
+    border: 0.1rem solid gray;
+    border-radius: 0.4rem;
+    min-width: fit-content;
+    height: 100%;
+    width: 30%;
+    padding: 1%;
+
+}
+
+.delete-cancel-button {
+    background-color: transparent;
+    border: 0.1rem solid gray;
+    border-radius: 0.4rem;
+    margin-left: 5%;
+    min-width: fit-content;
+    height: 100%;
+    width: 90%;
+    padding: 1%;
+
+}
