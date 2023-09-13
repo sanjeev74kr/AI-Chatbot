@@ -9,6 +9,7 @@ import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
 import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon, externalLinkIcon, chevronRightIcon } from "../../assets/icons";
 import EmailShare from "../../components/Email/EmailShare";
 import { healthcareInfo } from "../../sampleData/industryData";
+import LoadingDots from "../../components/LoadingDots/LoadingDots";
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -25,7 +26,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const carouselInnerRef = useRef(null);
     const [timer,setTimer] = useState(true)
 
-    const voiceSearch = VoiceSearch(setInputValue, setIsKeyDown);
+    const voiceSearch = VoiceSearch(inputValue,setInputValue, setIsKeyDown);
     const handleStartListening = voiceSearch.handleStartListening;
     const handleStopListening = voiceSearch.handleStopListening;
 
@@ -46,6 +47,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
             synth.speak(utterance);
         }
     }
+
+    
 
     const queandans = useSelector((state) => state.counter.query);
 
@@ -216,7 +219,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             value={inputValue}
                             onChange={handleInputChange}
                             onKeyDown={(e) => handleEnterPressed(e)}
-                        />
+                            
+                       />
+                       {isKeyDown && <LoadingDots />}
+                  
 
                         <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
                         <p className="search-box-vertical line vertical-line"></p>
