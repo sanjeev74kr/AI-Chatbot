@@ -43,7 +43,7 @@
   
   color: #FFF;
 font-family: Inter;
-font-size: 16px;
+font-size: 1rem;
 font-style: normal;
 font-weight: 600;
 line-height: 18px; 
@@ -94,7 +94,7 @@ line-height: 18px;
   /* Added */
   color: #333;
 font-family: Inter;
-font-size: 12px;
+font-size: 13px;
 font-style: normal;
 font-weight: 600;
 line-height: 18px; /* 150% */
@@ -125,7 +125,7 @@ text-transform: uppercase;
   /* added */
   color: #969696;
 font-family: Inter;
-font-size: 14px;
+font-size: 15px;
 font-style: normal;
 font-weight: 400;
 line-height: normal
