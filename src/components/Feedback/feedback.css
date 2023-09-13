@@ -43,6 +43,13 @@ margin-left: auto;
 
 }
 
+
+.feedback-button-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .feedback-submit-button{
 background-color:#013DB9 ;
 min-width: fit-content;
@@ -54,4 +61,20 @@ border-radius: 0.2rem;
 font-weight: 600;
 font-size: 0.8rem;
 text-align: center;
+}
+
+
+.skip-button{
+  background-color:transparent;
+  color:black;
+  margin-left: 5%;
+  min-width: fit-content;
+  width:20%;
+  min-height: fit-content;
+  height: 15%;
+  border:0.01rem solid grey;
+  border-radius: 0.4rem;
+  padding:1%;
+  text-align: center;
+
 }

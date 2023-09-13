@@ -323,7 +323,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                 </div>
                                 {
-                                    isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify} />
+                                    isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify} handleDislikeIconClicked={()=>handleDislikeIconClicked(index)}/>
                                 }
 
                             </div>

@@ -1,12 +1,16 @@
 import { feedbackStyles } from './index'
 import { dislikeRedIcon, cancelIcon } from '../../assets/icons';
 
-function Feedback({ handleDislikeClick, notify }) {
+function Feedback({ handleDislikeClick, notify,handleDislikeIconClicked }) {
 const handleSubmitClick=()=>{
     notify("Feedback submitted");
     handleDislikeClick();
 }
 
+const handleSkipClick=()=>{
+    
+    handleDislikeClick();
+}
     return (
         <div className="feedback-component">
             <div className="feedback-header">
@@ -18,8 +22,11 @@ const handleSubmitClick=()=>{
                 onClick={handleDislikeClick} />
             </div>
             <textarea className="feedback-text-area" placeholder='What was the issue with response?How could it be improved?'></textarea>
-            <div id='feedback-submit-button' className="clickable-icon feedback-submit-button" onClick={handleSubmitClick}>Submit Feedback</div>
-            
+
+            <div className='feedback-button-container'>
+            <button id='feedback-submit-button' className="clickable-icon feedback-submit-button" onClick={handleSubmitClick}>Submit Feedback</button>
+            <button className='clickable-icon skip-button' onClick={handleSkipClick}>skip</button>
+            </div>
         </div>
     )
 }
