@@ -194,9 +194,11 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
       };
 
       //useEffet for loading SVG after 30 seconds...
-      useEffect(()=>{
-        setTimeout(()=>{setTimer(false)},30000)
-      },[])
+    //   useEffect(()=>{
+    //     setTimeout(()=>{setTimer(false)},30000)
+    //   },[])
+
+    console.log("userQuery---->", userQuery)
 
     return (
         <section className={`chat-component-main-section ${isChatHistoryToggle ? 'shrink-right-section' : ''} 
@@ -279,10 +281,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     {currentIndex > 0 && <img className="healthcare-carosel-left-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("left")}/>}
                                     <div className="carousel">
                                         <div className="carousel-inner" style={{ transform: `translateX(-${currentIndex * 33.33}%)` }} ref={carouselInnerRef}>
-                                            {healthcareInfo.map((hData)=>(
-                                                <div className="carousel-item" key={hData.id}>
+                                            {answer[index]?.ans.source_info.map((hData, index)=>(
+                                                <div className="carousel-item" key={index}>
                                                     <div className="transforming-healthcare-container">
-                                                        <p className="healthcare-text">{hData.info}</p>
+                                                        <p className="healthcare-text">{hData.substring(1, 35)}...</p>
                                                         <img className="healthcare-externalink" src={externalLinkIcon} alt="external-link" />
                                                     </div>
                                                 </div>

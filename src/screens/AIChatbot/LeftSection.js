@@ -6,14 +6,19 @@ import { bulletPointIcon } from '../../assets/icons';
 function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     const [isExpanded, setIsExpanded] = useState({});
     const [isclickedLeftToggle, setIsClickedLeftToggle] = useState(false);
+    const [industriesData, setIndustriesData] = useState([])
+    const [industriesCategoryWiseData, setIndustriesCategoryWiseData] = useState([])
+    const [currentIndustryName, setCurrentIndustryName] = useState(null)
 
     //Handle industry-data if it has nested items
-    const handleExpandButton = (index) => {
-        if (industryData[index])
+    const handleExpandButton = (industry, index) => {
+        if (industriesData[index]){
             setIsExpanded((prevState) => ({
                 ...prevState,
                 [index]: !prevState[index]
-            }));
+            }))};
+
+            setCurrentIndustryName(industry)
     };
 
     //handle-left-section-toggle-button
@@ -49,6 +54,28 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
         };
     }, []); // Empty dependency array to run this effect only once
 
+    async function getIndustryData(){
+        try{
+            await fetch(process.env.REACT_APP_ALL_INDUSTRIES_URL).then((res)=> res.json()).then((data)=>setIndustriesData(data))
+        }catch(err){
+            console.log("Error while fetching-->", err.message)
+        }
+    }
+
+    async function getCategoryWiseIndustries(){
+        try{
+                await fetch(process.env.REACT_APP_CATEGORY_WISE_INDUSTRIES_URL + currentIndustryName).then((result)=> result.json()).then((rdata)=>setIndustriesCategoryWiseData(rdata))
+            }catch(err){
+                console.log("Error while fetching-->", err.message)
+            }
+        }
+        useEffect(()=>{
+            getIndustryData()
+            getCategoryWiseIndustries()
+        },[currentIndustryName])
+        // console.log("currentIndustryName------>",process.env.REACT_APP_CATEGORY_WISE_INDUSTRIES_URL + currentIndustryName)
+    // console.log("industriesData-->", industriesData)
+    console.log("industriesCategoryWiseData-->", industriesCategoryWiseData)
     
     return (
         <>
@@ -59,25 +86,26 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
                         <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton} />
                     </div>
                     <div className="industry-data-container">
-                        {industryData.map((industry, index) => (
-                            <div className="industry-data">
-                                <div className='industry-title-container' key={index}>
-                                    <img id="industry-icon" src={industry.icon} alt="page-icon" />
-                                    <p className='industry-name'>{industry.name}</p>
+                        {industriesData.map((industry, index) => (
+                            <div className="industry-data" key={index}>
+                                <div className='industry-title-container' >
+                                    <img id="industry-icon" src={bulletPointIcon} alt="page-icon" />
+                                    <p className='industry-name'>{industry}</p>
 
                                     <img id="expand-button" className="clickable-icon" src={isExpanded[index] ? "./up-arrow-icon.svg" : "./down-arrow-icon.svg"}
                                         alt="expand-button"
-                                        onClick={() => handleExpandButton(index)} />
+                                        onClick={() => handleExpandButton(industry, index)} />
                                 </div>
 
                                 {isExpanded[index] && (
                                     <div className="industry-nested-data-container">
-                                        {industry.nestedData.length > 0 ?
+                                        {/* {industry.nestedData.length > 0 ? */}
+                                        {industriesCategoryWiseData.length > 0 ?
 
-                                            industry.nestedData.map((item, index) => (
-                                                <div className="industry-nested-data">
+                                            industriesCategoryWiseData.map((item, index) => (
+                                                <div className="industry-nested-data" key={index}>
                                                     <img src={bulletPointIcon} alt="bullet-point" id="bullet-point" />
-                                                    <p key={index} className="industry-nested-items">{item}</p>
+                                                    <p key={index} className="industry-nested-items">{item.name.substring(1, 20)}...</p>
                                                 </div>
                                             ))
 
