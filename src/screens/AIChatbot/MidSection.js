@@ -9,7 +9,7 @@ import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
 import { copyIcon, likeIcon, dislikeIcon, dislikeRedIcon, downloadIcon, externalLinkIcon, chevronRightIcon } from "../../assets/icons";
 import EmailShare from "../../components/Email/EmailShare";
 import { healthcareInfo } from "../../sampleData/industryData";
-import LoadingDots from "../../components/LoadingDots/LoadingDots";
+
 
 function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
@@ -26,7 +26,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const carouselInnerRef = useRef(null);
     const [timer,setTimer] = useState(true)
 
-    const voiceSearch = VoiceSearch(inputValue,setInputValue, setIsKeyDown);
+    const inputbox=document.querySelector('.input-box');
+    const sendButton=document.getElementById('send-button');
+
+    const voiceSearch = VoiceSearch(isKeyDown,setInputValue,setIsKeyDown,inputbox,sendButton);
     const handleStartListening = voiceSearch.handleStartListening;
     const handleStopListening = voiceSearch.handleStopListening;
 
@@ -196,6 +199,17 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         }
       };
 
+      const handleVoiceIconClicked=()=>{
+          setIsKeyDown(true);
+          setInputValue("Listening...");
+          
+         if(inputbox)
+         inputbox.setAttribute('disabled',true);
+         if(sendButton)
+         sendButton.setAttribute('disabled',true);
+          handleStartListening();
+      }
+
       //useEffet for loading SVG after 30 seconds...
     //   useEffect(()=>{
     //     setTimeout(()=>{setTimer(false)},30000)
@@ -215,15 +229,14 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                 <div className="search-box-container">
                     <div className="search-box">
                         <img className="search-icon" src="./search.svg" alt="search-icon"></img>
-                        <input type="text" className="input-box" placeholder="Search"
+                        <input type="text" className={`input-box ${isKeyDown ? 'input-animation' : ''}`} placeholder="Search"
                             value={inputValue}
                             onChange={handleInputChange}
                             onKeyDown={(e) => handleEnterPressed(e)}
-                            
                        />
-                       {isKeyDown && <LoadingDots />}
+                       
                   
-
+                        <div className="search-box-button-container">
                         <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
                         <p className="search-box-vertical line vertical-line"></p>
                         <label htmlFor="uploadFileInput">
@@ -245,8 +258,8 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                         <p className="search-box-vertical line vertical-line"></p>
 
                         <img id="voice-input-button" className={`clickable-icon ${isKeyDown ? 'voiceInputKeyDown' : ''}`} src={voiceIcon} alt="send-button"
-                            onClick={handleStartListening} title="Click to speak" />
-
+                            onClick={handleVoiceIconClicked} title="Click to speak" />
+                      </div>
                     </div>
 
                     <div className="shrunked-right-section-button">
