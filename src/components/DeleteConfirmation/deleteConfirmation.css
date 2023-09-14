@@ -7,17 +7,18 @@
     left:30%;
     width:35vw; 
     height: 25vh;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
     padding: 1.5%;
     z-index:110;
     border-radius: 0.8rem;
+    font-family: Inter;
 }
 .delete-confirmation-heading{
-font-size: 1.25rem;
-font-weight: 500;
+font-size: 1.15rem;
+font-weight: 550;
 }
 
-.delete-confirmation-msg {
+.delete-confirmation-msg {  
     margin-top: 4%;
     font-size: 1rem;
     font-weight: 400;
