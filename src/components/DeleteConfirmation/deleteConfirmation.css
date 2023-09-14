@@ -3,41 +3,52 @@
     flex-direction: column;
     background-color: white;
     position: absolute;
-    height: 6.5rem;
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.2);
-    padding: 5%;
-    z-index:100;
+    top:30%;
+    left:30%;
+    width:35vw; 
+    height: 25vh;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.05);
+    padding: 1.5%;
+    z-index:110;
+    border-radius: 0.8rem;
+}
+.delete-confirmation-heading{
+font-size: 1.25rem;
+font-weight: 500;
 }
 
 .delete-confirmation-msg {
+    margin-top: 4%;
     font-size: 1rem;
+    font-weight: 400;
+    color: rgb(78, 77, 77);
+    line-height: 1.5;
 }
+
 
 .delete-confirmation-button-container {
     display: flex;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 8%;
+    justify-content: flex-end;
 }
 
 .delete-confirmation-button {
     background-color: transparent;
-    border: 0.1rem solid gray;
-    border-radius: 0.4rem;
-    min-width: fit-content;
     height: 100%;
-    width: 30%;
+    width: 10%;
     padding: 1%;
-
+    color: #427ee6;
+    font-weight:550;
+    
 }
 
 .delete-cancel-button {
     background-color: transparent;
-    border: 0.1rem solid gray;
-    border-radius: 0.4rem;
-    margin-left: 5%;
-    min-width: fit-content;
+    margin-left: 1%;
     height: 100%;
-    width: 30%;
+    width: 10%;
     padding: 1%;
-
+    color: #427ee6;
+    font-weight:550;
 }

@@ -64,6 +64,9 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
         updatedIsDeleteClicked[index] = true;
         setIsDeleteClicked(updatedIsDeleteClicked);
         setDeleteConfirmation({ date, index });
+        if (editDeleteContainerRef.current)
+            setShowEditDelete({});
+
     }
 
     //handle delete button
@@ -85,7 +88,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
         const updatedIsDeleteClicked = [...isDeleteClicked];
         updatedIsDeleteClicked[index] = false;
         setIsDeleteClicked(updatedIsDeleteClicked);
-        
+
     }
 
 
@@ -176,21 +179,23 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
                                             </div>
 
                                         }
-                                        {isDeleteClicked[index] && <DeleteConfirmation date={deleteConfirmation.date} index={deleteConfirmation.index} handleDelete={handleDelete} 
-                                        onCancel={() => {
-                                            const updatedIsDeleteClicked = [...isDeleteClicked];
-                                            updatedIsDeleteClicked[index] = false;
-                                            setIsDeleteClicked(updatedIsDeleteClicked);
-                                            setDeleteConfirmation({ date: null, index: null });
-                                        }} />}
+
 
                                     </>
 
                                 )}
                             </div>
 
+
                         ))}
 
+                        {isDeleteClicked[deleteConfirmation.index] && <DeleteConfirmation date={deleteConfirmation.date} index={deleteConfirmation.index} handleDelete={handleDelete}
+                            onCancel={() => {
+                                const updatedIsDeleteClicked = [...isDeleteClicked];
+                                updatedIsDeleteClicked[deleteConfirmation.index] = false;
+                                setIsDeleteClicked(updatedIsDeleteClicked);
+                                setDeleteConfirmation({ date: null, index: null });
+                            }} />}
                     </div>
                 ))}
             </div>

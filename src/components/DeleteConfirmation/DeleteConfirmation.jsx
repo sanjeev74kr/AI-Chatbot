@@ -1,16 +1,18 @@
-import  './deleteConfirmation.css'
-function DeleteConfirmation({date,index,handleDelete,onCancel}){
+import './deleteConfirmation.css'
+function DeleteConfirmation({ date, index, handleDelete, onCancel }) {
     const handleConfirm = () => {
         handleDelete(date, index);
-      };
-    return(
+    };
+    return (
         <div className="delete-confirmation-dialogue-container">
+            <p className='delete-confirmation-heading'>Delete chat?</p>
             <p className="delete-confirmation-msg">
-             This will delete the chat as well
+            <span>You'll no longer see this chat here. This will also delete related activity like prompts, responses and feedback from your Bard activity.</span>
+            {/* <span className='learn-more-link'><a href=''>Learn more</a></span>  */}
             </p>
             <div className="delete-confirmation-button-container">
-            <button className="clickable-icon delete-confirmation-button" onClick={handleConfirm}>confirm</button>
-            <button className="clickable-icon delete-cancel-button" onClick={onCancel}>cancel</button>
+                <button className="clickable-icon delete-confirmation-button" onClick={onCancel}>Cancel</button>
+                <button className="clickable-icon delete-cancel-button" onClick={handleConfirm}>Delete</button>
             </div>
         </div>
     )
