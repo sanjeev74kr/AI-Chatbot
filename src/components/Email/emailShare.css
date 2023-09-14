@@ -2,14 +2,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width:6rem;
+    min-width: fit-content;
+    width:8rem;
     height:2rem;
     position: absolute;
     bottom:100%;
-    right: 20%;
+    right: 10%;
     z-index: 100;   
     background-color: white;
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0.02rem rgba(0, 0, 0, 0.2);
     padding: 2%;
     border-radius: 0.2rem;
     cursor: pointer;

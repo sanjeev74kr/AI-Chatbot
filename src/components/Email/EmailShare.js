@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  gmailIcon, teamsIcon } from '../../assets/icons';
+import {  gmailIcon, slackIcon, teamsIcon } from '../../assets/icons';
 import './emailShare.css';
 
 function generateConversationContent(userQuery, answer) {
@@ -39,7 +39,8 @@ function EmailShare({ userQuery, answer ,handleEmailClick,index}) {
     <div className='share-button-container'>
       {/* You can add a button or any UI element to trigger the email share */}
         <button className="mail-share-icon" onClick={handleShareEmail}><img src={gmailIcon} alt ='mail'/></button>
-        <button className="mail-share-icon" ><img src={teamsIcon} alt ='mail'/></button>
+        <button className="mail-share-icon" ><img src={teamsIcon} alt ='teams'/></button>
+        <button className="mail-share-icon" ><img src={slackIcon} alt ='slack'/></button>
     </div>
   );
 }

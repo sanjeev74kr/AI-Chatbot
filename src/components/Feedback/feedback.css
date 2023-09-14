@@ -5,7 +5,7 @@
   top: 20%;
   left: 34%;
   background-color: white;
-  box-shadow: 0 0 0 2px rgba(229, 220, 220, 0.2);
+  box-shadow: 0 0 0 0.15rem rgba(229, 220, 220, 0.2);
   border-radius: 0.8rem;
   padding: 2%;
 }
@@ -52,6 +52,7 @@
 
 .feedback-submit-button {
   background-color: #013DB9;
+  opacity: 0.85;
   min-width: fit-content;
   width: 6.5rem;
   height: 2.15rem;
@@ -72,6 +73,7 @@
   border-radius: 0.2rem;
   padding: 1%;
   background-color: #013DB9;
+  opacity: 0.85;
   min-width: fit-content;
   width: 6.5rem;
   height: 2.15rem;

@@ -224,8 +224,8 @@ position: relative;
 }
 
 .conversation-section-icon:hover {
-  background-color: #003F7D;
-  opacity: 0.5;
+  background-color: #013DB9;
+  opacity: 0.8;
   border-radius: 50%;
 }
 
@@ -235,8 +235,8 @@ position: relative;
 }
 
 .conversation-section-icon-top:hover {
-  background-color: #003F7D;
-  opacity: 0.2;
+  background-color: #013DB9;
+  opacity: 0.8;
   border-radius: 50%;
 }
 
