@@ -215,6 +215,7 @@ line-height: 30px;
   width: 211px;
 height: 30px;
 flex-shrink: 0; 
+position: relative;
 }
 
 .conversation-section-icon {

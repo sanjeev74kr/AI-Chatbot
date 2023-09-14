@@ -184,7 +184,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     const handleEmailClick = (index) => {
         const updatedEmailClick = [...isEmailClicked];
-        updatedEmailClick[index] = true;
+        updatedEmailClick[index] = !updatedEmailClick[index];
         setIsEmailClicked(updatedEmailClick);
           
     }
@@ -329,7 +329,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                         onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
 
                                     <img className="conversation-section-icon" src={shareIcon} alt="email" onClick={() => handleEmailClick(index)} />
-                                    {isEmailClicked[index] && <EmailShare userQuery={userMessage.que} answer={answer[index]?.ans.response.output_text} />}
+                                    {isEmailClicked[index] && <EmailShare userQuery={userMessage.que} answer={answer[index]?.ans.response.output_text} handleEmailClick={handleEmailClick} index={index} />}
 
                                     <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
                                         onClick={() => handleLikeClick(index)} />
