@@ -1,16 +1,14 @@
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import {useEffect,useRef } from 'react';
-import LoadingDots from '../LoadingDots/LoadingDots'
 
-function VoiceSearch(inputValue,setInputValue,setIsKeyDown){
+
+function VoiceSearch(isKeyDown,setInputValue,setIsKeyDown,inputbox,sendButton){
     const { transcript, resetTranscript, listening } = useSpeechRecognition();
     const silenceTimeoutRef = useRef(null);
 
     const handleStartListening = () => {
         resetTranscript();
         SpeechRecognition.startListening()
-        setIsKeyDown(true);
-        setInputValue("Loading")
       };
     
       const handleStopListening = () => {
@@ -19,6 +17,10 @@ function VoiceSearch(inputValue,setInputValue,setIsKeyDown){
         setIsKeyDown(false);
         setInputValue(transcript);
         console.log('Transcript:', transcript);       
+        if(inputbox)
+        inputbox.setAttribute('disabled',false);
+        if(sendButton)
+        sendButton.setAttribute('disabled',false);
       };
 
       useEffect(() => {
