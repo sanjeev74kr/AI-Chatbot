@@ -1,0 +1,9 @@
+.mail-share-icon{
+    position: absolute;
+    bottom: 50%;
+    background-color: white;
+    box-shadow: 0 0 0 1px rgba(0 0 0 0.2);
+    padding: 1%;
+    border:0.01rem solid grey;
+    cursor: pointer;
+}
