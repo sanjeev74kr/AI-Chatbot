@@ -335,4 +335,7 @@ position: relative;
   font-weight: 500;
   line-height: normal;
   text-transform: capitalize;
+  max-width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

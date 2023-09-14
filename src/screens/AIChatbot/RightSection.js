@@ -20,7 +20,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
     //toogle edit-delete component
     const toggleEditDelete = (date, index) => {
         setShowEditDelete((prevVisibility) => ({
-            ...prevVisibility,
+            ...prevVisibility,  
             [`${date}-${index}`]: !prevVisibility[`${date}-${index}`],
         }));
     };
