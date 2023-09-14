@@ -191,7 +191,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     const handleScroll = (direction) => {
         const slideWidth = carouselInnerRef.current.offsetWidth / 3; // Width of one visible slide
-        const maxIndex = Math.max(0, healthcareInfo.length - 3); // Maximum index to prevent scrolling too far
+        const maxIndex = Math.max(0, healthcareInfo.length-4 ); // Maximum index to prevent scrolling too far
     
         // if (currentIndex < maxIndex) {
         if (direction === 'left' && currentIndex > 0) {
@@ -313,7 +313,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                             ))}
                                         </div>
                                     </div>
-                                    <img className="healthcare-carosel-right-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("right")}/>
+                                {currentIndex<healthcareInfo.length-4 && <img className="healthcare-carosel-right-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("right")}/>}
                                 </div>
 
                                 {/* Slider Ends here */}
