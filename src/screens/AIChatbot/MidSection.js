@@ -306,7 +306,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                             {answer[index]?.ans.source_info.map((hData, index)=>(
                                                 <div className="carousel-item" key={index}>
                                                     <div className="transforming-healthcare-container">
-                                                        <p className="healthcare-text">{hData.substring(1, 35)}...</p>
+                                                        <p className="healthcare-text">{hData.substring(1, 25)}...</p>
                                                         <img className="healthcare-externalink" src={externalLinkIcon} alt="external-link" />
                                                     </div>
                                                 </div>
