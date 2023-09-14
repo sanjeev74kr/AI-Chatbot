@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { brandLogo, emailIcon, likedIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import { brandLogo, emailIcon, likedIcon,shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
@@ -186,6 +186,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         const updatedEmailClick = [...isEmailClicked];
         updatedEmailClick[index] = true;
         setIsEmailClicked(updatedEmailClick);
+          
     }
 
     const handleScroll = (direction) => {
@@ -327,7 +328,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"
                                         onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
 
-                                    <img className="conversation-section-icon" src={emailIcon} alt="email" onClick={() => handleEmailClick(index)} />
+                                    <img className="conversation-section-icon" src={shareIcon} alt="email" onClick={() => handleEmailClick(index)} />
                                     {isEmailClicked[index] && <EmailShare userQuery={userMessage.que} answer={answer[index]?.ans.response.output_text} />}
 
                                     <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
