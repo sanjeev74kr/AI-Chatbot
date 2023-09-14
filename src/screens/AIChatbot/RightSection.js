@@ -187,7 +187,7 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
                             </div>
 
 
-                        ))}
+                        )).reverse()}
 
                         {isDeleteClicked[deleteConfirmation.index] && <DeleteConfirmation date={deleteConfirmation.date} index={deleteConfirmation.index} handleDelete={handleDelete}
                             onCancel={() => {
