@@ -27,9 +27,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [timer,setTimer] = useState(true)
 
     const inputbox=document.querySelector('.input-box');
-    const sendButton=document.getElementById('send-button');
+    const sendButton=document.querySelector('#send-button');
+    
 
-    const voiceSearch = VoiceSearch(isKeyDown,setInputValue,setIsKeyDown,inputbox,sendButton);
+    const voiceSearch = VoiceSearch(setInputValue,setIsKeyDown,inputbox,sendButton);
     const handleStartListening = voiceSearch.handleStartListening;
     const handleStopListening = voiceSearch.handleStopListening;
 
@@ -203,10 +204,11 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
           setIsKeyDown(true);
           setInputValue("Listening...");
           
-         if(inputbox)
-         inputbox.setAttribute('disabled',true);
-         if(sendButton)
-         sendButton.setAttribute('disabled',true);
+         if(inputbox){
+         inputbox.setAttribute('disabled',true);}
+         if(sendButton){
+         sendButton.setAttribute('disabled',true);}
+         
           handleStartListening();
       }
 

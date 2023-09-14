@@ -2,13 +2,16 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import {useEffect,useRef } from 'react';
 
 
-function VoiceSearch(isKeyDown,setInputValue,setIsKeyDown,inputbox,sendButton){
+function VoiceSearch(setInputValue,setIsKeyDown,inputbox,sendButton){
     const { transcript, resetTranscript, listening } = useSpeechRecognition();
     const silenceTimeoutRef = useRef(null);
 
     const handleStartListening = () => {
         resetTranscript();
-        SpeechRecognition.startListening()
+        SpeechRecognition.startListening();
+        if (sendButton) {
+          sendButton.setAttribute('disabled', true); // Disable the send button
+        }
       };
     
       const handleStopListening = () => {
@@ -18,9 +21,9 @@ function VoiceSearch(isKeyDown,setInputValue,setIsKeyDown,inputbox,sendButton){
         setInputValue(transcript);
         console.log('Transcript:', transcript);       
         if(inputbox)
-        inputbox.setAttribute('disabled',false);
+        inputbox.removeAttribute('disabled');
         if(sendButton)
-        sendButton.setAttribute('disabled',false);
+        sendButton.removeAttribute('disabled');
       };
 
       useEffect(() => {
