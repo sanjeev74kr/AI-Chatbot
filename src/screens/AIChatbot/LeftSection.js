@@ -7,9 +7,10 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     const [isExpanded, setIsExpanded] = useState({});
     const [isclickedLeftToggle, setIsClickedLeftToggle] = useState(false);
     const [industriesData, setIndustriesData] = useState([])
-    const [industriesCategoryWiseData, setIndustriesCategoryWiseData] = useState([])
+    const [industriesCategoryWiseData, setIndustriesCategoryWiseData] = useState({})
     const [currentIndustryName, setCurrentIndustryName] = useState(null)
 
+    console.log(industriesData)
     //Handle industry-data if it has nested items
     const handleExpandButton = (industry, index) => {
         if (industriesData[index]){
@@ -56,6 +57,7 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
 
     async function getIndustryData(){
         try{
+            console.log("currentIndustryName",currentIndustryName)
             await fetch(process.env.REACT_APP_ALL_INDUSTRIES_URL).then((res)=> res.json()).then((data)=>setIndustriesData(data))
         }catch(err){
             console.log("Error while fetching-->", err.message)
@@ -64,7 +66,7 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
 
     async function getCategoryWiseIndustries(){
         try{
-                await fetch(process.env.REACT_APP_CATEGORY_WISE_INDUSTRIES_URL + currentIndustryName).then((result)=> result.json()).then((rdata)=>setIndustriesCategoryWiseData(rdata))
+                await fetch(process.env.REACT_APP_CATEGORY_WISE_INDUSTRIES_URL + currentIndustryName).then((result)=> result.json()).then((rdata)=>setIndustriesCategoryWiseData({...industriesCategoryWiseData,[currentIndustryName]:rdata}))
             }catch(err){
                 console.log("Error while fetching-->", err.message)
             }
@@ -100,9 +102,9 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
                                 {isExpanded[index] && (
                                     <div className="industry-nested-data-container">
                                         {/* {industry.nestedData.length > 0 ? */}
-                                        {industriesCategoryWiseData.length > 0 ?
+                                        {industriesCategoryWiseData[industry] && industriesCategoryWiseData[industry].length ?
 
-                                            industriesCategoryWiseData.map((item, index) => (
+                                            industriesCategoryWiseData[industry].map((item, index) => (
                                                 <div className="industry-nested-data" key={index}>
                                                     <img src={bulletPointIcon} alt="bullet-point" id="bullet-point" />
                                                     <p key={index} className="industry-nested-items">{item.name.substring(1, 20)}...</p>
