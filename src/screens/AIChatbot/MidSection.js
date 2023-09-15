@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { brandLogo, emailIcon, likedIcon,shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import { brandLogo,likedIcon,shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
@@ -105,7 +105,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     //Handle download button
     const handleDownload = (ques, ans) => {
-        const content = `Query: ${ques}\nAnswer: ${ans}`;
+        const user='H';
+        const timestamp=new Date();
+
+        const content =`User:${user}    TimeStamp:${timestamp}\n\nQuery: ${ques}\n\nAnswer: ${ans}`;
         const blob = new Blob([content], { type: 'text/plain' });
         const url = window.URL.createObjectURL(blob);
 
