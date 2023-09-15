@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
 import { aiChatbotMidSectionStyles } from './midSection.css'
-import { brandLogo,likedIcon,shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
+import { brandLogo, likedIcon, shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
 import VoiceSearch from "../../components/VoiceSearch/VoiceSearch";
@@ -24,13 +24,13 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
     const [isEmailClicked, setIsEmailClicked] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0); // useState for handling slider of healthcare
     const carouselInnerRef = useRef(null);
-    const [timer,setTimer] = useState(true)
+    const [timer, setTimer] = useState(true)
 
-    const inputbox=document.querySelector('.input-box');
-    const sendButton=document.querySelector('#send-button');
-    
+    const inputbox = document.querySelector('.input-box');
+    const sendButton = document.querySelector('#send-button');
 
-    const voiceSearch = VoiceSearch(setInputValue,setIsKeyDown,inputbox,sendButton);
+
+    const voiceSearch = VoiceSearch(setInputValue, setIsKeyDown, inputbox, sendButton);
     const handleStartListening = voiceSearch.handleStartListening;
     const handleStopListening = voiceSearch.handleStopListening;
 
@@ -52,7 +52,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         }
     }
 
-    
+
 
     const queandans = useSelector((state) => state.counter.query);
 
@@ -105,16 +105,19 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
     //Handle download button
     const handleDownload = (ques, ans) => {
-        const user='H';
-        const timestamp=new Date();
+        const user = 'H';
+        const timestamp = new Date();
+        const formattedDate = timestamp.toLocaleDateString('en-US', {});
+        const formattedTime = timestamp.toLocaleTimeString('en-US', {});
 
-        const content =`User:${user}    TimeStamp:${timestamp}\n\nQuery: ${ques}\n\nAnswer: ${ans}`;
+
+        const content = `Query: ${ques}\n\nAnswer: ${ans}`;
         const blob = new Blob([content], { type: 'text/plain' });
         const url = window.URL.createObjectURL(blob);
 
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'RON-Reply.txt';
+        a.download = `${user} ${formattedDate} ${formattedTime}`;
         document.body.appendChild(a);
 
         a.click();
@@ -189,34 +192,36 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
         const updatedEmailClick = [...isEmailClicked];
         updatedEmailClick[index] = !updatedEmailClick[index];
         setIsEmailClicked(updatedEmailClick);
-          
+
     }
 
     const handleScroll = (direction) => {
         const slideWidth = carouselInnerRef.current.offsetWidth / 3; // Width of one visible slide
-        const maxIndex = Math.max(0, healthcareInfo.length-4 ); // Maximum index to prevent scrolling too far
-    
+        const maxIndex = Math.max(0, healthcareInfo.length - 4); // Maximum index to prevent scrolling too far
+
         // if (currentIndex < maxIndex) {
         if (direction === 'left' && currentIndex > 0) {
-          setCurrentIndex(currentIndex - 1);
-        }else if(direction === 'right' && currentIndex < maxIndex){
+            setCurrentIndex(currentIndex - 1);
+        } else if (direction === 'right' && currentIndex < maxIndex) {
             setCurrentIndex(currentIndex + 1)
         }
-      };
+    };
 
-      const handleVoiceIconClicked=()=>{
-          setIsKeyDown(true);
-          setInputValue("Listening...");
-          
-         if(inputbox){
-         inputbox.setAttribute('disabled',true);}
-         if(sendButton){
-         sendButton.setAttribute('disabled',true);}
-         
-          handleStartListening();
-      }
+    const handleVoiceIconClicked = () => {
+        setIsKeyDown(true);
+        setInputValue("Listening...");
 
-      //useEffet for loading SVG after 30 seconds...
+        if (inputbox) {
+            inputbox.setAttribute('disabled', true);
+        }
+        if (sendButton) {
+            sendButton.setAttribute('disabled', true);
+        }
+
+        handleStartListening();
+    }
+
+    //useEffet for loading SVG after 30 seconds...
     //   useEffect(()=>{
     //     setTimeout(()=>{setTimer(false)},30000)
     //   },[])
@@ -239,33 +244,33 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                             value={inputValue}
                             onChange={handleInputChange}
                             onKeyDown={(e) => handleEnterPressed(e)}
-                       />
-                       
-                  
-                        <div className="search-box-button-container">
-                        <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
-                        <p className="search-box-vertical line vertical-line"></p>
-                        <label htmlFor="uploadFileInput">
-                            <img
-                                id="uploadFileButton"
-                                className="clickable-icon"
-                                src="./upload-file-button.svg"
-                                alt="upload-file-button"
-                            />
-
-                        </label>
-                        <input
-                            type="file"
-                            id="uploadFileInput"
-                            accept=".doc, .docx, .txt"
-                            style={{ display: 'none' }}
-                            onChange={handleFileUpload}
                         />
-                        <p className="search-box-vertical line vertical-line"></p>
 
-                        <img id="voice-input-button" className={`clickable-icon ${isKeyDown ? 'voiceInputKeyDown' : ''}`} src={voiceIcon} alt="send-button"
-                            onClick={handleVoiceIconClicked} title="Click to speak" />
-                      </div>
+
+                        <div className="search-box-button-container">
+                            <img id="send-button" className="clickable-icon" src="./send-button.svg" alt="send-button" onClick={handleSendQueryButton} />
+                            <p className="search-box-vertical line vertical-line"></p>
+                            <label htmlFor="uploadFileInput">
+                                <img
+                                    id="uploadFileButton"
+                                    className="clickable-icon"
+                                    src="./upload-file-button.svg"
+                                    alt="upload-file-button"
+                                />
+
+                            </label>
+                            <input
+                                type="file"
+                                id="uploadFileInput"
+                                accept=".doc, .docx, .txt"
+                                style={{ display: 'none' }}
+                                onChange={handleFileUpload}
+                            />
+                            <p className="search-box-vertical line vertical-line"></p>
+
+                            <img id="voice-input-button" className={`clickable-icon ${isKeyDown ? 'voiceInputKeyDown' : ''}`} src={voiceIcon} alt="send-button"
+                                onClick={handleVoiceIconClicked} title="Click to speak" />
+                        </div>
                     </div>
 
                     <div className="shrunked-right-section-button">
@@ -303,10 +308,10 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                 </div>
                                 {/* Slider starts here */}
                                 <div className="transforming-healthcare">
-                                    {currentIndex > 0 && <img className="healthcare-carosel-left-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("left")}/>}
+                                    {currentIndex > 0 && <img className="healthcare-carosel-left-arrow" src={chevronRightIcon} alt="chevron-right" onClick={() => handleScroll("left")} />}
                                     <div className="carousel">
                                         <div className="carousel-inner" style={{ transform: `translateX(-${currentIndex * 33.33}%)` }} ref={carouselInnerRef}>
-                                            {answer[index]?.ans.source_info.map((hData, index)=>(
+                                            {answer[index]?.ans.source_info.map((hData, index) => (
                                                 <div className="carousel-item" key={index}>
                                                     <div className="transforming-healthcare-container">
                                                         <p className="healthcare-text">{hData.substring(1, 25)}...</p>
@@ -316,7 +321,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                             ))}
                                         </div>
                                     </div>
-                                {currentIndex<healthcareInfo.length-4 && <img className="healthcare-carosel-right-arrow" src={chevronRightIcon} alt="chevron-right" onClick={()=>handleScroll("right")}/>}
+                                    {currentIndex < healthcareInfo.length - 4 && <img className="healthcare-carosel-right-arrow" src={chevronRightIcon} alt="chevron-right" onClick={() => handleScroll("right")} />}
                                 </div>
 
                                 {/* Slider Ends here */}
@@ -342,7 +347,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
                                 </div>
                                 {
-                                    isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify} handleDislikeIconClicked={()=>handleDislikeIconClicked(index)}/>
+                                    isdislikeClicked && <Feedback handleDislikeClick={handleDislikeClick} notify={notify} handleDislikeIconClicked={() => handleDislikeIconClicked(index)} />
                                 }
 
                             </div>
