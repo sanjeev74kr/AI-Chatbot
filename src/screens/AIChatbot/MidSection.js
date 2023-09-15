@@ -336,7 +336,7 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
                                     <img className="conversation-section-icon" src={downloadIcon} alt="download"
                                         onClick={() => handleDownload(userMessage.que, answer[index]?.ans.response.output_text)} />
 
-                                    <img className="conversation-section-icon" src={shareIcon} alt="email" onClick={() => handleEmailClick(index)} />
+                                    <img className="conversation-section-icon" src={shareIcon} alt="share" onClick={() => handleEmailClick(index)} />
                                     {isEmailClicked[index] && <EmailShare userQuery={userMessage.que} answer={answer[index]?.ans.response.output_text} handleEmailClick={handleEmailClick} index={index} />}
 
                                     <img className="conversation-section-icon" src={isLiked[index] ? likedIcon : likeIcon} alt="like"
