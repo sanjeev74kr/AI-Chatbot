@@ -1,11 +1,11 @@
 import formatDate from "../../utils/formatDate";
 import { useState, useEffect, useRef } from "react";
-import { aiChatbotRightSectionStyles } from './rightSection.css'
+import './chatHistory.css'
 import { handleDeleteQandA } from "../../services/CounterSlice";
 import DeleteConfirmation from '../../components/DeleteConfirmation/DeleteConfirmation'
 
 
-function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleChatHistoryButton,
+function ChatHistory({ isChatHistoryToggle, handleNewChatButton, handleToggleChatHistoryButton,
     updatedChatHistory, setUpdatedChatHistory, userQuery, setUserQuery, answer, setAnswer, dispatch }) {
 
     const [editingIndices, setEditingIndices] = useState({});
@@ -204,4 +204,4 @@ function RightSection({ isChatHistoryToggle, handleNewChatButton, handleToggleCh
 
     )
 }
-export default RightSection;
+export default ChatHistory;

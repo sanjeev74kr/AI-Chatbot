@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { LoadingAnimationSVG } from "../../assets/globalStyles";
-import { aiChatbotMidSectionStyles } from './midSection.css'
+import './chat.css'
 import { brandLogo, likedIcon, shareIcon, speakerIcon, voiceIcon } from "../../assets/icons";
 import { QueryAPIHandler } from "../../services";
 import { Feedback } from "../../components/Feedback";
@@ -11,7 +11,7 @@ import EmailShare from "../../components/Email/EmailShare";
 import { healthcareInfo } from "../../sampleData/industryData";
 
 
-function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
+function Chat({ isLeftSectionToggle, userQuery, setUserQuery,
     chatHistory, isChatHistoryToggle, handleNewChatButton,
     handleToggleChatHistoryButton, inputValue, setInputValue,
     answer, setAnswer, dispatch, notify }) {
@@ -363,4 +363,4 @@ function MidSection({ isLeftSectionToggle, userQuery, setUserQuery,
 
 }
 
-export default MidSection;
+export default Chat;

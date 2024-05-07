@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { Header } from './components/Header';
-import AIChatbot from './screens/AIChatbot/AIChatbot';
+import { AIChatbot } from './pages/AIChatbot';
 
 function App() {
   const [showAIChatbotComponent, setShowAIChatbotComponent] = useState(true);

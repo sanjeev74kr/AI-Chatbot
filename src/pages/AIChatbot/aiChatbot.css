@@ -68,13 +68,13 @@
     text-underline-offset:100%;
   }
 
-  .profile-component {
+  /* .profile-component {
     position: absolute;
     top: 7%;
     right: 0%;
     left: 55%;
     z-index: 10;
-}
+} */
 
   .chat-component-main-section {
     width: 85%; 

@@ -1,33 +1,32 @@
 .profile-options-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  /* height: 15vh; */
   min-width: fit-content;
-  width: 12vw;
-  height: 15vh;
+  min-height: fit-content;
   background-color: white;
   color: black;
   border-radius: 0.2rem;
   align-items: flex-start;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-around;
-  padding: 5%;
+  gap:1.5rem;
+  padding: 5% 15%;
 }
 
 
 .manage-account-container {
   display: flex;
-  margin-left: 4%;
   cursor: pointer;
 }
 
 .profile-options-icon {
   width: 1.5rem;
-  height: 1.625rem;
+  height: 1.5rem;
 }
 
 .signOut-container {
   display: flex;
-  margin-left: 4%;
   cursor: pointer;
 }
 
@@ -36,4 +35,5 @@
   margin-left: 5%;
   font-size: 1rem;
   white-space: nowrap;
+  flex-shrink: 1;
 }

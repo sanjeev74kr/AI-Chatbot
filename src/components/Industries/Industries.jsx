@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import industryData from '../../sampleData/industryData';
-import { AIChatbotLeftSectionStyles } from './leftSection.css'
+import './industries.css';
 import { bulletPointIcon } from '../../assets/icons';
-
-function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
+ 
+function Industries({ isIndustriesToggle,setIsIndustriesToggle  }) {
     const [isExpanded, setIsExpanded] = useState({});
-    const [isclickedLeftToggle, setIsClickedLeftToggle] = useState(false);
+    const [isClickedLeftToggle, setIsClickedLeftToggle] = useState(false);
     const [industriesData, setIndustriesData] = useState([])
     const [industriesCategoryWiseData, setIndustriesCategoryWiseData] = useState({})
     const [currentIndustryName, setCurrentIndustryName] = useState(null)
@@ -23,28 +23,28 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     };
 
     //handle-left-section-toggle-button
-    const handleLeftSectionToggleButton = () => {
+    const handleIndustriesToggleButton = () => {
 
         if (window.innerWidth <= 768)
-            setIsLeftSectionToggle(true);
+            setIsIndustriesToggle(true);
         else{
-            setIsLeftSectionToggle(false);
+            setIsIndustriesToggle(false);
         }
 
         setIsClickedLeftToggle(true);
 
-        if (isclickedLeftToggle)
-            setIsLeftSectionToggle(!isLeftSectionToggle);
+        if (isClickedLeftToggle)
+            setIsIndustriesToggle(!isIndustriesToggle);
     }
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 768px)");
 
         // Initial call to handle left section toggle based on screen width
-        handleLeftSectionToggleButton(mediaQuery.matches);
+        handleIndustriesToggleButton(mediaQuery.matches);
 
         // Add listener for screen width changes
         const handleMediaQueryChange = (e) => {
-            handleLeftSectionToggleButton(e.matches);
+            handleIndustriesToggleButton(e.matches);
         };
 
         mediaQuery.addListener(handleMediaQueryChange);
@@ -81,11 +81,11 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
     
     return (
         <>
-            {!isLeftSectionToggle &&
+            {!isIndustriesToggle &&
                 <section className="chat-component-left-section">
                     <div className="left-section-title-container">
                         <p className="left-section-title">Industries</p>
-                        <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleLeftSectionToggleButton} />
+                        <img className="left-section-toggle-button toggle-button" src="./toggle-button-left-arrow.svg" alt="left-section-toogle-button" onClick={handleIndustriesToggleButton} />
                     </div>
                     <div className="industry-data-container">
                         {industriesData.map((industry, index) => (
@@ -125,11 +125,11 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
                 </section>
             }
 
-            {isLeftSectionToggle &&
+            {isIndustriesToggle &&
                 <section className="shrunked-chat-component-left-section">
                     <div className="shrunked-left-section-container">
                         <div>
-                            <img className="toggle-button" src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleLeftSectionToggleButton} />
+                            <img className="toggle-button" src="./left-section-toggle-button.svg" alt="left-section-toggle-button" onClick={handleIndustriesToggleButton} />
                             <div className="shrunked-horizontal-line"></div>
                         </div>
                         {
@@ -148,4 +148,4 @@ function LeftSection({ isLeftSectionToggle, setIsLeftSectionToggle }) {
         </>
     )
 }
-export default LeftSection;
+export default Industries;
